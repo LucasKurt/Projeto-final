@@ -34,27 +34,14 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="./images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style="width: 150px;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="produtos.html">Anúncios<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0"><a class="text-success" style="text-decoration: none;" href="login.html">Entre</a></button>
-      </div>
-    </nav>
-  </header>
-
+  <?php
+    session_start();
+    if (isset($_SESSION['id'])) {
+      require_once('HTML\navbarSair.html');
+    } else {
+      require_once('HTML\navbar.html');
+    }
+  ?>
   <main role="main">
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">

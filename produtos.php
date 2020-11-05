@@ -32,26 +32,14 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="./images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style="width: 150px;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="produtos.html">Anúncios<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0"><a class="text-success" style="text-decoration: none;" href="login.html">Entre</a></button>
-      </div>
-    </nav>
-  </header>
+  <?php
+      session_start();
+      if (isset($_SESSION['id'])) {
+        require_once('HTML\navbarSair.html');
+      } else {
+        require_once('HTML\navbar.html');
+      }
+    ?>
 
   <main role="main">
 
@@ -70,7 +58,7 @@
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
               <img height="225" src="https://images.pexels.com/photos/3811855/pexels-photo-3811855.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-              <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 2px 2px 4px #000000;" class="rounded-circle" width="50" height="50" src="./images/logo-comercio-amigavel.png" alt=""></div>
+              <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="./images/logo-comercio-amigavel.png" alt=""></div>
               <div class="card-body">
                 <p class="card-text text-center">Quem? (Custuraria da Dona Ana)</p>
                 <p class="card-text text-center">O que? (Roupas feitas sob encomenda)</p>

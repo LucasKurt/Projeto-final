@@ -40,43 +40,8 @@
     <!-- Custom styles for this template -->
     <link href="./CSS/cadastro.css" rel="stylesheet" />
   </head>
-  <body class="bg-light">
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="index.html"><img src="./images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style="width: 150px;"></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarCollapse"
-          aria-controls="navbarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="produtos.html"
-                >Anúncios<span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cadastro.html">Cadastro</a>
-            </li>
-          </ul>
-          <button class="btn btn-outline-success my-2 my-sm-0">
-            <a
-              class="text-success"
-              style="text-decoration: none"
-              href="login.html"
-              >Entre</a
-            >
-          </button>
-        </div>
-      </nav>
-    </header>
+  <body class="bg-light">  
+    <?php require_once('HTML\navbar.html');?>
     <div class="container mt-5">
       <div class="py-5 text-center">
         <img
@@ -156,7 +121,7 @@
         </div> -->
         <div class="col-md-12">
           <h4 class="mb-3">Dados Pessoais</h4>
-          <form class="needs-validation"  method="POST" novalidate>
+          <form class="needs-validation"  method="POST" action="php\confirma_cadastro.php" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="nome">Nome Completo</label>
@@ -180,9 +145,38 @@
                   type="text"
                   class="form-control"
                   id="negocio"
+                  name="negocio"
                   placeholder=""
                   value=""
                 />
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-8 mb-3">
+                <label for="endereco">Endereço</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="endereco"
+                  name="endereco"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">Digite o endereço</div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="cpf">CPF <span class="text-muted">(Somente numeros)</span></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cpf"
+                  name="cpf"
+                  onkeypress="$(this).mask('000.000.000-00');"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">Digite o CPF</div>
               </div>
             </div>
 
@@ -229,44 +223,17 @@
             </div>
 
             <div class="mb-3">
-              <label for="confSenha">Confirme sua senha</label>
+              <label for="conf_senha">Confirme sua senha</label>
               <input
                 type="password"
                 class="form-control"
-                id="confSenha"
-                name="confSenha"
+                id="conf_senha"
+                name="conf_senha"
                 placeholder="Confirme sua senha"
                 required
               />
               <div class="invalid-feedback">
-                As senhas devem ser iguais.
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-8 mb-3">
-                <label for="endereco">Endereço</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="endereco"
-                  name="endereco"
-                  placeholder=""
-                  required
-                />
-                <div class="invalid-feedback">Digite o endereço</div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="zip">CPF <span class="text-muted">(Somente numeros)</span></label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="cpf"
-                  name="cpf"
-                  placeholder=""
-                  required
-                />
-                <div class="invalid-feedback">Digite o CPF</div>
+                Digite uma senha válida.
               </div>
             </div>
             <!-- <hr class="mb-4" />
