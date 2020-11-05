@@ -8,8 +8,8 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 $conf_senha = $_POST['conf_senha'];
 
-if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $categoria != "" && $email != "" && $senha != ""&& $conf_senha != "") {
-    require_once('php\bd_connect.php');
+if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $categoria != "" && $email != "" && $senha != "" && $conf_senha != "") {
+    require_once('bd_connect.php');
     $sql = "SELECT * FROM cadastro";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -52,7 +52,7 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
         $conn->query($sql);
         echo "<script>
             alert('Cadastro efetuado!')
-            window.location.href = 'index.php'
+            window.location.href = '../login.php'
             </script>
         ";
     }
@@ -74,4 +74,4 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
 }
 
 
-echo "<a href='cadastro.php'>voltar</a>";
+echo "<a href='../cadastro.php'>voltar</a>";

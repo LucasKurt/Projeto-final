@@ -58,7 +58,7 @@
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Divulgue seu negócio através do nosso site</h1>
               <p>Aqui você pode mostrar seus produtos e serviços.</p>
-              <p><a class="btn btn-lg btn-primary" href="cadastro.html" role="button">Cadastre-se</a></p>
+              <p><a class="btn btn-lg btn-primary" href="cadastro.php" role="button">Cadastre-se</a></p>
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Compre do pequeno negócio</h1>
               <p>Incentive o comerciante comprando os nossos produtos</p>
-              <p><a class="btn btn-lg btn-primary" href="produtos.html" role="button">Veja os produtos</a></p>
+              <p><a class="btn btn-lg btn-primary" href="produtos.php" role="button">Veja os produtos</a></p>
             </div>
           </div>
         </div>
