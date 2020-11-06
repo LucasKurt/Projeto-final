@@ -57,17 +57,24 @@ if (isset($_SESSION['id'])) {
                     <form method="post" class="form-group col-md-9 d-flex flex-column justify-content-center">
                         <h2 class="display-4"><?php echo $nome?></h2>
                         <div class="row d-flex vertical-align-center">
-                            <input class="ml-3 col-8 form-control" type="text" name="img_perfil">
+                            <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
                             <button class="btn btn-primary btn-lg" type="submit">Trocar Foto</button>
                         </div>
                     </form>
                     <?php    
-                        if (isset($_POST['img_perfil']) && $img != "") {
+                        if (isset($_POST['img_perfil'])) {
                             $img = $_POST['img_perfil'];
                             $sql ="UPDATE cadastro SET img_perfil = '$img' WHERE id = '$id'";
                             $nova_img = $conn->query($sql);
+                            unset($_POST['img_perfil']);
+                            echo "<script>
+                                alert('Entre denovo para ver as alterações')
+                                window.location.href = 'index.php'
+                                </script>
+                            ";
+                            session_destroy();
                         }
-                        unset($img);
+                        
                     ?> 
                 </div>
             </div>
