@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['id'])) {
+    include_once('php\bd_connect.php');
+    $id = $_SESSION['id'];
+    $nome = $_SESSION['nome'];
+    $negocio = $_SESSION['negocio'];
+    $img_perfil = $_SESSION['img_perfil'];
+    if ($negocio == ""){
+        $negocio = $nome;
+    }
+} else{
+    header('Location: index.php');
+    die();
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +52,23 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 d-flex justify-content-center align-items-center">
-                        <img width="250" height="250" class="rounded-circle" src="images\perfil-sem-foto.jpg" alt="">
+                        <img width="250" height="250" class="rounded-circle" src="<?php echo $img_perfil?>" alt="">
                     </div>
-                    <div class="col-md-9">
-                        <h1 class="display-3">Nome</h1>
-                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Editar </a></p>
-                    </div>
+                    <form method="post" class="form-group col-md-9 d-flex flex-column justify-content-center">
+                        <h2 class="display-4"><?php echo $nome?></h2>
+                        <div class="row d-flex vertical-align-center">
+                            <input class="ml-3 col-8 form-control" type="text" name="img_perfil">
+                            <button class="btn btn-primary btn-lg" type="submit">Trocar Foto</button>
+                        </div>
+                    </form>
+                    <?php    
+                        if (isset($_POST['img_perfil']) && $img != "") {
+                            $img = $_POST['img_perfil'];
+                            $sql ="UPDATE cadastro SET img_perfil = '$img' WHERE id = '$id'";
+                            $nova_img = $conn->query($sql);
+                        }
+                        unset($img);
+                    ?> 
                 </div>
             </div>
         </div>
@@ -49,12 +77,12 @@
             <div class="row">
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
                     <div class="card mb-4 shadow-sm">
-                        <img height="225" src="images\ponto-de-interrogação.jpeg" alt="">
-                        <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="images\perfil-sem-foto.jpg" alt=""></div>
+                        <img id="imgAnuncio" height="225" src="images\ponto-de-interrogação.jpeg" alt="Imagem do anuncio">
+                        <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="<?php echo $img_perfil?>" alt=""></div>
                         <div class="card-body">
-                            <p class="card-text text-center">Quem? (Custuraria da Dona Ana)</p>
-                            <p class="card-text text-center">O que? (Roupas feitas sob encomenda)</p>
-                            <p class="card-text text-center">Quanto? (Valor a combinar)</p>
+                            <p class="card-text text-center"><?php echo $negocio?></p>
+                            <p id="descricaoAnuncio" class="card-text text-center">O que? (breve descrição)</p>
+                            <p id="valorAnuncio" class="card-text text-center">Quanto? (Informe o preço)</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
@@ -66,10 +94,11 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <form class="needs-validation"  method="POST" action="php\confirma_cadastro.php" novalidate>
+                    <h3 class="text-center">Crie seu anuncio</h3>
+                    <form class="needs-validation"  method="POST" action="php\publicar.php" novalidate>
                         <div class="row">
                             <div class="col-md mb-3">
-                                <label for="img">Imagem</label>
+                                <label for="img">Coloque o link da imagem</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -78,6 +107,7 @@
                                     placeholder=""
                                     value=""
                                     required
+                                    onchange="atualizaImg()"
                                 />
                                 <div class="invalid-feedback">Coloque a imagem do anuncio</div>
                             </div>
@@ -93,6 +123,7 @@
                                     name="descricao"
                                     placeholder=""
                                     required
+                                    onchange="atualizaDescricao()"
                                 />
                                 <div class="invalid-feedback">Escreva a descrição</div>
                             </div>
@@ -103,8 +134,10 @@
                                     class="form-control"
                                     id="valor"
                                     name="valor"
+                                    value=""
                                     placeholder=""
                                     required
+                                    onchange="atualizaValor()"
                                 />
                                 <div class="invalid-feedback">Informe o Valor</div>
                             </div>
@@ -121,17 +154,32 @@
                 <div class="col-md-12">
                     <h2>Anuncios publicados</h2>
                     <hr>
-                    <div class="row mb-2">
-                        <div class="col-md-2">
-                            <img height="100" src="images\ponto-de-interrogação.jpeg" alt="">
-                        </div>
-                        <div class="col-md-2">
-                            <p>Descrição</p>
-                            <p>Valor</p>
-                        </div>
-                    </div>
-                    <p><a class="btn btn-secondary" href="#" role="button">Editar</a></p>
-                    <hr>
+                    <!--  -->
+                    <?php
+                        $sql = "SELECT * FROM anuncios WHERE id_pessoa = '$id'";
+                        $result = $conn->query($sql);
+                        if ($anuncios = $result->num_rows >0) {
+                            while ($anuncios = $result->fetch_assoc()) {
+                                if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
+                                <div class="row mb-2">
+                                    <div class="col-md-3">
+                                        <img height="150" src="<?php echo $anuncios['img'] ?>" alt="">
+                                    </div>
+                                    <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
+                                        <p><?php echo $anuncios['descricao'] ?></p>
+                                        <p>R$ <?php echo $anuncios['valor'] ?></p>
+                                        <p><a class="btn btn-secondary" href="#" role="button">Editar</a></p>
+                                    </div>
+                                </div>
+                                <hr>
+                            <?php }
+                        } else {
+                            echo "<p>Nenhum anuncio publicado</p>";
+                        }
+                        
+                    ?>
+                    
+                    <!--  -->
                 </div>
             </div>   
         </div> <!-- /container -->
@@ -140,6 +188,7 @@
     <footer class="container">
         <p>&copy; Company 2017-2020</p>
     </footer>
+    <script src="JS\perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

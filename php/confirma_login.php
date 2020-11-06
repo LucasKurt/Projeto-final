@@ -16,11 +16,11 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
     // $anunciante = Retorno da consulta no banco de dados
     $anunciante = mysqli_fetch_assoc($resultado_consulta);
 
-    $_SESSION['nome'] = $anunciante["nome"];
-    $_SESSION['email'] = $anunciante["email"];
     $_SESSION['id'] = $anunciante["id"];
+    $_SESSION['nome'] = $anunciante["nome"];
+    $_SESSION['negocio'] = $anunciante["negocio"];
+    $_SESSION['img_perfil'] = $anunciante["img_perfil"];
 
-    
     header('Location: ../perfil.php');
 }
 else {

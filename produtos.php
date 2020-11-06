@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  include_once('php\bd_connect.php');
+?>
 <!doctype html>
 <html lang="pt-br">
 
@@ -33,7 +37,6 @@
 
 <body>
   <?php
-      session_start();
       if (isset($_SESSION['id'])) {
         require_once('HTML\navbarSair.html');
       } else {
@@ -55,24 +58,38 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img height="225" src="https://images.pexels.com/photos/3811855/pexels-photo-3811855.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" alt="">
-              <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="./images/logo-comercio-amigavel.png" alt=""></div>
-              <div class="card-body">
-                <p class="card-text text-center">Quem? (Custuraria da Dona Ana)</p>
-                <p class="card-text text-center">O que? (Roupas feitas sob encomenda)</p>
-                <p class="card-text text-center">Quanto? (Valor a combinar)</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Entrar em contato</button>
+          <!--  -->
+          <?php 
+            $sql = "SELECT * FROM cadastro JOIN anuncios WHERE id_pessoa = cadastro.id ORDER BY anuncios.id DESC";
+            $result = $conn->query($sql);
+            if($result->num_rows >0){
+              while ($anuncios = $result->fetch_assoc()) {
+                if($anuncios['negocio']==""){$anuncios['negocio']=$anuncios['nome'];}
+                if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
+                <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
+                    <img height="225" src="<?php echo $anuncios['img']?>" alt="">
+                    <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="<?php echo $anuncios['img_perfil']?>" alt=""></div>
+                    <div class="card-body">
+                      <p class="card-text text-center"><?php echo $anuncios['negocio']?></p>
+                      <p class="card-text text-center"><?php echo $anuncios['descricao']?></p>
+                      <p class="card-text text-center"><?php echo $anuncios['valor']?></p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Entrar em contato</button>
+                        </div>
+                        <small class="text-muted">SP</small>
+                      </div>
+                    </div>
                   </div>
-                  <small class="text-muted">SP</small>
                 </div>
-              </div>
-            </div>
-          </div>
+              <?php }
+            } else {
+              echo "<h1>Ainda não foram postados anuncios</h1>";
+            }         
+          ?>
+          
         </div>
       </div>
     </div>
