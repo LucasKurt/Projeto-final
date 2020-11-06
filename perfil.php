@@ -66,13 +66,8 @@ if (isset($_SESSION['id'])) {
                             $img = $_POST['img_perfil'];
                             $sql ="UPDATE cadastro SET img_perfil = '$img' WHERE id = '$id'";
                             $nova_img = $conn->query($sql);
-                            unset($_POST['img_perfil']);
-                            echo "<script>
-                                alert('Entre denovo para ver as alterações')
-                                window.location.href = 'index.php'
-                                </script>
-                            ";
-                            session_destroy();
+                            $_SESSION['img_perfil'] = $img;
+                            header("Refresh: 0");
                         }
                         
                     ?> 
