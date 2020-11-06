@@ -23,6 +23,10 @@
   max-width: 40rem;
 }
 
+.card img {
+  object-fit: cover;
+}
+
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;

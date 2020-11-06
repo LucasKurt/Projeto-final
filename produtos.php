@@ -47,10 +47,8 @@
   <main role="main">
 
     <section class="jumbotron text-center">
-      <div class="container mt-4">
-        <h1>Veja os produtos e serviços cadastrados</h1>
-        <!-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-          etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p> -->
+      <div class="container mt-5">
+        <p class="display-4">Veja os produtos e serviços cadastrados</p>
       </div>
     </section>
 
@@ -71,9 +69,9 @@
                     <img height="225" src="<?php echo $anuncios['img']?>" alt="">
                     <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="<?php echo $anuncios['img_perfil']?>" alt=""></div>
                     <div class="card-body">
-                      <p class="card-text text-center"><?php echo $anuncios['negocio']?></p>
-                      <p class="card-text text-center"><?php echo $anuncios['descricao']?></p>
-                      <p class="card-text text-center"><?php echo $anuncios['valor']?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['negocio'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['descricao'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['valor'])?></p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
@@ -87,7 +85,7 @@
               <?php }
             } else {
               echo "<h1>Ainda não foram postados anuncios</h1>";
-            }         
+            }
           ?>
           
         </div>
@@ -95,17 +93,10 @@
     </div>
 
   </main>
-
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-right">
-        <a href="#">Back to top</a>
-      </p>
-      <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-      <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a
-          href="../getting-started/introduction/">getting started guide</a>.</p>
-    </div>
-  </footer>
+  <!-- Footer -->
+  <?php
+  include_once('./HTML/footer.html');
+  ?>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

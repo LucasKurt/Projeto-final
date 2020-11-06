@@ -57,19 +57,27 @@ if (isset($_SESSION['id'])) {
                     <form method="post" class="form-group col-md-9 d-flex flex-column justify-content-center">
                         <h2 class="display-4"><?php echo $nome?></h2>
                         <div class="row d-flex vertical-align-center">
-                            <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
+                        <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
+
                             <button class="btn btn-primary btn-lg" type="submit">Trocar Foto</button>
                         </div>
                     </form>
                     <?php    
                         if (isset($_POST['img_perfil'])) {
                             $img = $_POST['img_perfil'];
+                            if ($img == "") {
+                                echo "<script>
+                                alert('Insira um link para trocar a foto')
+                                </script>
+                            ";
+                            } else {
+
                             $sql ="UPDATE cadastro SET img_perfil = '$img' WHERE id = '$id'";
                             $nova_img = $conn->query($sql);
                             $_SESSION['img_perfil'] = $img;
-                            header("Refresh: 0");
+                            header("Refresh:0");
+                            }
                         }
-                        
                     ?> 
                 </div>
             </div>
@@ -168,8 +176,9 @@ if (isset($_SESSION['id'])) {
                                         <img height="150" src="<?php echo $anuncios['img'] ?>" alt="">
                                     </div>
                                     <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
-                                        <p><?php echo $anuncios['descricao'] ?></p>
-                                        <p>R$ <?php echo $anuncios['valor'] ?></p>
+                                        <p><?php echo utf8_encode ($anuncios['descricao']) ?></p>
+                                        <p>R$ <?php echo utf8_encode ($anuncios['valor']) ?></p>
+
                                         <p><a class="btn btn-secondary" href="#" role="button">Editar</a></p>
                                     </div>
                                 </div>
@@ -177,6 +186,8 @@ if (isset($_SESSION['id'])) {
                             <?php }
                         } else {
                             echo "<p class='font-weight-bold'>Nenhum anuncio publicado</p>";
+                            echo "<br>";
+
                         }
                         
                     ?>
@@ -186,10 +197,11 @@ if (isset($_SESSION['id'])) {
             </div>   
         </div> <!-- /container -->
     </main>
+  <!-- Footer -->
+  <?php
+  include_once('./HTML/footer.html');
+  ?>
 
-    <footer class="container">
-        <p>&copy; Company 2017-2020</p>
-    </footer>
     <script src="JS\perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

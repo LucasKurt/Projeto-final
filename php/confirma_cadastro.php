@@ -1,12 +1,12 @@
 <?php
-$nome = $_POST['nome'];
-$negocio =  $_POST['negocio'];
-$endereco = $_POST['endereco'];
-$cpf = intval($_POST['cpf']);
-$categoria = $_POST['categoria'];
-$email = $_POST['email'];
-$senha = $_POST['senha'];
-$conf_senha = $_POST['conf_senha'];
+    $nome = $_POST['nome'];
+    $negocio =  $_POST['negocio'];
+    $endereco = $_POST['endereco'];
+    $cpf = intval($_POST['cpf']);
+    $categoria = $_POST['categoria'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $conf_senha = $_POST['conf_senha'];
 
 if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $categoria != "" && $email != "" && $senha != "" && $conf_senha != "") {
     require_once('bd_connect.php');
@@ -69,19 +69,17 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
 } else if ($senha != $conf_senha){
     echo "<script>
         alert('As senhas não são iguais')
-        location.href = 'cadastro.php'
+        location.href = '../cadastro.php'
     </script>";
 } else if (is_string($cpf)){
     echo "<script>
-        alert('digite apenas numeros no cpf!!')
-        location.href = 'cadastro.php'
+        alert('digite apenas numeros no CPF!!')
+        location.href = '../cadastro.php'
     </script>";
 } else {
     echo "<script>
         alert('deu ruim')
-        //location.href = 'cadastro.php'
+        //location.href = '../cadastro.php'
     </script>";
 }
-
-
 echo "<a href='../cadastro.php'>voltar</a>";
