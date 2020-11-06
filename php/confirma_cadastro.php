@@ -48,7 +48,17 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
         }
         unset($sql);
         $senha = md5($senha);
-        $sql = "INSERT INTO cadastro (nome,negocio,endereco,cpf,categoria,email,senha) VALUES ('$nome','$negocio','$endereco','$cpf','$categoria','$email','$senha')";
+        $sql = "INSERT INTO cadastro (nome,negocio,endereco,cpf,categoria,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$categoria','$email','$senha','images/perfil-sem-foto.jpg')";
+        $conn->query($sql);
+        echo "<script>
+            alert('Cadastro efetuado!')
+            window.location.href = '../login.php'
+            </script>
+        ";
+    } else {
+        unset($sql);
+        $senha = md5($senha);
+        $sql = "INSERT INTO cadastro (nome,negocio,endereco,cpf,categoria,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$categoria','$email','$senha','images/perfil-sem-foto.jpg')";
         $conn->query($sql);
         echo "<script>
             alert('Cadastro efetuado!')

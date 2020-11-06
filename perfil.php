@@ -174,7 +174,7 @@ if (isset($_SESSION['id'])) {
                                 <hr>
                             <?php }
                         } else {
-                            echo "<p>Nenhum anuncio publicado</p>";
+                            echo "<p class='font-weight-bold'>Nenhum anuncio publicado</p>";
                         }
                         
                     ?>
