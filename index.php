@@ -8,7 +8,7 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.1.1">
   <title>Comércio Amigável</title>
-
+  
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -34,27 +34,14 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="./images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style="width: 150px;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="produtos.html">Anúncios<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0"><a class="text-success" style="text-decoration: none;" href="login.html">Entre</a></button>
-      </div>
-    </nav>
-  </header>
-
+  <?php
+    session_start();
+    if (isset($_SESSION['id'])) {
+      require_once('HTML\navbarSair.html');
+    } else {
+      require_once('HTML\navbar.html');
+    }
+  ?>
   <main role="main">
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -71,7 +58,7 @@
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Divulgue seu negócio através do nosso site</h1>
               <p>Aqui você pode mostrar seus produtos e serviços.</p>
-              <p><a class="btn btn-lg btn-primary" href="cadastro.html" role="button">Cadastre-se</a></p>
+              <p><a class="btn btn-lg btn-primary" href="cadastro.php" role="button">Cadastre-se</a></p>
             </div>
           </div>
         </div>
@@ -83,7 +70,7 @@
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Compre do pequeno negócio</h1>
               <p>Incentive o comerciante comprando os nossos produtos</p>
-              <p><a class="btn btn-lg btn-primary" href="produtos.html" role="button">Veja os produtos</a></p>
+              <p><a class="btn btn-lg btn-primary" href="produtos.php" role="button">Veja os produtos</a></p>
             </div>
           </div>
         </div>
@@ -195,36 +182,17 @@
 
       <hr class="featurette-divider">
 
-      <!-- <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-            semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-            commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-            height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
-            role="img" aria-label="Placeholder: 500x500">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-          </svg>
-        </div>
-      </div>
-
-      <hr class="featurette-divider"> -->
-
       <!-- /END THE FEATURETTES -->
 
     </div><!-- /.container -->
-
-
-    <!-- FOOTER -->
-    <footer class="container">
-      <p class="float-right"><a href="#">Voltar ao topo</a></p>
-      <p class="text-center">&copy; 2020 todos os direitos reservados ao squad 8. & Recode &middot;</p>
-    </footer>
   </main>
+
+  <!-- Footer -->
+  <?php
+  include_once('./HTML/footer.html');
+  ?>
+  <!-- Footer -->
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -234,5 +202,5 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-
+  </body>
 </html>

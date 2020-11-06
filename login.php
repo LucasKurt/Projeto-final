@@ -33,42 +33,19 @@
 </head>
 
 <body class="text-center">
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="./images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style="width: 150px;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="produtos.html">Anúncios<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-        <button class="btn btn-outline-success my-2 my-sm-0"><a  class="text-success" style="text-decoration: none;" href="login.html">Entre</a></button>
-      </div>
-    </nav>
-  </header>
-  <form class="form-signin">
+  <?php require_once('HTML\navbar.html');?>
+  <form class="form-signin" method="post" action="php\confirma_login.php">
     <img class="mb-4" src="./images/logo-comercio-amigavel.png" alt="Logo" width="150" height="150" />
     <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus />
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required />
-    <!-- <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me" /> Remember me
-      </label>
-    </div> -->
+    <label for="email" class="sr-only">Email address</label>
+    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus />
+    <label for="senha" class="sr-only">Password</label>
+    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required />
+    
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Entre
     </button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+    <p class="mt-5 mb-3 text-muted">&copy; Recode Pro 2020</p>
   </form>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
