@@ -58,13 +58,13 @@ if (isset($_SESSION['id'])) {
                         <h2 class="display-4"><?php echo $nome?></h2>
                         <div class="row d-flex vertical-align-center">
                         <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
+
                             <button class="btn btn-primary btn-lg" type="submit">Trocar Foto</button>
                         </div>
                     </form>
                     <?php    
                         if (isset($_POST['img_perfil'])) {
                             $img = $_POST['img_perfil'];
-
                             if ($img == "") {
                                 echo "<script>
                                 alert('Insira um link para trocar a foto')
@@ -178,6 +178,7 @@ if (isset($_SESSION['id'])) {
                                     <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
                                         <p><?php echo utf8_encode ($anuncios['descricao']) ?></p>
                                         <p>R$ <?php echo utf8_encode ($anuncios['valor']) ?></p>
+
                                         <p><a class="btn btn-secondary" href="#" role="button">Editar</a></p>
                                     </div>
                                 </div>
@@ -186,6 +187,7 @@ if (isset($_SESSION['id'])) {
                         } else {
                             echo "<p class='font-weight-bold'>Nenhum anuncio publicado</p>";
                             echo "<br>";
+
                         }
                         
                     ?>
@@ -195,13 +197,11 @@ if (isset($_SESSION['id'])) {
             </div>   
         </div> <!-- /container -->
     </main>
-
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
-  <!-- Footer -->
-  
+
     <script src="JS\perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
