@@ -4,11 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="" />
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
-  <meta name="generator" content="Jekyll v4.1.1" />
+
   <title>Realize o login</title>
-  <!-- Bootstrap core CSS -->
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
 
@@ -28,12 +26,12 @@
       }
     }
   </style>
-  <!-- Custom styles for this template -->
+
   <link href="./CSS/login.css" rel="stylesheet" />
 </head>
 
 <body class="text-center">
-  <?php require_once('HTML\navbar.html');?>
+  <?php require_once('./HTML/navbar.html');?>
   <form class="form-signin" method="post" action="php\confirma_login.php">
     <img class="mb-4" src="./images/logo-comercio-amigavel.png" alt="Logo" width="150" height="150" />
     <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>

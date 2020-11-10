@@ -4,12 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v4.1.1">
+
   <title>Comércio Amigável</title>
   
-  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -29,7 +26,7 @@
       }
     }
   </style>
-  <!-- Custom styles for this template -->
+
   <link href="./CSS/carousel.css" rel="stylesheet">
 </head>
 
@@ -37,9 +34,9 @@
   <?php
     session_start();
     if (isset($_SESSION['id'])) {
-      require_once('HTML\navbarSair.html');
+      require_once('./HTML/navbarSair.html');
     } else {
-      require_once('HTML\navbar.html');
+      require_once('./HTML/navbar.html');
     }
   ?>
   <main role="main">
@@ -97,32 +94,28 @@
       </a>
     </div>
 
-    <!-- Marketing messaging and featurettes
-      ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing">
 
-      <!-- Three columns of text below the carousel -->
+      <!-- Rounded images -->
       <div class="row">
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3738095/pexels-photo-3738095.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Costureiro(a)</h2>
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/2076930/pexels-photo-2076930.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Cabelereiro(a)</h2>
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3983706/pexels-photo-3983706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Cozinheiro(a)</h2>
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+        </div>
       </div><!-- /.row -->
       <div class="row mt-5">
         <div class="col-lg-4">
@@ -130,23 +123,23 @@
               src="https://images.pexels.com/photos/4606346/pexels-photo-4606346.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Motorista</h2>
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3768910/pexels-photo-3768910.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Diarista</h2>
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3760978/pexels-photo-3760978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Artesão(a)</h2>
           <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+        </div>
       </div>
 
 
-      <!-- START THE FEATURETTES -->
+      <!-- Exemplos de histórias de sucesso -->
 
       <hr class="featurette-divider">
 
@@ -182,16 +175,15 @@
 
       <hr class="featurette-divider">
 
-      <!-- /END THE FEATURETTES -->
+      <!-- /fim das histórias de sucesso -->
 
-    </div><!-- /.container -->
+    </div>
   </main>
 
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
-  <!-- Footer -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

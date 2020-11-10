@@ -6,14 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Jekyll v4.1.1" />
+
     <title>Cadastre-se</title>
-    <!-- Bootstrap core CSS -->
+
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -37,11 +32,11 @@
         }
       }
     </style>
-    <!-- Custom styles for this template -->
+
     <link href="./CSS/cadastro.css" rel="stylesheet" />
   </head>
   <body class="bg-light">  
-    <?php require_once('HTML\navbar.html');?>
+    <?php require_once('./HTML/navbar.html');?>
     <div class="container mt-5">
       <div class="py-5 text-center">
         <img
@@ -187,7 +182,6 @@
       <?php
       include_once('./HTML/footer.html');
       ?>
-      <!-- Footer -->
 
     </div>
     <script
