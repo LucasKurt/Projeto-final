@@ -29,6 +29,7 @@ USE `comercio_amigavel`;
 -- Estrutura da tabela `anuncios`
 --
 
+
 DROP TABLE IF EXISTS `anuncios`;
 CREATE TABLE IF NOT EXISTS `anuncios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -52,11 +53,13 @@ INSERT INTO `anuncios` (`id`, `id_pessoa`, `img`, `descricao`, `valor`) VALUES
 (6, 5, 'https://i.ytimg.com/vi/nCQRRxQWc9c/hqdefault.jpg', 'Unicórnios de chocolate', 'R$ 4,00'),
 (16, 6, 'https://img.itdg.com.br/tdg/images/recipes/000/029/124/320646/320646_original.jpg?mode=crop&width=710&height=400', 'Bolo de Laranja', 'R$ 4,00');
 
+
 -- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `cadastro`
 --
+
 
 DROP TABLE IF EXISTS `cadastro`;
 CREATE TABLE IF NOT EXISTS `cadastro` (
@@ -68,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `categoria` varchar(50) NOT NULL,
   `email` varchar(150) NOT NULL,
   `senha` char(32) NOT NULL,
+
   `img_perfil` varchar(200) NOT NULL DEFAULT './images/perfil-sem-foto.jpg',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
@@ -75,11 +79,13 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   UNIQUE KEY `negocio` (`negocio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
+
 --
 -- Extraindo dados da tabela `cadastro`
 --
 
 INSERT INTO `cadastro` (`id`, `nome`, `negocio`, `endereco`, `cpf`, `categoria`, `email`, `senha`, `img_perfil`) VALUES
+
 (1, 'Jane Doe', 'Jane Doe', 'Rua quatro, 167', '321', 'Produtos', 'jane@doe.com', 'e10adc3949ba59abbe56e057f20f883e', 'https://i.pinimg.com/originals/24/38/27/243827161c1575813c745ac5b8eabf5e.jpg'),
 (3, 'Chaves', 'Tienda del chavo', 'Rua vinte e nove, 29', '32434567899', 'Produtos', 'chaves@tenda.com', 'e10adc3949ba59abbe56e057f20f883e', 'https://files.metropoles.com/stories/5-episodios-memoraveis-de-chaves/assets/1.jpeg'),
 (4, 'Dona Florinda', 'Churros da Dona Florinda', 'Rua douze, 12', '44456789387', 'Produtos', 'florinda@churros.com', 'e10adc3949ba59abbe56e057f20f883e', 'https://miro.medium.com/max/793/1*oX16NR_GtosBORoAKQ7oSg.jpeg'),

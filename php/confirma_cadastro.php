@@ -82,6 +82,4 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
         //location.href = '../cadastro.php'
     </script>";
 }
-
-
 echo "<a href='../cadastro.php'>voltar</a>";
