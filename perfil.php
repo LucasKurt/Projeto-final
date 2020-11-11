@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['id'])) {
-    include_once('php\bd_connect.php');
+    include_once('./php/bd_connect.php');
     $id = $_SESSION['id'];
     $nome = $_SESSION['nome'];
     $negocio = $_SESSION['negocio'];
@@ -21,10 +21,10 @@ if (isset($_SESSION['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Perfil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!-- Custom styles for this template -->
+
     <link href="./CSS/perfil.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
@@ -44,10 +44,9 @@ if (isset($_SESSION['id'])) {
     </style>
 </head>
 <body>
-    <?php require_once('HTML\navbarSair.html'); ?>
+    <?php require_once('./HTML/navbarSair.html'); ?>
     <main role="main">
 
-        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
@@ -159,7 +158,7 @@ if (isset($_SESSION['id'])) {
         </div>
 
         <div class="container">
-            <!-- Example row of columns -->
+
             <div class="row">
                 <div class="col-md-12">
                     <h2>Anuncios publicados</h2>
@@ -189,19 +188,21 @@ if (isset($_SESSION['id'])) {
                             echo "<br>";
 
                         }
-                        
                     ?>
-                    
-                    <!--  -->
+
                 </div>
             </div>   
-        </div> <!-- /container -->
+        </div>
     </main>
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> bbbc83f6b00ab8ba00bd4d13d82910e2bea6cc52
     <script src="JS\perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
