@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include_once('php\bd_connect.php');
+  include_once('php./bd_connect.php');
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -38,9 +38,9 @@
 <body>
   <?php
       if (isset($_SESSION['id'])) {
-        require_once('HTML\navbarSair.html');
+        require_once('HTML./navbarSair.html');
       } else {
-        require_once('HTML\navbar.html');
+        require_once('HTML./navbar.html');
       }
     ?>
 

@@ -17,7 +17,7 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
             if ($email == $negocios['email']) {
                 echo "<script>
                     alert('Nome já cadastrado!')
-                    window.location.href = 'cadastro.php'
+                    window.location.href = '../cadastro.php'
                     </script>
                 ";
                 exit;
@@ -28,7 +28,7 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
             if ($email == $cpfs['email']) {
                 echo "<script>
                     alert('cpf já cadastrado!')
-                    window.location.href = 'cadastro.php'
+                    window.location.href = '../cadastro.php'
                     </script>
                 ";
                 exit;
@@ -39,7 +39,7 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
             if ($email == $emails['email']) {
                 echo "<script>
                     alert('email já cadastrado!')
-                    window.location.href = 'cadastro.php'
+                    window.location.href = '../cadastro.php'
                     </script>
                 ";
                 exit;

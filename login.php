@@ -33,8 +33,8 @@
 </head>
 
 <body class="text-center">
-  <?php require_once('HTML\navbar.html');?>
-  <form class="form-signin" method="post" action="php\confirma_login.php">
+  <?php require_once('HTML./navbar.html');?>
+  <form class="form-signin" method="post" action="./php/confirma_login.php">
     <img class="mb-4" src="./images/logo-comercio-amigavel.png" alt="Logo" width="150" height="150" />
     <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
     <label for="email" class="sr-only">Email address</label>

@@ -41,7 +41,7 @@
     <link href="./CSS/cadastro.css" rel="stylesheet" />
   </head>
   <body class="bg-light">  
-    <?php require_once('HTML\navbar.html');?>
+    <?php require_once('./HTML/navbar.html');?>
     <div class="container mt-5">
       <div class="py-5 text-center">
         <img
@@ -56,7 +56,7 @@
       <div class="row">
         <div class="col-md-12">
           <h4 class="mb-3">Dados Pessoais</h4>
-          <form class="needs-validation"  method="POST" action="php\confirma_cadastro.php" novalidate>
+          <form class="needs-validation"  method="POST" action="./php/confirma_cadastro.php" novalidate>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="nome">Nome Completo</label>

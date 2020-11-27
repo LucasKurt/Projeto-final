@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['id'])) {
-    include_once('php\bd_connect.php');
+    include_once('php./bd_connect.php');
     $id = $_SESSION['id'];
     $nome = $_SESSION['nome'];
     $negocio = $_SESSION['negocio'];
@@ -44,7 +44,7 @@ if (isset($_SESSION['id'])) {
     </style>
 </head>
 <body>
-    <?php require_once('HTML\navbarSair.html'); ?>
+    <?php require_once('HTML./navbarSair.html'); ?>
     <main role="main">
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -87,7 +87,7 @@ if (isset($_SESSION['id'])) {
             <div class="row">
                 <div class="col-md-4 d-flex justify-content-center align-items-center">
                     <div class="card mb-4 shadow-sm">
-                        <img id="imgAnuncio" height="225" src="images\ponto-de-interrogação.jpeg" alt="Imagem do anuncio">
+                        <img id="imgAnuncio" height="225" src="./images/ponto-de-interrogação.jpeg" alt="Imagem do anuncio">
                         <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="<?php echo $img_perfil?>" alt=""></div>
                         <div class="card-body">
                             <p class="card-text text-center"><?php echo $negocio?></p>
@@ -105,7 +105,7 @@ if (isset($_SESSION['id'])) {
                 </div>
                 <div class="col-md-8">
                     <h3 class="text-center">Crie seu anuncio</h3>
-                    <form class="needs-validation"  method="POST" action="php\publicar.php" novalidate>
+                    <form class="needs-validation"  method="POST" action="./php/publicar.php" novalidate>
                         <div class="row">
                             <div class="col-md mb-3">
                                 <label for="img">Coloque o link da imagem</label>
@@ -202,7 +202,7 @@ if (isset($_SESSION['id'])) {
   include_once('./HTML/footer.html');
   ?>
 
-    <script src="JS\perfil.js"></script>
+    <script src="./JS/perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

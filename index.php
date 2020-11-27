@@ -37,9 +37,9 @@
   <?php
     session_start();
     if (isset($_SESSION['id'])) {
-      require_once('HTML\navbarSair.html');
+      require_once('./HTML/navbarSair.html');
     } else {
-      require_once('HTML\navbar.html');
+      require_once('./HTML/navbar.html');
     }
   ?>
   <main role="main">

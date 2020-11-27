@@ -24,7 +24,7 @@ function atualizaImg(){
     let img = document.getElementById('img');
     let imgAnuncio = document.getElementById('imgAnuncio');
     if (img.value == "") {
-        imgAnuncio.src = "images/ponto-de-interrogação.jpeg"
+        imgAnuncio.src = "../images/ponto-de-interrogação.jpeg"
     } else {
         imgAnuncio.src = img.value;  
     }

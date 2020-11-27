@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `anuncios` (
   `descricao` varchar(70) NOT NULL,
   `valor` varchar(70) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_aluno` (`id_pessoa`)
+  KEY `fk_pessoa` (`id_pessoa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 --
