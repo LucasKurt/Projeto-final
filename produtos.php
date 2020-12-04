@@ -8,10 +8,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Jekyll v4.1.1">
   <title>Produtos e Serviços</title>
   <link rel="stylesheet" href="./CSS/produtos.css">
-
+  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <style>
@@ -54,7 +56,7 @@
       <div class="container">
 
         <div class="row">
-        
+          <!--  -->
           <?php 
             $sql = "SELECT * FROM cadastro JOIN anuncios WHERE id_pessoa = cadastro.id ORDER BY anuncios.id DESC";
             $result = $conn->query($sql);
@@ -67,9 +69,9 @@
                     <img height="225" src="<?php echo $anuncios['img']?>" alt="">
                     <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="<?php echo $anuncios['img_perfil']?>" alt=""></div>
                     <div class="card-body">
-                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['negocio'])?></p>
-                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['descricao'])?></p>
-                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['valor'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode($anuncios['negocio'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode($anuncios['descricao'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode($anuncios['valor'])?></p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
@@ -91,14 +93,13 @@
     </div>
 
   </main>
+
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
-<<<<<<< HEAD
+  <!-- Footer -->
   
-=======
->>>>>>> bbbc83f6b00ab8ba00bd4d13d82910e2bea6cc52
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

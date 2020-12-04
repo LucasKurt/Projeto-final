@@ -24,7 +24,7 @@ if (isset($_SESSION['id'])) {
     <title>Perfil</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <!-- Custom styles for this template -->
     <link href="./CSS/perfil.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
@@ -47,6 +47,7 @@ if (isset($_SESSION['id'])) {
     <?php require_once('./HTML/navbarSair.html'); ?>
     <main role="main">
 
+        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
@@ -57,13 +58,13 @@ if (isset($_SESSION['id'])) {
                         <h2 class="display-4"><?php echo $nome?></h2>
                         <div class="row d-flex vertical-align-center">
                         <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
-
                             <button class="btn btn-primary btn-lg" type="submit">Trocar Foto</button>
                         </div>
                     </form>
                     <?php    
                         if (isset($_POST['img_perfil'])) {
                             $img = $_POST['img_perfil'];
+
                             if ($img == "") {
                                 echo "<script>
                                 alert('Insira um link para trocar a foto')
@@ -103,7 +104,7 @@ if (isset($_SESSION['id'])) {
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h3 class="text-center">Crie seu anuncio</h3>
+                    <h3 class="text-center">Crie seu anúncio</h3>
                     <form class="needs-validation"  method="POST" action="php\publicar.php" novalidate>
                         <div class="row">
                             <div class="col-md mb-3">
@@ -118,7 +119,7 @@ if (isset($_SESSION['id'])) {
                                     required
                                     onchange="atualizaImg()"
                                 />
-                                <div class="invalid-feedback">Coloque a imagem do anuncio</div>
+                                <div class="invalid-feedback">Coloque a imagem do anúncio</div>
                             </div>
                         </div>
                         
@@ -158,12 +159,11 @@ if (isset($_SESSION['id'])) {
         </div>
 
         <div class="container">
-
+            <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Anuncios publicados</h2>
+                    <h2>Anúncios publicados</h2>
                     <hr>
-                    <!--  -->
                     <?php
                         $sql = "SELECT * FROM anuncios WHERE id_pessoa = '$id'";
                         $result = $conn->query($sql);
@@ -175,9 +175,8 @@ if (isset($_SESSION['id'])) {
                                         <img height="150" src="<?php echo $anuncios['img'] ?>" alt="">
                                     </div>
                                     <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
-                                        <p><?php echo utf8_encode ($anuncios['descricao']) ?></p>
-                                        <p>R$ <?php echo utf8_encode ($anuncios['valor']) ?></p>
-
+                                        <p><?php echo utf8_encode($anuncios['descricao']) ?></p>
+                                        <p><?php echo utf8_encode($anuncios['valor']) ?></p>
                                         <p><a class="btn btn-secondary" href="#" role="button">Editar</a></p>
                                     </div>
                                 </div>
@@ -186,23 +185,20 @@ if (isset($_SESSION['id'])) {
                         } else {
                             echo "<p class='font-weight-bold'>Nenhum anuncio publicado</p>";
                             echo "<br>";
-
                         }
+                        
                     ?>
-
                 </div>
             </div>   
-        </div>
+        </div> <!-- /container -->
     </main>
+
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
-<<<<<<< HEAD
+  <!-- Footer -->
   
-=======
-
->>>>>>> bbbc83f6b00ab8ba00bd4d13d82910e2bea6cc52
     <script src="JS\perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

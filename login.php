@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+  <meta name="description" content="" />
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+  <meta name="generator" content="Jekyll v4.1.1" />
   <title>Realize o login</title>
-
+  <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
 
@@ -26,7 +28,7 @@
       }
     }
   </style>
-
+  <!-- Custom styles for this template -->
   <link href="./CSS/login.css" rel="stylesheet" />
 </head>
 
@@ -38,12 +40,12 @@
     <label for="email" class="sr-only">Email address</label>
     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus />
     <label for="senha" class="sr-only">Password</label>
-    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required />  
+    <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha" required />
+    
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Entre
     </button>
     <p class="mt-5 mb-3 text-muted">&copy; Recode Pro 2020</p>
-
   </form>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
