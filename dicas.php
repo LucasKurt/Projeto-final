@@ -60,7 +60,7 @@
                             class="stretched-link" target="_blank">Saiba mais</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
-                        <img src="./images/pq-mei.jpg" alt="Imagem por que ser MEI" width="200px" height="250px">
+                        <img src="./images/pq-mei.png" alt="Imagem por que ser MEI">
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                             class="stretched-link" target="_blank">Saiba mais</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
-                    <img src="./images/como-mei.jpg" alt="Imagem como ser MEI" width="200px" height="250px">
+                    <img src="./images/como-mei.png" alt="Imagem como ser MEI">
 
                     </div>
                 </div>
