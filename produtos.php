@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include_once('php\bd_connect.php');
+  include_once('./php/bd_connect.php');
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -38,9 +38,9 @@
 <body>
   <?php
       if (isset($_SESSION['id'])) {
-        require_once('HTML\navbarSair.html');
+        require_once('./HTML/navbarSair.html');
       } else {
-        require_once('HTML\navbar.html');
+        require_once('./HTML/navbar.html');
       }
     ?>
 
@@ -69,9 +69,9 @@
                     <img height="225" src="<?php echo $anuncios['img']?>" alt="">
                     <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50" src="<?php echo $anuncios['img_perfil']?>" alt=""></div>
                     <div class="card-body">
-                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['negocio'])?></p>
-                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['descricao'])?></p>
-                      <p class="card-text text-center"><?php echo utf8_encode ($anuncios['valor'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode($anuncios['negocio'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode($anuncios['descricao'])?></p>
+                      <p class="card-text text-center"><?php echo utf8_encode($anuncios['valor'])?></p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
@@ -93,10 +93,13 @@
     </div>
 
   </main>
+
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
+  <!-- Footer -->
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

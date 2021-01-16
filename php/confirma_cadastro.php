@@ -14,38 +14,43 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($negocios = $result->fetch_assoc()) {
-            if ($email == $negocios['email']) {
+            if ($negocio == $negocios['negocio']) {
                 echo "<script>
-                    alert('Nome já cadastrado!')
-                    window.location.href = 'cadastro.php'
+                    alert('Nome fantasia já cadastrado!')
+                    window.location.href = '../cadastro.php'
                     </script>
                 ";
                 exit;
             }
             
         }
+        unset($result);
+        $result = $conn->query($sql);
         while ($cpfs = $result->fetch_assoc()) {
-            if ($email == $cpfs['email']) {
+            if ($cpf == $cpfs['cpf']) {
                 echo "<script>
-                    alert('cpf já cadastrado!')
-                    window.location.href = 'cadastro.php'
+                    alert('CPF já cadastrado!')
+                    window.location.href = '../cadastro.php'
                     </script>
                 ";
                 exit;
             }
             
         }
+        unset($result);
+        $result = $conn->query($sql);
         while ($emails = $result->fetch_assoc()) {
             if ($email == $emails['email']) {
                 echo "<script>
-                    alert('email já cadastrado!')
-                    window.location.href = 'cadastro.php'
+                    alert('E-mail já cadastrado!')
+                    window.location.href = '../cadastro.php'
                     </script>
                 ";
                 exit;
             }
             
         }
+        unset($result);
         unset($sql);
         $senha = md5($senha);
         $sql = "INSERT INTO cadastro (nome,negocio,endereco,cpf,categoria,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$categoria','$email','$senha','images/perfil-sem-foto.jpg')";
@@ -78,8 +83,10 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
     </script>";
 } else {
     echo "<script>
-        alert('deu ruim')
-        //location.href = '../cadastro.php'
+        //alert('deu ruim')
+        location.href = '../cadastro.php'
     </script>";
 }
+
+
 echo "<a href='../cadastro.php'>voltar</a>";

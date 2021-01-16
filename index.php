@@ -37,9 +37,9 @@
   <?php
     session_start();
     if (isset($_SESSION['id'])) {
-      require_once('HTML\navbarSair.html');
+      require_once('./HTML/navbarSair.html');
     } else {
-      require_once('HTML\navbar.html');
+      require_once('./HTML/navbar.html');
     }
   ?>
   <main role="main">
@@ -154,7 +154,7 @@
         <div class="col-md-7">
           <h2 class="featurette-heading">Faça como João <span class="text-muted">que conseguiu impulsionar seu negócio.</span>
           </h2>
-          <p class="lead">Foi através da "platarforma" que João se destacou no ramo da culinária
+          <p class="lead">Foi através da "plataforma" que João se destacou no ramo da culinária
             </p>
         </div>
         <div class="col-md-5">
@@ -202,6 +202,5 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-
   </body>
 </html>

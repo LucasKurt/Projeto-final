@@ -41,7 +41,7 @@
     <link href="./CSS/cadastro.css" rel="stylesheet" />
   </head>
   <body class="bg-light">  
-    <?php require_once('HTML\navbar.html');?>
+    <?php require_once('./HTML/navbar.html');?>
     <div class="container mt-5">
       <div class="py-5 text-center">
         <img
@@ -52,8 +52,11 @@
           height="150"
         />
         <h2>Cadastre-se</h2>
+
       </div>
+
       <div class="row">
+
         <div class="col-md-12">
           <h4 class="mb-3">Dados Pessoais</h4>
           <form class="needs-validation"  method="POST" action="php\confirma_cadastro.php" novalidate>
@@ -179,10 +182,13 @@
         </div>
       </div>
       <hr class="featurette-divider">
+
       <!-- Footer -->
       <?php
       include_once('./HTML/footer.html');
       ?>
+      <!-- Footer -->
+
     </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
