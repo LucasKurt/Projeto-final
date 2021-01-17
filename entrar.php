@@ -37,13 +37,9 @@
     <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
     <br>
 
-    <button class="btn btn-lg btn-primary btn-block btn-vendedor" type="submit">
-      Vendedor
-    </button>
+    <a class="btn btn-lg btn-primary btn-block btn-vendedor" style="text-decoration: none;" href="login.php" role="button">Vendedor</a>
 
-    <button class="btn btn-lg btn-primary btn-block btn-cliente" type="submit">
-      Cliente
-    </button>
+    <a class="btn btn-lg btn-primary btn-block btn-cliente" style="text-decoration: none;" href="login-cliente.php" role="button">Cliente</a>
 
     <p class="mt-5 mb-3 text-muted">&copy; Recode Pro 2020</p>
   </form>
