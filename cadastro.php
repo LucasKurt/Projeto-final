@@ -40,7 +40,7 @@
     <!-- Custom styles for this template -->
     <link href="./CSS/cadastro.css" rel="stylesheet" />
   </head>
-  <body class="bg-light">  
+  <body class="bg-light">
     <?php require_once('./HTML/navbar.html');?>
     <div class="container mt-5">
       <div class="py-5 text-center">
@@ -146,6 +146,22 @@
             </div>
 
             <div class="mb-3">
+              <label for="phone">Telefone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="phone"
+                name="phone"
+                onkeypress="$(this).mask('(00) 0000-00009')"
+                placeholder="Telefone"
+                required
+              />
+              <div class="invalid-feedback">
+                Digite um telefone válido.
+              </div>
+            </div>
+
+            <div class="mb-3">
               <label for="senha">Senha</label>
               <input
                 type="password"
@@ -195,6 +211,9 @@
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
     ></script>
+<!-- CDN para funcionar a mascara dos campos de CPF e Telefone -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

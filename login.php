@@ -36,7 +36,7 @@
   <?php require_once('./HTML/navbar.html');?>
   <form class="form-signin" method="post" action="php\confirma_login.php">
     <img class="mb-4" src="./images/logo-comercio-amigavel.png" alt="Logo" width="150" height="150" />
-    <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Login Vendedor</h1>
     <label for="email" class="sr-only">Email address</label>
     <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus />
     <label for="senha" class="sr-only">Password</label>
@@ -45,6 +45,8 @@
     <button class="btn btn-lg btn-primary btn-block" type="submit">
       Entre
     </button>
+    <br>
+    <a href="./cadastro.php">Cadastre-se</a>
     <p class="mt-5 mb-3 text-muted">&copy; Recode Pro 2020</p>
   </form>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
