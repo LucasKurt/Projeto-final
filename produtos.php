@@ -37,12 +37,14 @@
 
 <body>
   <?php
-      if (isset($_SESSION['id'])) {
-        require_once('./HTML/navbarSair.html');
-      } else {
-        require_once('./HTML/navbar.html');
-      }
-    ?>
+    if (isset($_SESSION['id_cliente'])) {
+      require_once('./HTML/navbarSairCliente.html');
+    } else if (isset($_SESSION['id_vendedor'])) {
+      require_once('./HTML/navbarSair.html');
+    } else {
+      require_once('./HTML/navbar.html');
+    }
+  ?>
 
   <main role="main">
 
@@ -58,7 +60,7 @@
         <div class="row">
           <!--  -->
           <?php 
-            $sql = "SELECT * FROM cadastro JOIN anuncios WHERE id_pessoa = cadastro.id ORDER BY anuncios.id DESC";
+            $sql = "SELECT * FROM vendedor JOIN anuncios WHERE id_vendedor = vendedor.id ORDER BY anuncios.id DESC";
             $result = $conn->query($sql);
             if($result->num_rows >0){
               while ($anuncios = $result->fetch_assoc()) {

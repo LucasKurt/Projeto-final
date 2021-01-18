@@ -2,15 +2,15 @@
     $nome = $_POST['nome'];
     $negocio =  $_POST['negocio'];
     $endereco = $_POST['endereco'];
-    $cpf = intval($_POST['cpf']);
-    $categoria = $_POST['categoria'];
+    $cpf = ($_POST['cpf']);
+    $telefone = $_POST['telefone'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     $conf_senha = $_POST['conf_senha'];
 
-if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $categoria != "" && $email != "" && $senha != "" && $conf_senha != "") {
+if ($senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $telefone != "" && $email != "" && $senha != "" && $conf_senha != "") {
     require_once('bd_connect.php');
-    $sql = "SELECT * FROM cadastro";
+    $sql = "SELECT * FROM vendedor";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($negocios = $result->fetch_assoc()) {
@@ -39,6 +39,19 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
         }
         unset($result);
         $result = $conn->query($sql);
+        while ($telefones = $result->fetch_assoc()) {
+            if ($telefone == $telefones['telefone']) {
+                echo "<script>
+                    alert('Telefone já cadastrado!')
+                    window.location.href = '../cadastro.php'
+                    </script>
+                ";
+                exit;
+            }
+            
+        }
+        unset($result);
+        $result = $conn->query($sql);
         while ($emails = $result->fetch_assoc()) {
             if ($email == $emails['email']) {
                 echo "<script>
@@ -53,7 +66,7 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
         unset($result);
         unset($sql);
         $senha = md5($senha);
-        $sql = "INSERT INTO cadastro (nome,negocio,endereco,cpf,categoria,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$categoria','$email','$senha','images/perfil-sem-foto.jpg')";
+        $sql = "INSERT INTO vendedor (nome,negocio,endereco,cpf,telefone,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$telefone','$email','$senha','images/perfil-sem-foto.jpg')";
         $conn->query($sql);
         echo "<script>
             alert('Cadastro efetuado!')
@@ -63,7 +76,7 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
     } else {
         unset($sql);
         $senha = md5($senha);
-        $sql = "INSERT INTO cadastro (nome,negocio,endereco,cpf,categoria,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$categoria','$email','$senha','images/perfil-sem-foto.jpg')";
+        $sql = "INSERT INTO vendedor (nome,negocio,endereco,cpf,telefone,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$telefone','$email','$senha','images/perfil-sem-foto.jpg')";
         $conn->query($sql);
         echo "<script>
             alert('Cadastro efetuado!')
@@ -76,17 +89,4 @@ if (!is_string($cpf) && $senha == $conf_senha && $nome != "" && $endereco != "" 
         alert('As senhas não são iguais')
         location.href = '../cadastro.php'
     </script>";
-} else if (is_string($cpf)){
-    echo "<script>
-        alert('digite apenas numeros no CPF!!')
-        location.href = '../cadastro.php'
-    </script>";
-} else {
-    echo "<script>
-        //alert('deu ruim')
-        location.href = '../cadastro.php'
-    </script>";
 }
-
-
-echo "<a href='../cadastro.php'>voltar</a>";

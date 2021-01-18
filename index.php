@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!doctype html>
 <html lang="pt-br">
 
@@ -35,8 +38,9 @@
 
 <body>
   <?php
-    session_start();
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['id_cliente'])) {
+      require_once('./HTML/navbarSairCliente.html');
+    } else if (isset($_SESSION['id_vendedor'])) {
       require_once('./HTML/navbarSair.html');
     } else {
       require_once('./HTML/navbar.html');

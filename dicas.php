@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['id_vendedor'])) {
+    header('Location: index.php');
+    die();
+}
+?>
 <!doctype html>
 <html lang="en">
 
@@ -37,7 +44,7 @@
 </head>
 
 <body>
-    <?php require_once('./HTML/navbar.html'); ?>
+    <?php require_once('./HTML/navbarDicas.html'); ?>
     <main class="container">
         <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
             <div class="col-md-6 px-0">
@@ -119,7 +126,7 @@
         </div>
     </main>
 
-    <?php include_once('./HTML/footer.html'); ?>
+    <?php include_once('./HTML/footerDicas.html'); ?>
 
 </body>
 

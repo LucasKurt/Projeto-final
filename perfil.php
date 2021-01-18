@@ -1,11 +1,11 @@
 <?php
 session_start();
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id_vendedor'])) {
     include_once('./php/bd_connect.php');
-    $id = $_SESSION['id'];
-    $nome = $_SESSION['nome'];
-    $negocio = $_SESSION['negocio'];
-    $img_perfil = $_SESSION['img_perfil'];
+    $id = $_SESSION['id_vendedor'];
+    $nome = $_SESSION['nome_vendedor'];
+    $negocio = $_SESSION['negocio_vendedor'];
+    $img_perfil = $_SESSION['img_perfil_vendedor'];
     if ($negocio == ""){
         $negocio = $nome;
     }
@@ -13,7 +13,6 @@ if (isset($_SESSION['id'])) {
     header('Location: index.php');
     die();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -46,8 +45,6 @@ if (isset($_SESSION['id'])) {
 <body>
     <?php require_once('./HTML/navbarSair.html'); ?>
     <main role="main">
-
-        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
@@ -57,8 +54,8 @@ if (isset($_SESSION['id'])) {
                     <form method="post" class="form-group col-md-9 d-flex flex-column justify-content-center">
                         <h2 class="display-4"><?php echo $nome?></h2>
                         <div class="row d-flex vertical-align-center">
-                        <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
-                            <button class="btn btn-primary btn-lg" type="submit">Trocar Foto</button>
+                            <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
+                            <button class="btn btn-primary btn-lg" type="submit" id="foto">Trocar Foto</button>
                         </div>
                     </form>
                     <?php    
@@ -72,9 +69,9 @@ if (isset($_SESSION['id'])) {
                             ";
                             } else {
 
-                            $sql ="UPDATE cadastro SET img_perfil = '$img' WHERE id = '$id'";
+                            $sql ="UPDATE vendedor SET img_perfil = '$img' WHERE id = '$id'";
                             $nova_img = $conn->query($sql);
-                            $_SESSION['img_perfil'] = $img;
+                            $_SESSION['img_perfil_vendedor'] = $img;
                             header("Refresh:0");
                             }
                         }
@@ -98,14 +95,14 @@ if (isset($_SESSION['id'])) {
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Entrar em contato</button>
                                 </div>
-                            <small class="text-muted">SP</small>
+                                <small class="text-muted">SP</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h3 class="text-center">Crie seu anúncio</h3>
-                    <form class="needs-validation"  method="POST" action="php\publicar.php" novalidate>
+                    <h3 class="text-center" id="titulo">Crie seu anúncio</h3>
+                    <form class="needs-validation"  method="POST" action="php/publicar.php" novalidate>
                         <div class="row">
                             <div class="col-md mb-3">
                                 <label for="img">Coloque o link da imagem</label>
@@ -132,6 +129,7 @@ if (isset($_SESSION['id'])) {
                                     id="descricao"
                                     name="descricao"
                                     placeholder=""
+                                    value=""
                                     required
                                     onchange="atualizaDescricao()"
                                 />
@@ -145,41 +143,49 @@ if (isset($_SESSION['id'])) {
                                     id="valor"
                                     name="valor"
                                     value=""
-                                    onkeypress="$(this).mask('R$ 00')"
-                                    placeholder=""
+                                    onkeypress="$(this).mask('#.##0,00', {reverse: true});"
+                                    placeholder="R$"
                                     required
                                     onchange="atualizaValor()"
                                 />
                                 <div class="invalid-feedback">Informe o Valor</div>
                             </div>
                         </div>
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Anunciar</button>
+                        <input
+                            type="hidden"
+                            class="form-control"
+                            id="idAnuncio"
+                            value=""
+                        />
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" id="butao">Anunciar</button>
                     </form>
                 </div>
             </div>
         </div>
 
         <div class="container">
-            <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-12">
                     <h2>Anúncios publicados</h2>
                     <hr>
                     <?php
-                        $sql = "SELECT * FROM anuncios WHERE id_pessoa = '$id'";
+                        $sql = "SELECT * FROM anuncios WHERE id_vendedor = '$id'";
                         $result = $conn->query($sql);
                         if ($anuncios = $result->num_rows >0) {
                             while ($anuncios = $result->fetch_assoc()) {
                                 if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
                                 <div class="row mb-2">
                                     <div class="col-md-3">
-                                        <img height="150" src="<?php echo $anuncios['img'] ?>" alt="">
+                                        <img height="150" src="<?php echo $anuncios['img']?>" alt="" id="editarImg">
                                     </div>
                                     <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
-                                        <p><?php echo utf8_encode($anuncios['descricao']) ?></p>
-                                        <p><?php echo utf8_encode($anuncios['valor']) ?></p>
-                                        <p><a class="btn btn-secondary" href="#" role="button">Editar</a></p>
-                                    </div>
+                                        <p><?php echo utf8_encode($anuncios['descricao'])?></p>
+                                        <p><?php echo utf8_encode($anuncios['valor'])?></p>
+                                        <div class="btn-group">
+                                            <a href="#foto"><button class="btn btn-secondary" onclick="editar('<?php echo $anuncios['img']?>','<?php echo utf8_encode($anuncios['descricao'])?>','<?php echo utf8_encode($anuncios['valor'])?>','<?php echo utf8_encode($anuncios['id'])?>')">Editar</button></a>
+                                            <button class="btn btn-danger rounded ml-2" data-toggle="modal" data-target="#modalDeletar" onclick="deletar('<?php echo utf8_encode($anuncios['id'])?>')">Deletar</button>
+                                        </div>
+                                    </div>                                    
                                 </div>
                                 <hr>
                             <?php }
@@ -191,20 +197,16 @@ if (isset($_SESSION['id'])) {
                     ?>
                 </div>
             </div>   
-        </div> <!-- /container -->
+        </div>
     </main>
+    
+    <?php require_once('./HTML/modalDeletar.html'); ?>
+    <?php include_once('./HTML/footer.html'); ?>
 
-  <!-- Footer -->
-  <?php
-  include_once('./HTML/footer.html');
-  ?>
-  <!-- Footer -->
-  
     <script src="JS\perfil.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-    <!-- CDN da máscara do valor -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"

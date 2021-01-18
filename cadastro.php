@@ -51,7 +51,7 @@
           width="150"
           height="150"
         />
-        <h2>Cadastre-se</h2>
+        <h2>Cadastro de Vendedor</h2>
 
       </div>
 
@@ -111,22 +111,10 @@
                   id="cpf"
                   name="cpf"
                   onkeypress="$(this).mask('000.000.000-00');"
-                  placeholder=""
+                  placeholder="000.000.000-00"
                   required
                 />
                 <div class="invalid-feedback">Digite o CPF</div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="categoria">Categoria</label>
-              <select class="custom-select d-block w-100" id="categoria" name="categoria" required>
-                <option value="">Escolha...</option>
-                <option>Serviços</option>
-                <option>Produtos</option>
-              </select>
-              <div class="invalid-feedback" style="width: 100%">
-                Escolha uma categoria.
               </div>
             </div>
 
@@ -146,14 +134,14 @@
             </div>
 
             <div class="mb-3">
-              <label for="phone">Telefone</label>
+              <label for="telefone">Telefone</label>
               <input
                 type="text"
                 class="form-control"
-                id="phone"
-                name="phone"
-                onkeypress="$(this).mask('(00) 0000-00009')"
-                placeholder="Telefone"
+                id="telefone"
+                name="telefone"
+                onkeypress="$(this).mask('(00) 00000-0000')"
+                placeholder="(00) 00000-0000"
                 required
               />
               <div class="invalid-feedback">

@@ -43,7 +43,7 @@
 
       <div class="col-md-12">
         <h4 class="mb-3">Dados Pessoais</h4>
-        <form class="needs-validation" method="POST" action="php\confirma_cadastro.php" novalidate>
+        <form class="needs-validation" method="POST" action="php\confirma_cadastro_cliente.php" novalidate>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="nome">Nome Completo</label>
@@ -51,8 +51,8 @@
               <div class="invalid-feedback">Insira seu nome.</div>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="negocio">E-mail</label>
-              <input type="text" class="form-control" id="negocio" name="negocio" placeholder="" value="" />
+              <label for="email">E-mail</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com.br" value="" />
             </div>
           </div>
 

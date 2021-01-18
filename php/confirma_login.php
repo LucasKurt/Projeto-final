@@ -11,17 +11,17 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
     require_once('bd_connect.php');
 
     // Execução da instrução SQL
-    $resultado_consulta = $conn->query("SELECT * from cadastro where email = '$email' AND senha = '$senha'");
+    $resultado_consulta = $conn->query("SELECT * from vendedor where email = '$email' AND senha = '$senha'");
 
     // $anunciante = Retorno da consulta no banco de dados
     $anunciante = mysqli_fetch_assoc($resultado_consulta);
 
-    $_SESSION['id'] = $anunciante["id"];
-    $_SESSION['nome'] = $anunciante["nome"];
-    $_SESSION['negocio'] = $anunciante["negocio"];
-    $_SESSION['img_perfil'] = $anunciante["img_perfil"];
+    $_SESSION['id_vendedor'] = $anunciante["id"];
+    $_SESSION['nome_vendedor'] = $anunciante["nome"];
+    $_SESSION['negocio_vendedor'] = $anunciante["negocio"];
+    $_SESSION['img_perfil_vendedor'] = $anunciante["img_perfil"];
 
-    header('Location: ../perfil.php');
+    header('Location: ../dicas.php');
 }
 else {
     echo "
