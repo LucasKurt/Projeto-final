@@ -16,9 +16,15 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
     // $anunciante = Retorno da consulta no banco de dados
     $anunciante = mysqli_fetch_assoc($resultado_consulta);
 
+    //print_r($anunciante);
+
     $_SESSION['id_vendedor'] = $anunciante["id"];
     $_SESSION['nome_vendedor'] = $anunciante["nome"];
     $_SESSION['negocio_vendedor'] = $anunciante["negocio"];
+    $_SESSION['endereco_vendedor'] = $anunciante["endereco"];
+    $_SESSION['telefone_vendedor'] = $anunciante["telefone"];
+    $_SESSION['email_vendedor'] = $anunciante["email"];
+    $_SESSION['senha_cripto_vendedor'] = $anunciante["senha"];
     $_SESSION['img_perfil_vendedor'] = $anunciante["img_perfil"];
 
     header('Location: ../dicas.php');

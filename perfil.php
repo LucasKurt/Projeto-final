@@ -25,6 +25,7 @@ if (isset($_SESSION['id_vendedor'])) {
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="./CSS/perfil.css" rel="stylesheet">
+    <link href="./CSS/toggle-switch.css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -46,36 +47,15 @@ if (isset($_SESSION['id_vendedor'])) {
     <?php require_once('./HTML/navbarSair.html'); ?>
     <main role="main">
         <div class="jumbotron">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3 d-flex justify-content-center align-items-center">
-                        <img width="250" height="250" class="rounded-circle" src="<?php echo $img_perfil?>" alt="">
+                    <div class="col-md-3 d-flex flex-column justify-content-between align-items-center">
+                        <img width="250" height="250" class="rounded-circle" src="<?php echo $img_perfil?>" alt="">                        
+                        <a class="btn-lg btn-primary mt-3" href="./editar_perfil_vendedor.php" role="buttom">Editar Perfil</a>                        
                     </div>
-                    <form method="post" class="form-group col-md-9 d-flex flex-column justify-content-center">
-                        <h2 class="display-4"><?php echo $nome?></h2>
-                        <div class="row d-flex vertical-align-center">
-                            <input class="ml-3 col-8 form-control" placeholder="coloque o link da imagem aqui" type="text" name="img_perfil">
-                            <button class="btn btn-primary btn-lg" type="submit" id="foto">Trocar Foto</button>
-                        </div>
-                    </form>
-                    <?php    
-                        if (isset($_POST['img_perfil'])) {
-                            $img = $_POST['img_perfil'];
-
-                            if ($img == "") {
-                                echo "<script>
-                                alert('Insira um link para trocar a foto')
-                                </script>
-                            ";
-                            } else {
-
-                            $sql ="UPDATE vendedor SET img_perfil = '$img' WHERE id = '$id'";
-                            $nova_img = $conn->query($sql);
-                            $_SESSION['img_perfil_vendedor'] = $img;
-                            header("Refresh:0");
-                            }
-                        }
-                    ?> 
+                    <div class="col-md-9 d-flex flex-column justify-content-start align-items-start border border-primary">
+                        <h2 class="display-3"><?php echo $negocio?></h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,33 +102,39 @@ if (isset($_SESSION['id_vendedor'])) {
                         
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="descricao">Descrição</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="descricao"
-                                    name="descricao"
-                                    placeholder=""
-                                    value=""
-                                    required
-                                    onchange="atualizaDescricao()"
-                                />
+                                <label for="descricao">Descrição</label>                                
+                                <textarea class="form-control" name="descricao" id="descricao" onchange="atualizaDescricao()" required cols="30" rows="4"></textarea>
                                 <div class="invalid-feedback">Escreva a descrição</div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="valor">Valor</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="valor"
-                                    name="valor"
-                                    value=""
-                                    onkeypress="$(this).mask('#.##0,00', {reverse: true});"
-                                    placeholder="R$"
-                                    required
-                                    onchange="atualizaValor()"
-                                />
-                                <div class="invalid-feedback">Informe o Valor</div>
+                            <div class="col-md-6 mb-3 d-flex flex-column justify-content-between">
+                                <div class="row">
+                                    <label for="valor">Valor</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="valor"
+                                        name="valor"
+                                        value=""
+                                        onkeypress="$(this).mask('#.##0,00', {reverse: true});"
+                                        placeholder="R$"
+                                        required
+                                        onchange="atualizaValor()"
+                                    />
+                                    <div class="invalid-feedback">Informe o Valor</div>
+                                </div>
+                                <div class="row d-flex align-items-baseline justify-content-start">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill text-primary mr-3" viewBox="0 0 16 16">
+                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                    </svg>
+                                    <label for="">Aceita receber doação?</label>
+                                    <div>
+                                        <label class="switch ml-3 d-flex align-items-end">
+                                            <input type="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                         <input

@@ -1,3 +1,19 @@
+<?php
+    session_start();
+    if (isset($_SESSION['id_vendedor'])) {
+        $id = $_SESSION['id_vendedor'];
+        $nome = $_SESSION['nome_vendedor'];
+        $negocio = $_SESSION['negocio_vendedor'];
+        $endereco = $_SESSION['endereco_vendedor'];
+        $email = $_SESSION['email_vendedor'];
+        $telefone = $_SESSION['telefone_vendedor'];
+        $img_perfil = $_SESSION['img_perfil_vendedor'];
+    } else{
+        header('Location: index.php');
+        die();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -37,29 +53,32 @@
         }
       }
     </style>
-    <!-- Custom styles for this template -->
     <link href="./CSS/cadastro.css" rel="stylesheet" />
   </head>
   <body class="bg-light">
-    <?php require_once('./HTML/navbar.html');?>
+    <?php require_once('./HTML/navbarSair.html'); ?>
     <div class="container mt-5">
       <div class="py-5 text-center">
         <img
           class="d-block mx-auto mb-2"
-          src="./images/logo-comercio-amigavel.png"
-          alt=""
-          width="150"
-          height="150"
+          src="<?php echo $img_perfil?>"
+          alt="Imagem de Perfil"
+          width="200"
+          height="200"
         />
-        <h2>Cadastro de Vendedor</h2>
+        <br>
+        <h2>Editar Perfil</h2>
 
       </div>
 
       <div class="row">
-      
+
         <div class="col-md-12">
-          <h4 class="mb-3">Dados Pessoais</h4>
-          <form class="needs-validation"  method="POST" action="php\confirma_cadastro.php" novalidate>
+          <form class="needs-validation"  method="POST" action="./PHP/atualizar_vendedor.php" enctype="multipart/form-data" novalidate>
+            <div class="custom-file mb-3">
+              <input type="file" name="fileUpload" class="custom-file-input" id="chooseFile">
+              <label class="custom-file-label" for="chooseFile">Selecione uma foto</label>
+            </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="nome">Nome Completo</label>
@@ -69,7 +88,7 @@
                   id="nome"
                   name="nome"
                   placeholder=""
-                  value=""
+                  value="<?php echo $nome?>"
                   required
                 />
                 <div class="invalid-feedback">Insira seu nome.</div>
@@ -85,36 +104,24 @@
                   id="negocio"
                   name="negocio"
                   placeholder=""
-                  value=""
+                  value="<?php echo $negocio?>"
                 />
               </div>
             </div>
             
-            <div class="row">
-              <div class="col-md-8 mb-3">
+            <div>
+              <div class="mb-3">
                 <label for="endereco">Endereço</label>
                 <input
                   type="text"
                   class="form-control"
                   id="endereco"
                   name="endereco"
+                  value="<?php echo $endereco?>"
                   placeholder=""
                   required
                 />
                 <div class="invalid-feedback">Digite o endereço</div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="cpf">CPF <span class="text-muted">(Somente numeros)</span></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="cpf"
-                  name="cpf"
-                  onkeypress="$(this).mask('000.000.000-00');"
-                  placeholder="000.000.000-00"
-                  required
-                />
-                <div class="invalid-feedback">Digite o CPF</div>
               </div>
             </div>
 
@@ -125,6 +132,7 @@
                 class="form-control"
                 id="email"
                 name="email"
+                value="<?php echo $email?>"
                 placeholder="seuemail@exemplo.com.br"
                 required
               />
@@ -141,6 +149,7 @@
                 id="telefone"
                 name="telefone"
                 onkeypress="$(this).mask('(00) 00000-0000')"
+                value="<?php echo $telefone?>"
                 placeholder="(00) 00000-0000"
                 required
               />
@@ -149,35 +158,6 @@
               </div>
             </div>
 
-            <div class="mb-3">
-              <label for="senha">Senha</label>
-              <input
-                type="password"
-                class="form-control"
-                id="senha"
-                name="senha"
-                placeholder="Digite sua senha"
-                required
-              />
-              <div class="invalid-feedback">
-                Digite uma senha válida.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="conf_senha">Confirme sua senha</label>
-              <input
-                type="password"
-                class="form-control"
-                id="conf_senha"
-                name="conf_senha"
-                placeholder="Confirme sua senha"
-                required
-              />
-              <div class="invalid-feedback">
-                Digite uma senha válida.
-              </div>
-            </div>
             <br>
             <button class="btn btn-primary btn-lg btn-block" type="submit">
               Confirmar cadastro
