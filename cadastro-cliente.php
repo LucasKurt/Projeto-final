@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" type="image/x-icon" href="././images/favicon.ico">
 
   <title>Cadastro de Cliente</title>
   <!-- Bootstrap core CSS -->
@@ -26,7 +27,7 @@
     }
   }
   </style>
-  <!-- Custom styles for this template -->
+
   <link href="./CSS/cadastro.css" rel="stylesheet" />
 </head>
 
@@ -52,7 +53,8 @@
             </div>
             <div class="col-md-6 mb-3">
               <label for="email">E-mail</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com.br" value="" />
+              <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@exemplo.com.br"
+                value="" />
             </div>
           </div>
 
@@ -70,7 +72,7 @@
             <input type="password" class="form-control" id="conf_senha" name="conf_senha"
               placeholder="Confirme sua senha" required />
             <div class="invalid-feedback">
-              Digite uma senha válida.
+              As senhas devem ser iguais.
             </div>
           </div>
           <br>
@@ -86,7 +88,6 @@
     <?php
       include_once('./HTML/footer.html');
       ?>
-    <!-- Footer -->
 
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

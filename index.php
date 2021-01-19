@@ -7,32 +7,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Jekyll v4.1.1">
+  <link rel="icon" type="image/x-icon" href="././images/favicon.ico">
+
   <title>Comércio Amigável</title>
-  
+
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
     }
+  }
   </style>
-  <!-- Custom styles for this template -->
   <link href="./CSS/carousel.css" rel="stylesheet">
 </head>
 
@@ -56,8 +54,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100"
-            src="./images/carrossel-1.jpg" alt="Primeiro Slide">
+          <img class="d-block w-100" src="./images/carrossel-1.jpg" alt="Primeiro Slide">
           <div class="container">
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Divulgue seu negócio através do nosso site</h1>
@@ -67,9 +64,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100"
-            src="./images/carrossel-2.jpeg"
-            alt="Segundo Slide">
+          <img class="d-block w-100" src="./images/carrossel-2.jpeg" alt="Segundo Slide">
           <div class="container">
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Compre do pequeno negócio</h1>
@@ -79,14 +74,13 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100"
-            src="./images/carrossel-3.jpeg"
-            alt="Terceiro Slide">
+          <img class="d-block w-100" src="./images/carrossel-3.jpeg" alt="Terceiro Slide">
           <div class="container">
             <div class="carousel-caption text-left" style="text-shadow: 2px 2px 4px #000000;">
               <h1>Incentivamos o pequeno produtor a sair da informalidade</h1>
               <p>Orientação, divulgação, educação corporativa</p>
-              <p><a class="btn btn-lg btn-primary" href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/sp?codUf=26" target="_blank" role="button">Saiba Mais</a></p>
+              <p><a class="btn btn-lg btn-primary" href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/sp?codUf=26"
+                  target="_blank" role="button">Saiba Mais</a></p>
             </div>
           </div>
         </div>
@@ -101,65 +95,58 @@
       </a>
     </div>
 
-    <!-- Marketing messaging and featurettes
-      ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing">
 
-      <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3738095/pexels-photo-3738095.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Costureiro(a)</h2>
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/2076930/pexels-photo-2076930.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Cabelereiro(a)</h2>
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3983706/pexels-photo-3983706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Cozinheiro(a)</h2>
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+
+        </div>
+      </div>
       <div class="row mt-5">
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/4606346/pexels-photo-4606346.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Motorista</h2>
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3768910/pexels-photo-3768910.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Diarista</h2>
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+
+        </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3760978/pexels-photo-3760978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
           <h2>Artesão(a)</h2>
-          <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-        </div><!-- /.col-lg-4 -->
+
+        </div>
       </div>
-
-
-      <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Faça como João <span class="text-muted">que conseguiu impulsionar seu negócio.</span>
+          <h2 class="featurette-heading">Faça como João <span class="text-muted">que conseguiu impulsionar seu
+              negócio.</span>
           </h2>
           <p class="lead">Foi através da "plataforma" que João se destacou no ramo da culinária
-            </p>
+          </p>
         </div>
         <div class="col-md-5">
           <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
@@ -186,25 +173,23 @@
 
       <hr class="featurette-divider">
 
-      <!-- /END THE FEATURETTES -->
-
-    </div><!-- /.container -->
+    </div>
   </main>
 
   <!-- Footer -->
   <?php
   include_once('./HTML/footer.html');
   ?>
-  <!-- Footer -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-  </body>
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+  </script>
+</body>
+
 </html>
