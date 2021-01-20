@@ -98,7 +98,7 @@
 
   <script>
     function redireciona() {
-      window.location.href = "./entrar.php";
+      window.location.href = "./perfil.php";
     }
   </script>
 
