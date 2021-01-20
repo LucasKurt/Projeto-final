@@ -63,7 +63,8 @@
             if($result->num_rows >0){
               while ($anuncios = $result->fetch_assoc()) {
                 if($anuncios['negocio']==""){$anuncios['negocio']=$anuncios['nome'];}
-                if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
+                if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}
+                $doacao = $anuncios['doacao']=="" ? $doacao = "<br>": $doacao = $anuncios['doacao'];?>
             <form action="./perfil.php" method="post" class="col-md-4" onclick=(this.submit())>
               <div class="card card-anuncio mb-4 shadow-sm">
                 <img height="225" src="./images/imagens_anuncios/<?php echo $anuncios['img']?>" alt="">
@@ -75,7 +76,7 @@
                   <p class="card-text text-center"><?php echo utf8_encode($anuncios['negocio'])?></p>
                   <p class="card-text text-center"><?php echo utf8_encode($anuncios['descricao'])?></p>
                   <p class="card-text text-center">R$ <?php echo utf8_encode($anuncios['valor'])?></p>
-                  <p class="card-text text-center"><?php echo utf8_encode ($anuncios['doacao'])?></p>
+                  <p class="card-text text-center"><?php echo $doacao?></p>
                   <input type="hidden" name="id_anunciante" value="<?php echo $anuncios["id_vendedor"]?>">
                 </div>
               </div>
