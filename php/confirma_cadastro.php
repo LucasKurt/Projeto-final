@@ -66,7 +66,7 @@ if ($senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $te
         unset($result);
         unset($sql);
         $senha = md5($senha);
-        $sql = "INSERT INTO vendedor (nome,negocio,endereco,cpf,telefone,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$telefone','$email','$senha','images/perfil-sem-foto.jpg')";
+        $sql = "INSERT INTO vendedor (nome,negocio,endereco,cpf,telefone,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$telefone','$email','$senha','perfil-sem-foto.jpg')";
         $conn->query($sql);
         echo "<script>
             alert('Cadastro efetuado!')
@@ -76,7 +76,7 @@ if ($senha == $conf_senha && $nome != "" && $endereco != "" && $cpf != "" && $te
     } else {
         unset($sql);
         $senha = md5($senha);
-        $sql = "INSERT INTO vendedor (nome,negocio,endereco,cpf,telefone,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$telefone','$email','$senha','images/perfil-sem-foto.jpg')";
+        $sql = "INSERT INTO vendedor (nome,negocio,endereco,cpf,telefone,email,senha,img_perfil) VALUES ('$nome','$negocio','$endereco','$cpf','$telefone','$email','$senha','perfil-sem-foto.jpg')";
         $conn->query($sql);
         echo "<script>
             alert('Cadastro efetuado!')

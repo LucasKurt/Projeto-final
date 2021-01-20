@@ -1,17 +1,19 @@
 <?php
 if (isset($_SESSION['id_vendedor'])) {
-    include_once('./php/bd_connect.php');
-    $id = $_SESSION['id_vendedor'];
-    $nome = $_SESSION['nome_vendedor'];
-    $negocio = $_SESSION['negocio_vendedor'];
-    $telefone = $_SESSION['telefone_vendedor'];
-    $img_perfil = $_SESSION['img_perfil_vendedor'];
-    if ($negocio == ""){
-        $negocio = $nome;
-    }
+  include_once('./php/bd_connect.php');
+  $id = $_SESSION['id_anunciante'];
+  $resultado_consulta = $conn->query("SELECT * from vendedor where id = '$id'");
+  $anunciante = mysqli_fetch_assoc($resultado_consulta);
+  $nome = $anunciante["nome"];
+  $negocio = $anunciante["negocio"];
+  $telefone = $anunciante['telefone'];
+  $img_perfil = $anunciante["img_perfil"];    
+  if ($negocio == ""){
+    $negocio = $nome;
+  }
 } else{
-    header('Location: index.php');
-    die();
+  header('Location: index.php');
+  die();
 }
 ?>
 
@@ -79,28 +81,27 @@ if (isset($_SESSION['id_vendedor'])) {
           <h2>Anúncios publicados</h2>
           <hr>
           <?php
-                        $sql = "SELECT * FROM anuncios WHERE id_vendedor = '$id'";
-                        $result = $conn->query($sql);
-                        if ($anuncios = $result->num_rows >0) {
-                            while ($anuncios = $result->fetch_assoc()) {
-                                if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
-          <div class="row mb-2">
-            <div class="col-md-3">
-              <img height="150" src="<?php echo $anuncios['img']?>" alt="" id="editarImg">
-            </div>
-            <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
-              <p><?php echo utf8_encode($anuncios['descricao'])?></p>
-              <p>R$ <?php echo utf8_encode($anuncios['valor'])?></p>
-            </div>
-          </div>
-          <hr>
-          <?php }
-                        } else {
-                            echo "<p class='font-weight-bold'>Nenhum anuncio publicado</p>";
-                            echo "<br>";
-                        }
-                        
-                    ?>
+            $sql = "SELECT * FROM anuncios WHERE id_vendedor = '$id'";
+            $result = $conn->query($sql);
+            if ($anuncios = $result->num_rows >0) {
+              while ($anuncios = $result->fetch_assoc()) {
+                if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
+                <div class="row mb-2">
+                  <div class="col-md-3">
+                    <img height="150" src="./images/imagens_anuncios/<?php echo $anuncios['img']?>" alt="" id="editarImg">
+                  </div>
+                  <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
+                    <p><?php echo utf8_encode($anuncios['descricao'])?></p>
+                    <p>R$ <?php echo utf8_encode($anuncios['valor'])?></p>
+                  </div>
+                </div>
+                <hr>
+              <?php }
+            } else {
+              echo "<p class='font-weight-bold'>Nenhum anuncio publicado</p>";
+              echo "<br>";
+            }
+          ?>
         </div>
       </div>
     </div>
