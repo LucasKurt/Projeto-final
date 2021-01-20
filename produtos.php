@@ -57,7 +57,6 @@
       <div class="container">
 
         <div class="row">
-          <!--  -->
           <?php 
             $sql = "SELECT * FROM vendedor JOIN anuncios WHERE id_vendedor = vendedor.id ORDER BY anuncios.id DESC";
             $result = $conn->query($sql);
@@ -66,24 +65,20 @@
                 if($anuncios['negocio']==""){$anuncios['negocio']=$anuncios['nome'];}
                 if($anuncios['valor']==""){$anuncios['valor']='Valor à combinar';}?>
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img height="225" src="<?php echo $anuncios['img']?>" alt="">
-              <div class="d-flex justify-content-center mt-3"><img style="box-shadow: 0px 0px 8px #000000;"
-                  class="rounded-circle" width="50" height="50" src="<?php echo $anuncios['img_perfil']?>" alt=""></div>
-              <div class="card-body">
-                <p class="card-text text-center"><?php echo utf8_encode($anuncios['negocio'])?></p>
-                <p class="card-text text-center"><?php echo utf8_encode($anuncios['descricao'])?></p>
-                <p class="card-text text-center"><?php echo utf8_encode($anuncios['valor'])?></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Entrar em contato</button>
-                  </div>
-                  <small class="text-muted">SP</small>
+              <div onclick="redireciona()" class="card card-anuncio mb-4 shadow-sm">
+                <img height="225" src="<?php echo $anuncios['img']?>" alt="">
+                <div class="d-flex justify-content-center mt-3">
+                  <img style="box-shadow: 0px 0px 8px #000000;" class="rounded-circle" width="50" height="50"
+                    src="./images/perfil_vendedor/<?php echo $anuncios['img_perfil']?>" alt="">
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-center"><?php echo utf8_encode($anuncios['negocio'])?></p>
+                  <p class="card-text text-center"><?php echo utf8_encode($anuncios['descricao'])?></p>
+                  <p class="card-text text-center">R$ <?php echo utf8_encode($anuncios['valor'])?></p>
                 </div>
               </div>
-            </div>
           </div>
+
           <?php }
             } else {
               echo "<h1>Ainda não foram postados anuncios</h1>";
@@ -100,6 +95,12 @@
   <?php
   include_once('./HTML/footer.html');
   ?>
+
+  <script>
+    function redireciona() {
+      window.location.href = "./entrar.php";
+    }
+  </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
