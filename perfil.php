@@ -5,6 +5,7 @@ if (isset($_SESSION['id_vendedor'])) {
     $id = $_SESSION['id_vendedor'];
     $nome = $_SESSION['nome_vendedor'];
     $negocio = $_SESSION['negocio_vendedor'];
+    $telefone = $_SESSION['telefone_vendedor'];
     $img_perfil = $_SESSION['img_perfil_vendedor'];
     if ($negocio == ""){
         $negocio = $nome;
@@ -58,8 +59,16 @@ if (isset($_SESSION['id_vendedor'])) {
             <img width="250" height="250" class="rounded-circle" src="<?php echo $img_perfil?>" alt="">
             <a class="btn-lg btn-primary mt-3" href="./editar_perfil_vendedor.php" role="buttom">Editar perfil</a>
           </div>
-          <div class="col-md-9 d-flex flex-column justify-content-start align-items-start border border-primary">
+          <div class="col-md-9 d-flex flex-column justify-content-start align-items-start">
             <h2 class="display-3"><?php echo $negocio?></h2>
+            <div class="row ml-1 my-4 align-items-start">
+              <img src="././images/rating-stars" alt="Rating Stars">
+              <p class="col d-flex flex-column align-items-end" style="font-size: 32px;">4.6</p>
+            </div>
+            <div class="row ml-1 align-items-start">
+              <img src="././images/whats-logo" alt="WhatsApp Logo">
+              <p class="col d-flex flex-column align-items-end" style="font-size: 32px;"><?php echo $telefone?></p>
+            </div>
           </div>
         </div>
       </div>
@@ -76,13 +85,6 @@ if (isset($_SESSION['id_vendedor'])) {
               <p class="card-text text-center"><?php echo $negocio?></p>
               <p id="descricaoAnuncio" class="card-text text-center">O que? (breve descrição)</p>
               <p id="valorAnuncio" class="card-text text-center">Quanto? (Informe o preço)</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ver mais</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Entrar em contato</button>
-                </div>
-                <small class="text-muted">SP</small>
-              </div>
             </div>
           </div>
         </div>
@@ -105,30 +107,31 @@ if (isset($_SESSION['id_vendedor'])) {
                   cols="30" rows="4"></textarea>
                 <div class="invalid-feedback">Escreva a descrição</div>
               </div>
-              <div class="col-md-6 mb-3 d-flex flex-column justify-content-between">
-                <div class="row">
-                  <label for="valor">Valor</label>
-                  <input type="text" class="form-control" id="valor" name="valor" value=""
-                    onkeypress="$(this).mask('#.##0,00', {reverse: true});" placeholder="R$" required
-                    onchange="atualizaValor()" />
-                  <div class="invalid-feedback">Informe o Valor</div>
-                </div>
-                <div class="row d-flex align-items-baseline justify-content-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-info-circle-fill text-primary mr-3" viewBox="0 0 16 16">
-                    <path
-                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                  </svg>
-                  <label for="">Aceita receber doação?</label>
-                  <div>
-                    <label class="switch ml-3 d-flex align-items-end">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label>
-                  </div>
 
+              <div class="col-md-6 mb-3 d-flex flex-column">
+                <label for="valor">Valor</label>
+                <input type="text" class="form-control" id="valor" name="valor" value=""
+                  onkeypress="$(this).mask('#.##0,00', {reverse: true});" placeholder="R$" required
+                  onchange="atualizaValor()" />
+                <div class="invalid-feedback">Informe o Valor</div>
+                <div class="row">
+                  <div class="col mt-5 d-flex align-items-baseline justify-content-end">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-info-circle-fill text-primary mr-3" viewBox="0 0 16 16">
+                      <path
+                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                    </svg>
+                    <label for="">Aceita receber doação?</label>
+                    <div>
+                      <label class="switch ml-3 d-flex align-items-end">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
+
             </div>
             <input type="hidden" class="form-control" id="idAnuncio" value="" />
             <button class="btn btn-primary btn-lg btn-block" type="submit" id="butao">Anunciar</button>
