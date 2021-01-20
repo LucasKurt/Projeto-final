@@ -75,6 +75,7 @@
                   <p class="card-text text-center"><?php echo utf8_encode($anuncios['negocio'])?></p>
                   <p class="card-text text-center"><?php echo utf8_encode($anuncios['descricao'])?></p>
                   <p class="card-text text-center">R$ <?php echo utf8_encode($anuncios['valor'])?></p>
+                  <p class="card-text text-center"><?php echo utf8_encode ($anuncios['doacao'])?></p>
                   <input type="hidden" name="id_anunciante" value="<?php echo $anuncios["id_vendedor"]?>">
                 </div>
               </div>
