@@ -6,6 +6,7 @@ if (isset($_SESSION['id_vendedor'])) {
     $negocio = $_SESSION['negocio_vendedor'];
     $telefone = $_SESSION['telefone_vendedor'];
     $img_perfil = $_SESSION['img_perfil_vendedor'];
+    $doacao = $_SESSION['doacao'];
     if ($negocio == ""){
         $negocio = $nome;
     }
@@ -84,6 +85,7 @@ if (isset($_SESSION['id_vendedor'])) {
               <p class="card-text text-center"><?php echo $negocio?></p>
               <p id="descricaoAnuncio" class="card-text text-center">O que? (breve descrição)</p>
               <p id="valorAnuncio" class="card-text text-center">Quanto? (Informe o preço)</p>
+              <p id="aceitaDoacao" class="card-text text-center">Aceita doação? (Marque a opção)</p>
             </div>
           </div>
         </div>
@@ -124,7 +126,7 @@ if (isset($_SESSION['id_vendedor'])) {
                     <label for="">Aceita receber doação?</label>
                     <div>
                       <label class="switch ml-3 d-flex align-items-end" id="switch">
-                        <input type="checkbox" name="doacao">
+                        <input type="checkbox" onclick="atualizaDoacao()" id="doacao" name="doacao" value="">
                         <span class="slider round"></span>
                       </label>
                     </div>
@@ -157,7 +159,8 @@ if (isset($_SESSION['id_vendedor'])) {
                   </div>
                   <div class="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
                     <p><?php echo utf8_encode($anuncios['descricao'])?></p>
-                    <p><?php echo utf8_encode($anuncios['valor'])?></p>
+                    <p>R$ <?php echo utf8_encode($anuncios['valor'])?></p>
+                    <p><?php echo utf8_encode($anuncios['doacao'])?></p>
                     <div class="btn-group">
                       <a href="#foto"><button class="btn btn-secondary" onclick="editar('<?php echo $anuncios['img']?>','<?php echo utf8_encode($anuncios['descricao'])?>','<?php echo utf8_encode($anuncios['valor'])?>','<?php echo utf8_encode($anuncios['id'])?>')">Editar</button></a>
                       <button class="btn btn-danger rounded ml-2" data-toggle="modal" data-target="#modalDeletar" onclick="deletar('<?php echo utf8_encode($anuncios['id'])?>')">Deletar</button>

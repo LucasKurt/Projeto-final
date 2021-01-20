@@ -26,6 +26,7 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
     $_SESSION['email_vendedor'] = $anunciante["email"];
     $_SESSION['senha_cripto_vendedor'] = $anunciante["senha"];
     $_SESSION['img_perfil_vendedor'] = $anunciante["img_perfil"];
+    $_SESSION['doacao'] = $doacao["doacao"];
 
     header('Location: ../dicas.php');
 }

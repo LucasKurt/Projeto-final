@@ -58,6 +58,16 @@ function atualizaValor(){
     } 
 }
 
+function atualizaDoacao(){
+    let doacao = document.getElementById('doacao');
+    let aceitaDoacao = document.getElementById('aceitaDoacao');
+    if (doacao.value == "") {
+        aceitaDoacao.innerHTML = "Aceita doação? (Marque a opção)";
+    } else {
+        aceitaDoacao.innerHTML = doacao.value;
+    } 
+}
+
 function editar(editarImg,editarDescricao,editarValor,editarId){
     let titulo = document.getElementById('titulo');
     document.getElementById("chooseFile").required = false;
