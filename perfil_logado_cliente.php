@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id_vendedor'])) {
+if (isset($_SESSION['id_cliente'])) {
     include_once('./php/bd_connect.php');
     $id = $_SESSION['id_vendedor'];
     $nome = $_SESSION['nome_vendedor'];

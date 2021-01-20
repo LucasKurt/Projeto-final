@@ -18,15 +18,25 @@
     }, false)
 })()
 
-function atualizaImg(){
-    let img = document.getElementById('img');
-    let imgAnuncio = document.getElementById('imgAnuncio');
-    if (img.value == "") {
-        imgAnuncio.src = "../images/ponto-de-interrogação.jpeg";
-    } else {
-        imgAnuncio.src = img.value;  
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#imgPlaceholder').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]); // convert to base64 string
     }
-}
+  }
+
+  $("#chooseFile").change(function () {
+    readURL(this);
+  });
 
 function atualizaDescricao(){
     let descricao = document.getElementById('descricao');
@@ -50,8 +60,8 @@ function atualizaValor(){
 
 function editar(editarImg,editarDescricao,editarValor,editarId){
     let titulo = document.getElementById('titulo');
-    let img = document.getElementById('img');
-    let imgAnuncio = document.getElementById('imgAnuncio');
+    document.getElementById("chooseFile").required = false;
+    let imgAnuncio = document.getElementById('imgPlaceholder');
     let descricao = document.getElementById('descricao');
     let descricaoAnuncio = document.getElementById('descricaoAnuncio');
     let valor = document.getElementById('valor');
@@ -59,8 +69,7 @@ function editar(editarImg,editarDescricao,editarValor,editarId){
     let butao = document.getElementById('butao');
     let idAnuncio = document.getElementById('idAnuncio');
     titulo.innerHTML = `Editar anúncio (${editarDescricao})`
-    img.value = editarImg;
-    imgAnuncio.src = editarImg;
+    imgAnuncio.src = `./images/imagens_anuncios/${editarImg}`;
     descricao.value = editarDescricao;
     descricaoAnuncio.innerHTML = editarDescricao;
     valor.value = editarValor;

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id_vendedor'])) {
+if (!isset($_SESSION['id_vendedor']) && !isset($_SESSION['id_cliente'])) {
     include_once('./php/bd_connect.php');
     $id = $_SESSION['id_vendedor'];
     $nome = $_SESSION['nome_vendedor'];
@@ -11,8 +11,8 @@ if (isset($_SESSION['id_vendedor'])) {
         $negocio = $nome;
     }
 } else{
-    header('Location: index.php');
-    die();
+  header('Location: index.php');
+  die();
 }
 ?>
 
@@ -68,7 +68,7 @@ if (isset($_SESSION['id_vendedor'])) {
             <div class="row ml-1 align-items-start">
               <img src="./images/whats-logo.png" alt="WhatsApp Logo">
               <p class="col d-flex flex-column align-items-end" style="font-size: 32px;">(11) 9...</p><a class="mt-2"
-                style="font-size: 24px;" href="./entrar.html">Ver número</a>
+                style="font-size: 24px;" href="./entrar.php">Ver número</a>
             </div>
           </div>
         </div>

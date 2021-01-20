@@ -1,17 +1,17 @@
 <?php
-    session_start();
-    if (isset($_SESSION['id_vendedor'])) {
-        $id = $_SESSION['id_vendedor'];
-        $nome = $_SESSION['nome_vendedor'];
-        $negocio = $_SESSION['negocio_vendedor'];
-        $endereco = $_SESSION['endereco_vendedor'];
-        $email = $_SESSION['email_vendedor'];
-        $telefone = $_SESSION['telefone_vendedor'];
-        $img_perfil = $_SESSION['img_perfil_vendedor'];
-    } else{
-        header('Location: index.php');
-        die();
-    }
+  session_start();
+  if (isset($_SESSION['id_vendedor'])) {
+      $id = $_SESSION['id_vendedor'];
+      $nome = $_SESSION['nome_vendedor'];
+      $negocio = $_SESSION['negocio_vendedor'];
+      $endereco = $_SESSION['endereco_vendedor'];
+      $email = $_SESSION['email_vendedor'];
+      $telefone = $_SESSION['telefone_vendedor'];
+      $img_perfil = $_SESSION['img_perfil_vendedor'];
+  } else{
+      header('Location: index.php');
+      die();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
   <?php require_once('./HTML/navbarSair.html'); ?>
   <div class="container mt-5">
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-2" src="<?php echo $img_perfil?>" alt="Imagem de Perfil" width="200"
+      <img class="d-block mx-auto mb-2" src="./images/perfil_vendedor/<?php echo $img_perfil?>" id="imgPlaceholder" alt="" width="200"
         height="200" />
       <br>
       <h2>Editar perfil</h2>
@@ -60,8 +60,7 @@
     <div class="row">
 
       <div class="col-md-12">
-        <form class="needs-validation" method="POST" action="./PHP/atualizar_vendedor.php" enctype="multipart/form-data"
-          novalidate>
+        <form class="needs-validation" method="POST" action="./PHP/atualizar_vendedor.php" enctype="multipart/form-data" novalidate>
           <div class="custom-file mb-3">
             <input type="file" name="fileUpload" class="custom-file-input" id="chooseFile">
             <label class="custom-file-label" for="chooseFile">Selecione uma foto</label>
@@ -121,8 +120,7 @@
     <!-- Footer -->
     <?php
       include_once('./HTML/footer.html');
-      ?>
-
+    ?>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -137,6 +135,8 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
   </script>
   <script src="./JS/cadastro.js"></script>
+  <script src="JS/atualizar.js"></script>
+
 </body>
 
 </html>
