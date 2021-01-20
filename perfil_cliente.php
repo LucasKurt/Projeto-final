@@ -4,6 +4,7 @@ if (isset($_SESSION['id_cliente'])) {
     include_once('./php/bd_connect.php');
     $id = $_SESSION['id_cliente'];
     $nome = $_SESSION['nome_cliente'];
+    $email = $_SESSION['email_cliente'];
 } else{
     header('Location: index.php');
     die();
@@ -51,8 +52,47 @@ if (isset($_SESSION['id_cliente'])) {
         <h2 class="display-4"><?php echo $nome?></h2>
       </div>
     </div>
-    <?php include_once('./HTML/footer.html');?>
+
+    <div class="container mb-5">
+      <div class="py-5 text-center">
+        <h2>Editar perfil</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form class="needs-validation" method="POST" action="" enctype="multipart/form-data" novalidate>
+
+              <div class="mb-3">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="" value="<?php echo $nome?>" required />
+                <div class="invalid-feedback">Digite um nome</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="senha">Nova senha</label>
+                <input type="text" class="form-control" id="senha" name="senha" placeholder="" value="" required />
+                <div class="invalid-feedback">Digite nova senha</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $email?>"
+                  placeholder="seuemail@exemplo.com.br" required />
+                <div class="invalid-feedback">
+                  Digite novo email.
+                </div>
+              </div>
+              <br>
+              <button class="btn btn-primary btn-lg btn-block mb-5" type="submit">
+                Salvar
+              </button>
+          </form>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+    </div>
   </main>
+
+  <?php include_once('./HTML/footer.html');?>
 
   <script src="JS\perfil.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

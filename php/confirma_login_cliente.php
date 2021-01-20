@@ -18,6 +18,7 @@ if (strlen($email) > 3 && strlen($senha) > 3) {
 
     $_SESSION['id_cliente'] = $cliente["id"];
     $_SESSION['nome_cliente'] = $cliente["nome"];
+    $_SESSION['email_cliente'] = $cliente["email"];
 
     header('Location: ../perfil_cliente.php');
 }

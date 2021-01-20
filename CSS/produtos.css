@@ -23,6 +23,10 @@
   max-width: 40rem;
 }
 
+.card-anuncio {
+  cursor: pointer !important;
+}
+
 .card img {
   object-fit: cover;
 }
