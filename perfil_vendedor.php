@@ -118,15 +118,17 @@ if (isset($_SESSION['id_vendedor'])) {
                 <div class="invalid-feedback">Informe o Valor</div>
                 <div class="row">
                   <div class="col mt-5 d-flex align-items-baseline justify-content-end">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  <a href="#" rel="tooltip" title="Ao clicar nesse botão você aceita receber doações e&#013;consequentemente aceita também conceder um&#013;desconto a pessoa que cedeu as doações nos seus termos.&#013;A plataforma não fará mediações, a negociação será feita&#013;entre o cliente e o vendedor.">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-info-circle-fill text-primary mr-3 tooltip-test" title="Ao clicar nesse botão você aceita receber doações e consequentemente aceita também fazer um desconto a pessoa que cedeu as doações nos seus termos. A plataforma não fará mediações, a negociação será feita entre o cliente e o vendedor" viewBox="0 0 16 16">
                       <path
                         d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
                     </svg>
+                    </a>
                     <label for="">Aceita receber doação?</label>
                     <div>
                       <label class="switch ml-3 d-flex align-items-end" id="switch">
-                        <input type="checkbox" onclick="atualizaDoacao()" id="doacao" name="doacao" value="">
+                        <input type="checkbox" id="doacao" name="doacao" value="" >
                         <span class="slider round"></span>
                       </label>
                     </div>
