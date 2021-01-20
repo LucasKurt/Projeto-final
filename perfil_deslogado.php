@@ -1,18 +1,16 @@
 <?php
-session_start();
-if (!isset($_SESSION['id_vendedor']) && !isset($_SESSION['id_cliente'])) {
-    include_once('./php/bd_connect.php');
-    $id = $_SESSION['id_vendedor'];
-    $nome = $_SESSION['nome_vendedor'];
-    $negocio = $_SESSION['negocio_vendedor'];
-    $telefone = $_SESSION['telefone_vendedor'];
-    $img_perfil = $_SESSION['img_perfil_vendedor'];
-    if ($negocio == ""){
-        $negocio = $nome;
-    }
-} else{
+if (isset($_SESSION['id_vendedor']) || isset($_SESSION['id_cliente'])) {
   header('Location: index.php');
   die();
+  include_once('./php/bd_connect.php');
+  $id = $_SESSION['id_vendedor'];
+  $nome = $_SESSION['nome_vendedor'];
+  $negocio = $_SESSION['negocio_vendedor'];
+  $telefone = $_SESSION['telefone_vendedor'];
+  $img_perfil = $_SESSION['img_perfil_vendedor'];
+  if ($negocio == ""){
+      $negocio = $nome;
+  }
 }
 ?>
 
