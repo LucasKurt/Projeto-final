@@ -100,40 +100,40 @@
       <div class="row">
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
-              src="https://images.pexels.com/photos/3738095/pexels-photo-3738095.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
-          <h2>Costureiro(a)</h2>
+              src="./images/panos.jpeg"></a>
+          <h2>Panos bordados</h2>
 
         </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
-              src="https://images.pexels.com/photos/2076930/pexels-photo-2076930.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
-          <h2>Cabelereiro(a)</h2>
+              src="./images/brinco.jpeg"></a>
+          <h2>Brincos</h2>
 
         </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
-              src="https://images.pexels.com/photos/3983706/pexels-photo-3983706.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
-          <h2>Cozinheiro(a)</h2>
+              src="./images/colar.webp"></a>
+          <h2>Colares</h2>
 
         </div>
       </div>
       <div class="row mt-5">
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
-              src="https://images.pexels.com/photos/4606346/pexels-photo-4606346.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
-          <h2>Motorista</h2>
+              src="./images/filtroSonhos.jpeg"></a>
+          <h2>Filtro dos sonhos</h2>
 
         </div>
         <div class="col-lg-4">
-          <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
-              src="https://images.pexels.com/photos/3768910/pexels-photo-3768910.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
-          <h2>Diarista</h2>
+          <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140" src="./images/orgonite.jpeg">
+              </a>
+          <h2>Orgonites</h2>
 
         </div>
         <div class="col-lg-4">
           <a href="#"><img class="bd-placeholder-img rounded-circle" width="140" height="140"
               src="https://images.pexels.com/photos/3760978/pexels-photo-3760978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></a>
-          <h2>Artesão(a)</h2>
+          <h2>Moringa de barro</h2>
 
         </div>
       </div>
@@ -142,16 +142,16 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Faça como João <span class="text-muted">que conseguiu impulsionar seu
+          <h2 class="featurette-heading">Faça como Ana <span class="text-muted">que conseguiu impulsionar seu
               negócio.</span>
           </h2>
-          <p class="lead">Foi através da "plataforma" que João se destacou no ramo da culinária
+          <p class="lead">Foi através da plataforma<bold> Comércio amigável<bold/> que João se destacou no ramo do artesanato.
           </p>
         </div>
         <div class="col-md-5">
           <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
             height="500"
-            src="https://images.pexels.com/photos/887827/pexels-photo-887827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            src="./images/pulseiras.jpg">
         </div>
       </div>
 
