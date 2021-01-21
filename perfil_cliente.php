@@ -59,7 +59,7 @@ if (isset($_SESSION['id_cliente'])) {
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form class="needs-validation" method="POST" action="" enctype="multipart/form-data" novalidate>
+          <form class="needs-validation" method="POST" action="./PHP/atualizar_cliente.php" enctype="multipart/form-data" novalidate>
 
               <div class="mb-3">
                 <label for="nome">Nome</label>
@@ -69,7 +69,7 @@ if (isset($_SESSION['id_cliente'])) {
 
               <div class="mb-3">
                 <label for="senha">Nova senha</label>
-                <input type="text" class="form-control" id="senha" name="senha" placeholder="" value="" required />
+                <input type="text" class="form-control" id="senha" name="senha" placeholder="" value=""/>
                 <div class="invalid-feedback">Digite nova senha</div>
               </div>
 

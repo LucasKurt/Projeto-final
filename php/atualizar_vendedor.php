@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 require_once('bd_connect.php');
+
 $id = $_SESSION['id_vendedor'];
 $nome  = $_POST['nome'];
 $negocio  = $_POST['negocio'];
