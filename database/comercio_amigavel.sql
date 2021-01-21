@@ -11,12 +11,6 @@ CREATE TABLE `anuncios` (
   `doacao` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `anuncios` (`id`, `id_vendedor`, `img`, `descricao`, `valor`, `doacao`) VALUES
-(2, 1, 'download.jpg', 'Bolo de cenoura', '25,00', 'Aceito receber doação'),
-(8, 1, '7f358d99-5294-432d-826b-0a5ce0f169ee.png', 'Guaraná Natu ', '3,99', ''),
-(10, 1, 'bolo.jpg', 'bolo de festa', '50,00', 'Aceito receber doação'),
-(11, 1, 'fanta lata.jpg', 'Fanta laranja', '5,00', '');
-
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
   `nome` varchar(70) NOT NULL,
@@ -38,9 +32,6 @@ CREATE TABLE `vendedor` (
   `senha` char(32) NOT NULL,
   `img_perfil` varchar(500) NOT NULL DEFAULT './images/perfil-sem-foto.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `vendedor` (`id`, `nome`, `negocio`, `endereco`, `cpf`, `telefone`, `email`, `senha`, `img_perfil`) VALUES
-(1, 'Lucas Corte Galdino de Freitas', 'Venda de Refri e Bolo', 'Rua Zurich Número 34', '111.111.111-11', '(11) 33262-800', 'lucas@outlook.com', 'e10adc3949ba59abbe56e057f20f883e', 'download.jpg');
 
 ALTER TABLE `anuncios`
   ADD PRIMARY KEY (`id`),
