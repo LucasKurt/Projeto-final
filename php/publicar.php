@@ -128,20 +128,20 @@ if (isset($_POST['id_anuncio'])) {
                 $sql = "INSERT INTO anuncios (id_vendedor, img, descricao, valor, doacao) VALUES ('$id_vendedor', '$target_name', '$descricao', '$valor', '$doacao')";
                 $result = $conn->query($sql);
                 echo "
-                <script>
-                    alert('Sua publicação foi feita com sucesso!')
-                    location.href = '../perfil.php'
-                </script>
-            ";
+                    <script>
+                        alert('Sua publicação foi feita com sucesso!')
+                        location.href = '../perfil.php'
+                    </script>
+                ";
             } else {
                 $sql = "INSERT INTO anuncios (id_vendedor, img, descricao, valor) VALUES ('$id_vendedor', '$target_name', '$descricao', '$valor')";
                 $result = $conn->query($sql);
                 echo "
-                <script>
-                    alert('Sua publicação foi feita com sucesso!')
-                    location.href = '../perfil.php'
-                </script>
-            ";
+                    <script>
+                        alert('Sua publicação foi feita com sucesso!')
+                        location.href = '../perfil.php'
+                    </script>
+                ";
             }
         } else {
             echo "
