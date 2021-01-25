@@ -10,7 +10,6 @@ $email = $_POST['email'];
 $telefone = $_POST['telefone'];
 
 if(isset($_FILES["fileUpload"])) {
-    $target_name = $_FILES["fileUpload"]["name"];
     // Set image placement folder
     $target_dir = "../images/perfil_vendedor/";
     // Get file path
@@ -19,6 +18,8 @@ if(isset($_FILES["fileUpload"])) {
     $imageExt = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     // Allowed file types
     $allowd_file_ext = array("jpg", "jpeg", "png","webp");
+    // Rename img 
+    $target_name = md5(time()) . "." . $imageExt;
 
     if (!file_exists($_FILES["fileUpload"]["tmp_name"])) {
         $resMessage = array(
@@ -28,20 +29,20 @@ if(isset($_FILES["fileUpload"])) {
     } else if (!in_array($imageExt, $allowd_file_ext)) {
         $resMessage = array(
             "status" => "alert-danger",
-            "message" => "Allowed file formats .jpg, .jpeg and .png."
+            "message" => "Allowed file formats .jpg, .jpeg, .png and .webp."
         );            
     } else if ($_FILES["fileUpload"]["size"] > 2097152) {
         $resMessage = array(
             "status" => "alert-danger",
             "message" => "File is too large. File size should be less than 2 megabytes."
         );
-    } else if (file_exists($target_file)) {
+    } else if (file_exists($target_name)) {
         $resMessage = array(
             "status" => "alert-danger",
             "message" => "File already exists."
         );
     } else {
-        if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)) {
+        if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_dir.$target_name)) {
             $sql = "UPDATE vendedor SET img_perfil ='$target_name' WHERE id='$id'";
             $result = $conn->query($sql);
             $_SESSION['img_perfil_vendedor'] = $target_name;
