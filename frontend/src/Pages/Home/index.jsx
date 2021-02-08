@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Carrossel from '../../Components/Carrossel';
 
@@ -11,30 +12,30 @@ const Home = () => {
             <div className="container marketing">
                 <div className="row">
                     <div className="col-lg-4">
-                        <a href="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/panos.jpeg" /></a>
+                        <Link to="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/panos.jpeg" alt="Panos bordados" /></Link>
                         <h2>Panos bordados</h2>
                     </div>
                     <div className="col-lg-4">
-                        <a href="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/brinco.jpeg" /></a>
+                        <Link to="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/brinco.jpeg" alt="Brincos" /></Link>
                         <h2>Brincos</h2>
                     </div>
                     <div className="col-lg-4">
-                        <a href="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/colar.webp" /></a>
+                        <Link to="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/colar.jpg" alt="Colares" /></Link>
                         <h2>Colares</h2>
                     </div>
                 </div>
                 <div className="row mt-5">
                     <div className="col-lg-4">
-                        <a href="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/filtroSonhos.jpeg" /></a>
+                        <Link to="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/filtroSonhos.jpeg" alt="Filtro dos sonhos" /></Link>
                         <h2>Filtro dos sonhos</h2>
                     </div>
                     <div className="col-lg-4">
-                        <a href="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/orgonite.jpeg" />
-                        </a>
+                        <Link to="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="./images/orgonite.jpeg" alt="#" />
+                        </Link>
                         <h2>Orgonites</h2>
                     </div>
                     <div className="col-lg-4">
-                        <a href="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="https://images.pexels.com/photos/3760978/pexels-photo-3760978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" /></a>
+                        <Link to="#"><img className="bd-placeholder-img rounded-circle" width={140} height={140} src="https://images.pexels.com/photos/3760978/pexels-photo-3760978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Moringa de barro" /></Link>
                         <h2>Moringa de barro</h2>
                     </div>
                 </div>
@@ -45,7 +46,7 @@ const Home = () => {
                         <p className="lead">Foi através da plataforma Comércio amigável que João se destacou no ramo do artesanato.</p>
                     </div>
                     <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="./images/pulseiras.jpg" />
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="./images/pulseiras.jpg" alt="depoimento da Ana" />
                     </div>
                 </div>
                 <hr className="featurette-divider" />
@@ -58,7 +59,7 @@ const Home = () => {
                         </p>
                     </div>
                     <div className="col-md-5 order-md-1">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="historia do projeto" />
                     </div>
                 </div>
                 <hr className="featurette-divider" />

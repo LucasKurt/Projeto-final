@@ -39,7 +39,7 @@ const Carrossel = () => {
                 <Carousel.Caption className="text-left" style={{textShadow: '2px 2px 4px #000000'}}>
                     <h1>Incentivamos o pequeno produtor a sair da informalidade</h1>
                     <p>Orientação, divulgação, educação corporativa</p>
-                    <p><a className="btn btn-lg btn-primary" href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/sp?codUf=26" target="_blank" role="button">Saiba Mais</a></p>
+                    <p><a className="btn btn-lg btn-primary" href="https://www.sebrae.com.br/sites/PortalSebrae/ufs/sp?codUf=26" target="_blank" rel="noopener noreferrer" role="button">Saiba Mais</a></p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

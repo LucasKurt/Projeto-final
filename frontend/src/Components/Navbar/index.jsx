@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return(
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <Link className="navbar-brand" to='/'><img src="./images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style={{width: 150}} /></Link>
+            <Link className="navbar-brand" to='/'><img src="/images/logo-comercio-amigavel-white-landscape.png" alt="Logo Comércio Amigável" style={{width: 150}} /></Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon" />
             </button>
