@@ -4,7 +4,8 @@ const { Schema, model } = require('mongoose');
 
 const VendedorSchema = new Schema({
     nome: {
-        type: String
+        type: String,
+        required: true
     },
     negocio: {
         type: String
