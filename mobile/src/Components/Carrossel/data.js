@@ -13,5 +13,3 @@ export default data = [
     title: "Incentivamos o pequeno produtor a sair da informalidade",
     body: "Orientação, divulgação, educação corporativa",
     imgUrl: 'https://images.pexels.com/photos/3570236/pexels-photo-3570236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-  }
-]
