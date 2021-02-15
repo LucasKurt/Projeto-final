@@ -4,18 +4,13 @@ class Vendedor {
     constructor() {
         this.id;
         this.nome;
-        this.negocio;
-        this.endereco;
-        this.cpf;
         this.email;
-        this.telefone;
         this.senha;
-        this.img;
     }
 
     cadastrar(req, res) {
         connection.query(
-            `INSERT INTO vendedor ( nome, negocio, endereco, cpf, email, telefone, senha ) values ('${this.nome}', '${this.negocio}', '${this.endereco}', '${this.cpf}', '${this.email}', '${this.telefone}', '${this.senha}' )`,
+            `INSERT INTO cliente ( nome, email, senha ) values ('${this.nome}', '${this.email}', '${this.senha}' )`,
             (error, result) => { 
                 if (error) {
                     res.status(400).json(error)
