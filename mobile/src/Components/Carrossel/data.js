@@ -1,17 +1,15 @@
 export default data = [
   {
-    title: "Aenean leo",
-    body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-    imgUrl: "https://picsum.photos/id/11/200/300"
+    title: "Divulgue seu negócio através do nosso site",
+    body: "Aqui você pode mostrar seus produtos e serviços.",
+    imgUrl: 'https://www.melhoresdestinos.com.br/wp-content/uploads/2019/07/25-de-marco-capa2019-01.jpg'
   },
   {
-    title: "In turpis",
-    body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-    imgUrl: "https://picsum.photos/id/10/200/300"
+    title: "Compre do pequeno negócio",
+    body: "Incentive o comerciante comprando os nossos produtos",
+    imgUrl: 'https://images.pexels.com/photos/3791614/pexels-photo-3791614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
   },
   {
-    title: "Lorem Ipsum",
-    body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-    imgUrl: "https://picsum.photos/id/12/200/300"
-  }
-]
+    title: "Incentivamos o pequeno produtor a sair da informalidade",
+    body: "Orientação, divulgação, educação corporativa",
+    imgUrl: 'https://images.pexels.com/photos/3570236/pexels-photo-3570236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'

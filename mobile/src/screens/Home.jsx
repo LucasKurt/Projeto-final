@@ -1,15 +1,15 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React from "react";
+import { ScrollView, StyleSheet } from "react-native";
 
-import Carousel from '../Components/Carrossel'
+import Carousel from "../Components/Carrossel";
+import Filtros from '../Components/Filtros';
 
 const Home = () => {
-    return(
-        <ScrollView>
-            <Carousel/>
-        </ScrollView>
-    );
-}
-
-
-export default Home
+  return (
+    <ScrollView>
+      <Filtros />
+      <Carousel />
+    </ScrollView>
+  );
+};
+export default Home;
