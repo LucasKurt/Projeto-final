@@ -3,6 +3,7 @@ import React from "react";
 import { enviarDados } from "../../../functions/bancoDeDados";
 
 const CadastroVendedor = () => {
+    const [dados,setDados] = React.useState('')
     const [nome,setNome] = React.useState('')
     const [negocio,setNegocio] = React.useState('')
     const [endereco,setEndereco] = React.useState('')
@@ -21,17 +22,18 @@ const CadastroVendedor = () => {
         senha,
         confSenha
     }
+    console.log(dados);
     return (
         <>
-            <div className="container mt-5">
-                <div className="py-5 text-center">
-                    <img className="d-block mx-auto mb-2" src="/images/logo-comercio-amigavel.png" alt="logo" width={150} height={150} />
+            <div className="container pt-5">
+                <div className="text-center">
+                    <img className="d-block mx-auto" src="/images/logo-comercio-amigavel.png" alt="logo" width={150} height={150} />
                     <h2>Cadastro de Vendedor</h2>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
                         <h4 className="mb-3">Dados Pessoais</h4>
-                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/vendedor', obj)} noValidate>
+                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/vendedor', obj, setDados)} noValidate>
                             <div className="row">
                                 <div className="col-md-6 mb-3">
                                     <label htmlFor="nome">Nome Completo</label>

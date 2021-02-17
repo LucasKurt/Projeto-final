@@ -3,6 +3,7 @@ import React from 'react'
 import { enviarDados } from "../../../functions/bancoDeDados";
 
 function CadastroCliente() {
+    //const [dados,setDados] = React.useEffect('');
     const [nome,setNome] = React.useState('');
     const [email,setEmail] = React.useState('');
     const [senha,setSenha] = React.useState('');
@@ -15,8 +16,8 @@ function CadastroCliente() {
     }
     return (
         <>
-            <div className="container mt-5">
-                <div className="py-5 text-center">
+            <div className="container pt-5">
+                <div className="text-center">
                     <img className="d-block mx-auto mb-2" src="/images/logo-comercio-amigavel.png" alt="logo" width={150} height={150} />
                     <h2>Cadastro de Cliente</h2>
                 </div>

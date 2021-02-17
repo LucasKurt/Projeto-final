@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
 const crypto = require('crypto');
 
-const cliente = require('../model/cliente');
+const cliente = require('../model/Cliente');
 
 class ClienteController {
     cadastrarClienteAction(req,res) {

@@ -2,11 +2,20 @@ const { Router } = require("express");
 const { body } = require('express-validator');
 const { cpf } = require('cpf-cnpj-validator');
 
-const vendedorController = require('./controller/VendedorController');
+
 const clienteController = require('./controller/ClienteController');
+const vendedorController = require('./controller/VendedorController');
+const LoginController = require('./controller/LoginController');
 
 const routes = new Router;
 
+routes.post(
+    "/cliente",
+    body('nome').isLength({min:3}),
+    body('email').isEmail(),
+    body('senha').isLength({min:6}),
+    clienteController.cadastrarClienteAction
+);
 
 routes.post(
     "/vendedor",
@@ -26,11 +35,8 @@ routes.post(
 );
 
 routes.post(
-    "/cliente",
-    body('nome').isLength({min:3}),
-    body('email').isEmail(),
-    body('senha').isLength({min:6}),
-    clienteController.cadastrarClienteAction
-);
+    "/login",
+    LoginController.loginAction
+)
 
 module.exports = routes;
