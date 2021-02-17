@@ -1,6 +1,6 @@
 import React from "react";
 
-import { enviarDados } from "../../../functions/bancoDeDados";
+import { enviarDados } from "../../../functions/database";
 
 const CadastroVendedor = () => {
     const [dados,setDados] = React.useState('')

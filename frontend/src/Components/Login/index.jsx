@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom';
 
-import { enviarDados } from "../../functions/bancoDeDados";
+import { enviarDados } from "../../functions/database";
 
 import "./styles.css";
 
@@ -17,9 +17,11 @@ const Login = (props) => {
         tipo: props.tipo
     }
     if (dados === "vendedor") {
+        localStorage.setItem('auth',dados);
         history.push("/dicas");
     }
     if (dados === "cliente") {
+        localStorage.setItem('auth',dados)
         history.push("/perfil");
     } else {
     }

@@ -12,7 +12,7 @@ const routes = new Router;
 routes.post(
     "/cliente",
     body('nome').isLength({min:3}),
-    body('email').isEmail(),
+    body('email').isEmail().withMessage("* campo obrigatório!"),
     body('senha').isLength({min:6}),
     clienteController.cadastrarClienteAction
 );

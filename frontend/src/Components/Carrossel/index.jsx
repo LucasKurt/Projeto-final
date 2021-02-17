@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -15,7 +16,7 @@ const Carrossel = () => {
                 <Carousel.Caption className="text-left" style={{textShadow: '2px 2px 4px #000000'}}>
                     <h1>Divulgue seu negócio através do nosso site</h1>
                     <p>Aqui você pode mostrar seus produtos e serviços.</p>
-                    <p><a className="btn btn-lg btn-primary" href="cadastro.php" role="button">Cadastre-se</a></p>
+                    <p><Link className="btn btn-lg btn-primary" to="/login/vendedor" role="button">Cadastre-se</Link></p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -27,7 +28,7 @@ const Carrossel = () => {
                 <Carousel.Caption className="text-left" style={{textShadow: '2px 2px 4px #000000'}}>
                     <h1>Compre do pequeno negócio</h1>
                     <p>Incentive o comerciante comprando os nossos produtos</p>
-                    <p><a className="btn btn-lg btn-primary" href="produtos.php" role="button">Veja os produtos</a></p>
+                    <p><Link className="btn btn-lg btn-primary" to="/anuncios" role="button">Veja os produtos</Link></p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>

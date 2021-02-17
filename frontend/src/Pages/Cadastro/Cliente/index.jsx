@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { enviarDados } from "../../../functions/bancoDeDados";
+import { enviarDados } from "../../../functions/database";
 
 function CadastroCliente() {
     //const [dados,setDados] = React.useEffect('');
@@ -8,12 +8,14 @@ function CadastroCliente() {
     const [email,setEmail] = React.useState('');
     const [senha,setSenha] = React.useState('');
     const [confSenha,setConfSenha] = React.useState('');
+    const [dados,setDados] = React.useState('');
     const obj ={
         nome,
         email,
         senha,
         confSenha
     }
+    console.log(dados)
     return (
         <>
             <div className="container pt-5">
@@ -24,7 +26,7 @@ function CadastroCliente() {
                 <div className="row">
                     <div className="col-md-12">
                         <h4 className="mb-3">Dados Pessoais</h4>
-                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/cliente', obj)} noValidate>
+                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/cliente', obj, setDados)} noValidate>
                             <div className="row">
                                 <div className="col-md-6 mb-3">
                                     <label htmlFor="nome">Nome Completo</label>
@@ -44,7 +46,7 @@ function CadastroCliente() {
                                     <label htmlFor="email">E-mail</label>
                                     <input 
                                         type="email" 
-                                        className="form-control" 
+                                        className="form-control border border-danger" 
                                         id="email" 
                                         name="email" 
                                         value={email}
@@ -52,6 +54,7 @@ function CadastroCliente() {
                                         placeholder="seuemail@exemplo.com.br"
                                         required 
                                     />
+                                    {false && <p className="text-danger d-none">{dados.errors[1].msg}</p>}
                                 </div>
                             </div>
                             <div className="mb-3">
