@@ -6,7 +6,7 @@ const StarRating = () => {
   const [hover, setHover] = useState(null);
 
   return (
-    <div>
+    <div className="d-flex">
       {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
 
@@ -29,7 +29,7 @@ const StarRating = () => {
           </label>
         );
       })}
-      <p>The rating is <span>{rating}</span></p>
+      <p> {rating}</p>
     </div>
   );
 };
