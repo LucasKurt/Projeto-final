@@ -1,6 +1,7 @@
 import React from 'react'
 
 import PerfilVendedor from "../../Components/Perfils/Vendedor";
+import PerfilCliente from "../../Components/Perfils/Cliente";
 
 import './styles.css'
 
@@ -11,6 +12,7 @@ const Perfil = () => {
             return <PerfilVendedor/>
         } else {
             return (
+                <PerfilCliente/>
                 <p> <br/> <center>Cliente</center> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> </p>
             );  
         }
