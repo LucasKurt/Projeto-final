@@ -13,6 +13,7 @@ const Perfil = () => {
         } else {
             return (
                 <PerfilCliente/>
+                <p> <br/> <center>Cliente</center> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> </p>
             );  
         }
     } else {
