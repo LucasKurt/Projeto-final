@@ -9,6 +9,7 @@ import CadastroVendedor from "../../Pages/Cadastro/Vendedor";
 import CadastroCliente from "../../Pages/Cadastro/Cliente";
 import Dicas from '../../Pages/Dicas';
 import Perfil from "../../Pages/Perfil";
+import Anuncios from "../../Pages/Anuncios";
 
 const Routes = () => {
     const auth = localStorage.getItem('auth');
@@ -31,6 +32,7 @@ const Routes = () => {
                 { auth === "vendedor" ? <Dicas /> : <Redirect to="/" /> }
             </Route>
             <Route path='/perfil' component={Perfil}/>
+            <Route path="/anuncios" component={Anuncios}/>
         </Switch>
     );
 }
