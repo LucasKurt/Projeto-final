@@ -1,7 +1,5 @@
 import React from "react";
 
-import Header from "../../PerfilsComponents/Header";
-
 const PerfilCliente = () => {
   return (
     <main role="main">
