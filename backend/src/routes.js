@@ -1,13 +1,29 @@
 const { Router } = require("express");
 const { body } = require('express-validator');
+const multer = require('multer');
 const { cpf } = require('cpf-cnpj-validator');
 
+const multerConfig = require('./config/multerConfig')
 
+const AnunciosController = require('./controller/AnunciosController')
 const clienteController = require('./controller/ClienteController');
 const vendedorController = require('./controller/VendedorController');
 const LoginController = require('./controller/LoginController');
 
 const routes = new Router;
+
+routes.get(
+    "/anuncios",
+    AnunciosController.getAllAction
+)
+
+routes.post(
+    "/anuncios",
+    multer(multerConfig).single('img'),
+    body('descricao').notEmpty().withMessage("* campo obrigatório!"),
+    body('valor').notEmpty().withMessage("* campo obrigatório!"),
+    AnunciosController.postarAnuncioAction
+);
 
 routes.post(
     "/cliente",
@@ -15,6 +31,11 @@ routes.post(
     body('email').isEmail().withMessage("* campo obrigatório!"),
     body('senha').isLength({min:6}),
     clienteController.cadastrarClienteAction
+);
+
+routes.get(
+    "/vendedor/:id",
+    vendedorController.getOneAction
 );
 
 routes.post(

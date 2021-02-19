@@ -4,6 +4,12 @@ const crypto = require('crypto');
 const vendedor = require('../model/Vendedor');
 
 class VendedorController {
+    getOneAction(req,res){
+        const {id} = req.params;
+        vendedor.id = id;
+        vendedor.getOne(req,res);
+    }
+
     cadastrarVendedorAction(req,res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {

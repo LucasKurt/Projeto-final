@@ -15,21 +15,16 @@ class Vendedor {
         this.senha;
         this.img;
     }
-
-    login(req, res) {
+    
+    getOne(req, res) {
         connection.query(
-            `SELECT * FROM vendedor WHERE email = '${this.email}' and senha = '${this.senha}'`,
-            (error,result) => {
+            `SELECT * FROM vendedor WHERE id = '${this.id}'`,
+            (error, result) => { 
                 if (error) {
                     res.status(400).json(error)
                 } else {
-                    if(result.length != 0) {
-                        //const token = jwt.sign({id: result[0].id},auth.secret,{expiresIn: 86400})
-                        res.status(201).json("vendedor")
-                    } else {
-                        res.status(404).json("login ou senha invalidos")
-                    }
-                } 
+                    res.status(201).json(result[0])
+                }
             }
         );
     }
@@ -43,6 +38,24 @@ class Vendedor {
                 } else {
                     res.status(201).json("Cadastro Efetuado")
                 }
+            }
+        );
+    }
+
+    login(req, res) {
+        connection.query(
+            `SELECT * FROM vendedor WHERE email = '${this.email}' and senha = '${this.senha}'`,
+            (error,result) => {
+                if (error) {
+                    res.status(400).json(error)
+                } else {
+                    if(result.length != 0) {
+                        //const token = jwt.sign({id: result[0].id},auth.secret,{expiresIn: 86400})
+                        res.status(201).json({tipo: "vendedor", id: result[0].id})
+                    } else {
+                        res.status(404).json("login ou senha invalidos")
+                    }
+                } 
             }
         );
     }

@@ -10,7 +10,9 @@ const ToggleSwitch = ({ toggle, setToggle }) => {
                 id="doacao" 
                 name="doacao"
                 value={toggle}
-                onClick={() => setToggle(!toggle)} 
+                onClick={() => setToggle(!toggle)}
+                checked={toggle}
+                readOnly 
             />
             <span className="slider round" />
         </label>

@@ -16,7 +16,7 @@ const PerfilHeader = ({ img, editar, negocio, telefone, nota, ativa, classe }) =
                         <h2 className="display-3">{negocio}</h2>
                         <StarRating
                             nota={nota}
-                            ativa={ativa}
+                            ratingStar={ativa}
                             classe={classe}
                         />
                         <div className="row ml-1 align-items-start">
