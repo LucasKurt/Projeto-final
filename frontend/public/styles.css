@@ -12,6 +12,11 @@ body{
     user-select: none;
 }
 
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;

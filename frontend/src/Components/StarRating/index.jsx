@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-const StarRating = () => {
-  const [rating, setRating] = useState(4.7);
+const StarRating = ({ nota, ativa, classe }) => {
+  const [rating, setRating] = useState(nota);
   const [hover, setHover] = useState(null);
 
   return (
@@ -17,19 +17,19 @@ const StarRating = () => {
               type="radio"
               name="rating"
               value={ratingValue}
-              onClick={() => false ? setRating(ratingValue) : '' }
+              onClick={() => ativa ? setRating(ratingValue) : '' }
             />
             <FaStar
-              className={"star"}
-              color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+              className={classe}
+              color={ratingValue <= (hover || rating) ? "#ffc107" : "#c0c0c2"}
               size={50}
-              onMouseEnter={() => false ? setHover(ratingValue) : '' }
+              onMouseEnter={() => ativa ? setHover(ratingValue) : '' }
               onMouseLeave={() => setHover(null)}
             />
           </label>
         );
       })}
-      <p> {rating}</p>
+      <p className="display-4 ml-2">{rating}</p>
     </div>
   );
 };

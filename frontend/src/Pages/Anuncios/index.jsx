@@ -23,6 +23,3 @@ function Anuncios() {
 }
 
 export default Anuncios;
-
-// deusNoComando
-// agora vai !

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import PerfilVendedor from "../../Components/Perfils/Vendedor";
-import PerfilCliente from "../../Components/Perfils/Cliente";
+import PerfilVendedor from "../../Components/Perfis/Vendedor";
+import PerfilCliente from "../../Components/Perfis/Cliente";
 
 import './styles.css'
 
@@ -11,9 +11,7 @@ const Perfil = () => {
         if (auth === 'vendedor') {
             return <PerfilVendedor/>
         } else {
-            return (
-                <PerfilCliente/>
-            );  
+            return <PerfilCliente/>  
         }
     } else {
         return (
