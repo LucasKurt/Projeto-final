@@ -42,6 +42,7 @@ const PerfilCliente = () => {
                   id="senha"
                   name="senha"
                   placeholder
+
                 />
                 <div className="invalid-feedback">Digite nova senha</div>
               </div>
@@ -52,6 +53,7 @@ const PerfilCliente = () => {
                   className="form-control"
                   id="email"
                   name="email"
+
                   placeholder="seuemail@exemplo.com.br"
                   required
                 />
