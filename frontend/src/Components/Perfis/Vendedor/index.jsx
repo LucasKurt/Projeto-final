@@ -1,65 +1,103 @@
 import React from "react";
 
-import Header from "../../PerfisComponents/Header";
+import { pegarDados } from "../../../functions/database";
 import ListaDeAnuncios from "../../PerfisComponents/ListaDeAnuncios"
-import Card from "../../Card";
+import Header from "../../PerfisComponents/Header";
 import Form from "../../PerfisComponents/Form";
+import Card from "../../Card";
 
 const PerfilVendedor = () => {
   const initialState = () => {
     return {descricao: '',valor: ''}
   }
-  const [values, setValues] = React.useState(initialState);
-  const [toggle,setToggle] = React.useState(true)
+  const [selectedFileUrl, setSelectedFileUrl] = React.useState('');
+  const [values,setValues] = React.useState(initialState);
+  const [toggle,setToggle] = React.useState(false);
+  const [data,setData] = React.useState('')
+  const [dados,setDados] = React.useState('')
+  const [put,setPut] = React.useState(false)
+  const [id,setId] = React.useState('')
+  const id_vendedor = localStorage.getItem('id');
+
+  React.useEffect(() => {
+    pegarDados(`http://localhost:3333/vendedor/${id_vendedor}`,setData)
+  }, [id_vendedor])
+
+  React.useEffect(() => {
+    pegarDados(`http://localhost:3333/anuncios`,setDados)
+    
+  }, [id_vendedor])
+
+  //dados && setPut(!put) 
+
+  let anuncios = [...dados]
   return (
     <main role="main">
       <Header
-        img={"perfil-sem-foto.jpg"}
+        img={data.img_perfil}
         editar={true}
-        negocio={"Artesanatos em geral"}
-        telefone={"(11) 95992-5595"}
+        negocio={data.negocio === '' ? data.nome : data.negocio}
+        telefone={data.telefone}
         nota={4.8}
-        ativa={false}
+        ratingStar={false}
         classe={''}
       />
       <div className="container">
         <div className="row">
           <div className="col-md-4 d-flex justify-content-center align-items-center">
             <Card
-              img={'ponto-de-interrogação.jpeg'}
-              imgPerfil={'perfil-sem-foto.jpg'}
+              put={put}
+              img={selectedFileUrl}
+              imgPerfil={data.img_perfil}
               descricao={values.descricao}
               valor={values.valor}
-              opc={'Aceita doação? (Marque a opção)'}
               doacao={toggle}
+              opc={'Aceita doação? (Marque a opção)'}
             />
           </div>
           <div className="col-md-8">
             <h3 className="text-center" id="titulo">Crie seu anúncio</h3>
             <Form
+              id={id}
+              put={put}
               values={values}
-              setValues={setValues}
               toggle={toggle}
+              setValues={setValues}
               setToggle={setToggle}
+              id_vendedor={id_vendedor}
+              selectedFileUrl={selectedFileUrl}
+              setSelectedFileUrl={setSelectedFileUrl}
             />
           </div>
         </div>
       </div>
       <div className="container">
-    <div className="row">
-      <div className="col-md-12">
-        <h2>Anúncios publicados</h2>
-        <hr />
-        <ListaDeAnuncios
-          img={'ponto-de-interrogação.jpeg'}
-          descricao={'Descrição do anuncio'}
-          valor={'99,99'}
-          doacao={true}
-          crud={true}
-        />
+        <div className="row">
+          <div className="col-md-12">
+            <h2>Anúncios publicados</h2>
+              {anuncios.map((anuncio) => {
+
+                return(
+                  <ListaDeAnuncios
+                    put={put}
+                    crud={true}
+                    setId={setId}
+                    setPut={setPut}
+                    id={anuncio.id}
+                    key={anuncio.id}
+                    img={anuncio.img}
+                    valor={anuncio.valor}
+                    setValues={setValues}
+                    setToggle={setToggle}
+                    doacao={!!anuncio.doacao}
+                    descricao={anuncio.descricao}
+                    setSelectedFileUrl={setSelectedFileUrl}
+                  />
+                );
+              })}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
     </main>
   );
 

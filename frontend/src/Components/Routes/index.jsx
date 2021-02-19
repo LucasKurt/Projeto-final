@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from '../../Pages/Home';
+import Sair from '../../Pages/Sair';
 import Entre from '../../Pages/Entre';
 import LoginVendedor from "../../Pages/Login/Vendedor";
 import LoginCliente from "../../Pages/Login/Cliente";
@@ -13,7 +14,6 @@ import Anuncios from "../../Pages/Anuncios";
 
 const Routes = () => {
     const auth = localStorage.getItem('auth');
-    console.log(auth);
     return(
         <Switch>
             <Route exact path='/' component={Home}/>
@@ -33,6 +33,7 @@ const Routes = () => {
             </Route>
             <Route path='/perfil' component={Perfil}/>
             <Route path="/anuncios" component={Anuncios}/>
+            <Route path="/sair" component={Sair}/>
         </Switch>
     );
 }
