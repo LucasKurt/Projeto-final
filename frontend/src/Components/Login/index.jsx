@@ -22,9 +22,11 @@ const Login = (props) => {
         history.push("/dicas");
     }
     if (dados.tipo === "cliente") {
-        localStorage.setItem('auth',dados.id)
+        localStorage.setItem('auth',dados.tipo)
         localStorage.setItem('id',dados.id);
         history.push("/perfil");
+    } else {
+        //
     }
     return(
         <form className="form-signin text-center" onSubmit={enviarDados(`http://localhost:3333/login`,obj,setDados)}>

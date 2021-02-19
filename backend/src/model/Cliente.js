@@ -36,7 +36,7 @@ class Cliente {
                 if (error) {
                     res.status(400).json(error)
                 } else {
-                    res.status(201).json("Cadastro Efetuado")
+                    res.status(201).json({tipo: "vendedor", id: result[0].id})
                 }
             }
         );

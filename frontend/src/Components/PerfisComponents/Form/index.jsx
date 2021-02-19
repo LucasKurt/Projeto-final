@@ -18,36 +18,23 @@ const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setTogg
     
     const enviarDados = (e) => {
         e.preventDefault(); 
-        if(put){
-            const data = new FormData();
-            data.append('doacao',toggle);
-            data.append('img',selectedFile);
-            data.append('valor',values.valor);
-            data.append('descricao',values.descricao);
-            
-            api.put(`/anuncios/${id}`,data)
-            .then(response => setDados(response.data))
-            .catch(error => setDados(error.response.data.errors));
-             
-            
-        } else {
-            const data = new FormData();
-            data.append('id',id_vendedor);
-            data.append('img',selectedFile);
-            data.append('descricao',values.descricao);
-            data.append('valor',values.valor);
-            data.append('doacao',toggle);
-            
-            api.post('/anuncios',data)
-            .then(response => setDados(response.data))
-            .catch(error => setDados(error.response.data.errors));
-        }
+        
+        const data = new FormData();
+        data.append('id',id_vendedor);
+        data.append('img',selectedFile);
+        data.append('descricao',values.descricao);
+        data.append('valor',values.valor);
+        data.append('doacao',toggle);
+        
+        api.post('/anuncios',data)
+        .then(response => setDados(response.data))
+        .catch(error => setDados(error.response.data.errors));
     }
 
    
     
     dados && console.log(dados);
-    dados && setPut(!put);
+    //dados && setPut(!put);
 
     return (
         <form className="needs-validation" onSubmit={enviarDados} noValidate>
