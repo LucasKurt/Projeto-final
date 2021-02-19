@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../../PerfilsComponents/Header";
 
 const PerfilVendedor = () => {
+
   return (
     <main role="main">
       <Header

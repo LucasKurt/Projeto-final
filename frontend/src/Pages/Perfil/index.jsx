@@ -11,7 +11,9 @@ const Perfil = () => {
         if (auth === 'vendedor') {
             return <PerfilVendedor/>
         } else {
-            return <PerfilCliente/>  
+            return (
+                <PerfilCliente/>
+            );  
         }
     } else {
         return (
