@@ -5,6 +5,7 @@ import Login from "../../../Components/Login";
 const LoginVendedor = () => {
     return(
         <Login
+            tipo="cliente"
             titulo="Login Cliente"
             caminho="/cadastro/cliente"
         />
