@@ -31,7 +31,6 @@ const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setTogg
         .catch(error => setDados(error.response.data.errors));
     }
 
-   
     
     dados && console.log(dados);
     //dados && setPut(!put);
@@ -80,6 +79,7 @@ const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setTogg
                     <div className="invalid-feedback">Informe o Valor</div>
                     <div className="row">
                         <div className="col mt-5 d-flex align-items-baseline justify-content-end">                            
+
                             <label>Aceita receber doação?</label>
                             <ToggleSwitch
                                 toggle={toggle}

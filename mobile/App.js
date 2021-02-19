@@ -1,15 +1,15 @@
 import React from "react";
-import { ScrollView, StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
-import Home from "./src/screens/Home";
-import Footer from "./src/Components/Footer";
+import { NavigationContainer } from "@react-navigation/native";
+import Routes from "./src/routes/index";
 
-export default function App() {
+function App() {
   return (
-    <ScrollView>
-      <StatusBar />
-      <Home />
-      <Footer />
-    </ScrollView>
+    <NavigationContainer>
+      <Routes />
+      <StatusBar style="auto" />
+    </NavigationContainer>
   );
 }
+export default App;
