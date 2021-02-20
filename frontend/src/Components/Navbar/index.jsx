@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/anuncios">Anúncios<span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to='/anuncios'>Anúncios<span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item active">
                         <Link className="nav-link" to="/perfil">Perfil<span className="sr-only">(current)</span></Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link className="nav-link" to="./anuncios">Anúncios<span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/anuncios">Anúncios<span className="sr-only">(current)</span></Link>
                     </li>
                     </ul>
                     <Link className="btn btn-outline-success" to='/entre' role="button">Entre</Link>

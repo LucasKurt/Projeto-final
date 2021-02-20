@@ -11,6 +11,7 @@ function Anuncios() {
   }, [])
 
   let anuncios = [...dados]
+  console.log(anuncios)
 
   return (
     <main role="main">
@@ -32,6 +33,8 @@ function Anuncios() {
                   valor={anuncio.valor}
                   opc={<br/>}
                   doacao={anuncio.doacao}
+                  id_vendedor={anuncio.id_vendedor}
+                  redirecionar={true}                  
                 />
               );
             })}

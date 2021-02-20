@@ -26,9 +26,7 @@ const PerfilVendedor = () => {
   React.useEffect(() => {
     pegarDados(`http://localhost:3333/anuncios`,setDados)
     
-  }, [id_vendedor])
-
-  //dados && setPut(!put) 
+  }, [id_vendedor]) 
 
   let anuncios = [...dados]
   return (
@@ -53,6 +51,7 @@ const PerfilVendedor = () => {
               valor={values.valor}
               doacao={toggle}
               opc={'Aceita doação? (Marque a opção)'}
+              redirecionar={false}
             />
           </div>
           <div className="col-md-8">

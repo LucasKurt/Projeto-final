@@ -2,10 +2,10 @@ const multer = require('multer');
 const crypto = require('crypto');
 
 const multerConfig =  {
-    dest: 'uploads/',
+    dest: 'uploads/anuncio/',
     storage: multer.diskStorage({
         destination: (req,file,cb) => {
-            cb(null,'uploads/');
+            cb(null,'uploads/anuncio/');
         },
         filename: (req,file,cb) => {
             crypto.randomBytes(16, (err, hash) => {

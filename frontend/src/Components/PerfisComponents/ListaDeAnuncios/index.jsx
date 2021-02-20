@@ -13,7 +13,7 @@ const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud, put, id, setId, 
         <>
             <div className="row mb-2">
                 <div className="col-md-3">
-                    <img className="w-100" src={`http://localhost:3333/uploads/${img}`} alt="imagem do anuncio" id="editarImg" />
+                    <img className="w-100" src={`http://localhost:3333/uploads/anuncio/${img}`} alt="imagem do anuncio" id="editarImg" />
                 </div>
                 <div className="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
                     <p>{descricao}</p>

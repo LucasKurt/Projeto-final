@@ -11,6 +11,7 @@ import CadastroCliente from "../../Pages/Cadastro/Cliente";
 import Dicas from '../../Pages/Dicas';
 import Perfil from "../../Pages/Perfil";
 import Anuncios from "../../Pages/Anuncios";
+import Vendedor from '../../Pages/Vendedor';
 
 const Routes = () => {
     const auth = localStorage.getItem('auth');
@@ -34,6 +35,7 @@ const Routes = () => {
             <Route path='/perfil' component={Perfil}/>
             <Route path="/anuncios" component={Anuncios}/>
             <Route path="/sair" component={Sair}/>
+            <Route path='/vendedor/:id' component={Vendedor}/>
         </Switch>
     );
 }
