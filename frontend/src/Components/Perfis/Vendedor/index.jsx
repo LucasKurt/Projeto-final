@@ -104,7 +104,3 @@ const PerfilVendedor = () => {
 }
 
 export default PerfilVendedor;
-
-            
-           
-           
