@@ -15,7 +15,6 @@ function CadastroCliente() {
         senha,
         confSenha
     }
-    console.log(dados)
     return (
         <>
             <div className="container pt-5">
@@ -46,7 +45,7 @@ function CadastroCliente() {
                                     <label htmlFor="email">E-mail</label>
                                     <input 
                                         type="email" 
-                                        className="form-control border border-danger" 
+                                        className="form-control" 
                                         id="email" 
                                         name="email" 
                                         value={email}

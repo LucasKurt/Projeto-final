@@ -11,6 +11,8 @@ import CadastroCliente from "../../Pages/Cadastro/Cliente";
 import Dicas from '../../Pages/Dicas';
 import Perfil from "../../Pages/Perfil";
 import Anuncios from "../../Pages/Anuncios";
+import Vendedor from '../../Pages/Vendedor';
+import PrivateRoute from '../Private/PrivateRoute';
 
 const Routes = () => {
     const auth = localStorage.getItem('auth');
@@ -28,12 +30,11 @@ const Routes = () => {
             <Route path="/cadastro">
                 { <Redirect to="/" /> }
             </Route>
-            <Route path="/dicas">
-                { auth === "vendedor" ? <Dicas /> : <Redirect to="/" /> }
-            </Route>
+            <PrivateRoute path="/dicas" component={Dicas}/>
             <Route path='/perfil' component={Perfil}/>
             <Route path="/anuncios" component={Anuncios}/>
             <Route path="/sair" component={Sair}/>
+            <Route path='/vendedor/:id' component={Vendedor}/>
         </Switch>
     );
 }

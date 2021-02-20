@@ -26,9 +26,7 @@ const PerfilVendedor = () => {
   React.useEffect(() => {
     pegarDados(`http://localhost:3333/anuncios`,setDados)
     
-  }, [id_vendedor])
-
-  //dados && setPut(!put) 
+  }, [id_vendedor]) 
 
   let anuncios = [...dados]
   return (
@@ -76,25 +74,26 @@ const PerfilVendedor = () => {
         <div className="row">
           <div className="col-md-12">
             <h2>Anúncios publicados</h2>
-              {anuncios.map((anuncio) => {
-
-                return(
-                  <ListaDeAnuncios
-                    put={put}
-                    crud={true}
-                    setId={setId}
-                    setPut={setPut}
-                    id={anuncio.id}
-                    key={anuncio.id}
-                    img={anuncio.img}
-                    valor={anuncio.valor}
-                    setValues={setValues}
-                    setToggle={setToggle}
-                    doacao={!!anuncio.doacao}
-                    descricao={anuncio.descricao}
-                    setSelectedFileUrl={setSelectedFileUrl}
-                  />
-                );
+              {anuncios.map((anuncio,index) => {
+                if(id_vendedor === index){
+                  return(
+                    <ListaDeAnuncios
+                      put={put}
+                      crud={true}
+                      setId={setId}
+                      setPut={setPut}
+                      id={anuncio.id}
+                      key={anuncio.id}
+                      img={anuncio.img}
+                      valor={anuncio.valor}
+                      setValues={setValues}
+                      setToggle={setToggle}
+                      doacao={!!anuncio.doacao}
+                      descricao={anuncio.descricao}
+                      setSelectedFileUrl={setSelectedFileUrl}
+                    />
+                  );
+                }
               })}
           </div>
         </div>
@@ -105,7 +104,3 @@ const PerfilVendedor = () => {
 }
 
 export default PerfilVendedor;
-
-            
-           
-           

@@ -36,7 +36,7 @@ class Vendedor {
                 if (error) {
                     res.status(400).json(error)
                 } else {
-                    res.status(201).json("Cadastro Efetuado")
+                    res.status(201).json({tipo: "vendedor", msg: "Cadastro efetuado com sucesso"})
                 }
             }
         );

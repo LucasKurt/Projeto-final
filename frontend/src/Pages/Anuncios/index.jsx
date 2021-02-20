@@ -11,6 +11,7 @@ function Anuncios() {
   }, [])
 
   let anuncios = [...dados]
+  console.log(anuncios)
 
   return (
     <main role="main">
@@ -22,20 +23,24 @@ function Anuncios() {
       <div className="album py-5 bg-light">
         <div className="container">
           <div className="row">
-            {anuncios.map((anuncio) => {
-              return  (
-                <Card
-                  img={`http://localhost:3333/uploads/${anuncio.img}`}
-                  imgPerfil={`/images/perfil_vendedor/perfil-sem-foto.jpg`}
-                  descricao={anuncio.descricao}
-                  valor={anuncio.valor}
-                  opc={<br/>}
-                  doacao={anuncio.doacao}
-                  id_vendedor={anuncio.id_vendedor}
-                  redirecionar={true}
-                />
-              );
-            })}
+            
+              {anuncios.map((anuncio) => {
+                return  (
+                <div className="col-md-4">
+                  <Card
+                    img={`http://localhost:3333/uploads/anuncio/${anuncio.img}`}
+                    imgPerfil={`perfil-sem-foto.jpg`}
+                    descricao={anuncio.descricao}
+                    valor={anuncio.valor}
+                    opc={<br/>}
+                    doacao={anuncio.doacao}
+                    id_vendedor={anuncio.id_vendedor}
+                    redirecionar={true}
+                  />
+                </div>
+                );
+              })}
+            
           </div>
         </div>
       </div>
