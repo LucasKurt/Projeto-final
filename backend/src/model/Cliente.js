@@ -18,7 +18,7 @@ class Cliente {
                 if (error) {
                     res.status(400).json(error)
                 } else {
-                    res.status(201).json("Cadastro Efetuado")
+                    res.status(201).json({tipo: "cliente", msg: "Cadastro efetuado com sucesso"})
                 }
             }
         );
@@ -42,8 +42,6 @@ class Cliente {
         );
     }
 
-<<<<<<< HEAD
-=======
     cadastrar(req, res) {
         connection.query(
             `INSERT INTO cliente ( nome, email, senha ) values ('${this.nome}', '${this.email}', '${this.senha}' )`,
@@ -56,8 +54,5 @@ class Cliente {
             }
         );
     }
-
->>>>>>> b8f833f3ec5fc2fc899869b7e98815b3d615cccc
-}
 
 module.exports = new Cliente;

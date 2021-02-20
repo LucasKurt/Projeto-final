@@ -2,7 +2,6 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 const Card = ({ img, imgPerfil, descricao, valor, opc, doacao, id_vendedor, redirecionar }) => {
-
     // if (!img) {
     //     img =  '/images/imagens_anuncios/ponto-de-interrogação.jpeg'
     // }
@@ -13,6 +12,7 @@ const Card = ({ img, imgPerfil, descricao, valor, opc, doacao, id_vendedor, redi
     const history = useHistory()
     
     return (
+
         <div className="col" onClick={() => redirecionar && history.push(`/vendedor/${id_vendedor}`)}>
             <div className="card mb-4 shadow-sm">
                 <img className="img-fluid" style={{maxHeight:255}} id="imgPlaceholder" src={img === '' ? 'http://localhost:3333/uploads/anuncio/ponto-de-interrogação.jpeg' : img} alt="Imagem do anuncio" />

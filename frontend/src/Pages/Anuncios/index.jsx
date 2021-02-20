@@ -23,7 +23,6 @@ function Anuncios() {
       <div className="album py-5 bg-light">
         <div className="container">
           <div className="row">
-            
               {anuncios.map((anuncio) => {
                 return  (
                 <div className="col-md-4">
@@ -40,7 +39,6 @@ function Anuncios() {
                 </div>
                 );
               })}
-            
           </div>
         </div>
       </div>
