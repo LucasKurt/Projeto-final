@@ -26,8 +26,8 @@ function Anuncios() {
             {anuncios.map((anuncio) => {
               return  (
                 <Card
-                  img={`http://localhost:3333/uploads/${anuncio.img}`}
-                  imgPerfil={`/images/perfil_vendedor/perfil-sem-foto.jpg`}
+                  img={`http://localhost:3333/uploads/anuncio/${anuncio.img}`}
+                  imgPerfil={`perfil-sem-foto.jpg`}
                   descricao={anuncio.descricao}
                   valor={anuncio.valor}
                   opc={<br/>}
