@@ -2,12 +2,14 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Card = ({ img, imgPerfil, descricao, valor, opc, doacao, id_vendedor, redirecionar }) => {
+
     // if (!img) {
     //     img =  '/images/imagens_anuncios/ponto-de-interrogação.jpeg'
     // }
     // if (put) {
     //     img = `http://localhost:3333/uploads/${img}`
     // }
+
     const history = useHistory()
 
     return (

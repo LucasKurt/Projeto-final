@@ -16,6 +16,7 @@ const Login = (props) => {
         senha,
         tipo: props.tipo
     }
+    console.log(dados)
     if (dados.tipo === "vendedor") {
         localStorage.setItem('auth',dados.tipo);
         localStorage.setItem('id',dados.id);
