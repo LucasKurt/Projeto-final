@@ -53,6 +53,7 @@ const PerfilVendedor = () => {
               valor={values.valor}
               doacao={toggle}
               opc={'Aceita doação? (Marque a opção)'}
+              redirecionar={false}
             />
           </div>
           <div className="col-md-8">
