@@ -25,13 +25,14 @@ function Anuncios() {
             {anuncios.map((anuncio) => {
               return  (
                 <Card
-                  className="cow-4"
                   img={`http://localhost:3333/uploads/${anuncio.img}`}
                   imgPerfil={`/images/perfil_vendedor/perfil-sem-foto.jpg`}
                   descricao={anuncio.descricao}
                   valor={anuncio.valor}
                   opc={<br/>}
                   doacao={anuncio.doacao}
+                  id_vendedor={anuncio.id_vendedor}
+                  redirecionar={true}
                 />
               );
             })}
