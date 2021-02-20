@@ -26,7 +26,6 @@ function Anuncios() {
             {anuncios.map((anuncio) => {
               return  (
                 <Card
-                  className="cow-4"
                   img={`http://localhost:3333/uploads/${anuncio.img}`}
                   imgPerfil={`/images/perfil_vendedor/perfil-sem-foto.jpg`}
                   descricao={anuncio.descricao}
