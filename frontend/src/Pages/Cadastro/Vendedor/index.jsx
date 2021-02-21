@@ -97,8 +97,9 @@ const CadastroVendedor = () => {
                                     value={values.endereco}
                                     onChange={atualizar}
                                     erro={erros.endereco}
-                                    // msgErro={erros.endereco.msg}
+                                    //msgErro={erros.endereco.msg}
                                 />
+                                
                                 <Input
                                     type="text"
                                     className="col-md-4 mb-3"
