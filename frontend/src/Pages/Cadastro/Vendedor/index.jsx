@@ -1,28 +1,55 @@
 import React from "react";
 
+import Input from "../../../Components/Input";
 import { enviarDados } from "../../../functions/database";
 
 const CadastroVendedor = () => {
-    const [dados,setDados] = React.useState('')
-    const [nome,setNome] = React.useState('')
-    const [negocio,setNegocio] = React.useState('')
-    const [endereco,setEndereco] = React.useState('')
-    const [cpf,setCpf] = React.useState('')
-    const [email,setEmail] = React.useState('')
-    const [telefone,setTelefone] = React.useState('')
-    const [senha,setSenha] = React.useState('')
-    const [confSenha,setConfSenha] = React.useState('')
-    const obj ={
-        nome,
-        negocio,
-        endereco,
-        cpf,
-        email,
-        telefone,
-        senha,
-        confSenha
+
+    const initialState = () => {
+        return(
+            {
+                nome: '',
+                negocio: '',
+                endereco: '',
+                cpf: '',
+                email: '',
+                telefone: '',
+                senha: '',
+                confsenha: '',
+            }
+        );
     }
-    console.log(dados);
+
+    const erros = {
+        nome: false,
+        negocio: false,
+        endereco: false,
+        cpf: false,
+        email: false,
+        telefone: false,
+        senha: false,
+        confsenha: false,
+    }
+
+    const [values,setValues] = React.useState(initialState)
+    const [dados,setDados] = React.useState('')
+
+    const atualizar = (event) => {
+        const {name,value} = event.target
+        setValues({
+            ...values,
+            [name]: value
+        })
+    } 
+
+    if(dados) {
+        for (const dado of dados) {
+            erros[dado.param] = true
+        }
+    }
+
+    console.log(dados)
+
     return (
         <>
             <div className="container pt-5">
@@ -33,130 +60,105 @@ const CadastroVendedor = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <h4 className="mb-3">Dados Pessoais</h4>
-                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/vendedor', obj, setDados)} noValidate>
+                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/vendedor', values, setDados)} noValidate>
                             <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <label htmlFor="nome">Nome Completo</label>
-                                    <input 
-                                        type="text" 
-                                        className="form-control" 
-                                        id="nome" 
-                                        name="nome"                        
-                                        value={nome}
-                                        onChange={event => setNome(event.target.value)}
-                                        placeholder="" 
-                                        required 
-                                    />
-                                    <div className="invalid-feedback">Insira seu nome.</div>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <label htmlFor="negocio">
-                                        Nome do negócio<span className="text-muted">(Opcional)</span>
-                                    </label>
-                                    <input 
-                                        type="text" 
-                                        className="form-control" 
-                                        id="negocio" 
-                                        name="negocio"
-                                        value={negocio}
-                                        onChange={event => setNegocio(event.target.value)} 
-                                        placeholder=""
-                                    />
-                                </div>
+                                <Input
+                                    type="text"
+                                    className="col-md-6 mb-3"
+                                    label="Nome"
+                                    name="nome"
+                                    placeholder=""
+                                    value={values.nome}
+                                    onChange={atualizar}
+                                    erro={erros.nome}
+                                    msgErro={'* Campo obrigatório'}
+                                />
+                                
+                                <Input
+                                    type="text"
+                                    className="col-md-6 mb-3"
+                                    label="Nome do negocio"
+                                    span=" (opcional)"
+                                    name="negocio"
+                                    placeholder=""
+                                    value={values.negocio}
+                                    onChange={atualizar}
+                                    erro={erros.negocio}
+                                    msgErro={'* Campo obrigatório'}
+                                />
                             </div>
                             <div className="row">
-                                <div className="col-md-8 mb-3">
-                                    <label htmlFor="endereco">Endereço</label>
-                                    <input 
-                                        type="text" 
-                                        className="form-control" 
-                                        id="endereco" 
-                                        name="endereco"
-                                        value={endereco}
-                                        onChange={event => setEndereco(event.target.value)} 
-                                        placeholder="" required
-                                    />
-                                    <div className="invalid-feedback">Digite o endereço</div>
-                                </div>
-                                <div className="col-md-4 mb-3">
-                                    <label htmlFor="cpf">CPF <span className="text-muted">(Somente numeros)</span></label>
-                                    <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    id="cpf" 
+                                <Input
+                                    type="text"
+                                    className="col-md-8 mb-3"
+                                    label="Endereço"
+                                    name="endereco"
+                                    placeholder=""
+                                    value={values.endereco}
+                                    onChange={atualizar}
+                                    erro={erros.endereco}
+                                    // msgErro={erros.endereco.msg}
+                                />
+                                <Input
+                                    type="text"
+                                    className="col-md-4 mb-3"
+                                    label="Cpf"
+                                    span="(asdhflkja)"
                                     name="cpf"
-                                    value={cpf}
-                                    onChange={event => setCpf(event.target.value)}  
-                                    placeholder="000.000.000-00" 
-                                    required 
+                                    placeholder="000.000.000.00"
+                                    value={values.cpf}
+                                    onChange={atualizar}
+                                    erro={erros.cpf}
+                                    // msgErro={erros.cpf.msg}
                                 />
-                                    <div className="invalid-feedback">Digite o CPF</div>
-                                </div>
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="email">Email</label>
-                                <input 
-                                    type="email" 
-                                    className="form-control" 
-                                    id="email" 
-                                    name="email"
-                                    value={email}
-                                    onChange={event => setEmail(event.target.value)}  
-                                    placeholder="seuemail@exemplo.com.br" 
-                                    required 
-                                />
-                                <div className="invalid-feedback">
-                                    Digite um endereço de email válido.
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="telefone">Telefone</label>
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
-                                    id="telefone" 
-                                    name="telefone"
-                                    value={telefone}
-                                    onChange={event => setTelefone(event.target.value)}  
-                                    placeholder="(00) 00000-0000" 
-                                    required 
-                                />
-                                <div className="invalid-feedback">
-                                    Digite um telefone válido.
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="senha">Senha</label>
-                                <input
-                                    type="password" 
-                                    className="form-control" 
-                                    id="senha" 
-                                    name="senha"
-                                    value={senha}
-                                    onChange={event => setSenha(event.target.value)}  
-                                    placeholder="Digite sua senha" 
-                                    required 
-                                />
-                                <div className="invalid-feedback">
-                                    Digite uma senha válida.
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="conf_senha">Confirme sua senha</label>
-                                <input 
-                                    type="password" 
-                                    className="form-control" 
-                                    id="confSenha" 
-                                    name="confSenha"
-                                    value={confSenha}
-                                    onChange={event => setConfSenha(event.target.value)}  
-                                    placeholder="Confirme sua senha" 
-                                    required 
-                                />
-                                <div className="invalid-feedback">
-                                    As senhas devem ser iguais.
-                                </div>
-                            </div>
+                            <Input
+                                type="email"
+                                className="mb-3"
+                                label="Email"
+                                name="email"
+                                placeholder=""
+                                value={values.email}
+                                onChange={atualizar}
+                                erro={erros.email}
+                                // msgErro={erros.email.msg}
+                            />
+
+                            <Input
+                                type="text"
+                                className="mb-3"
+                                label="telefone"
+                                name="telefone"
+                                placeholder=""
+                                value={values.telefone}
+                                onChange={atualizar}
+                                erro={erros.telefone}
+                                // msgErro={erros.telefone.msg}
+                            />
+
+                            <Input
+                                type="password"
+                                className="mb-3"
+                                label="Senha"
+                                name="senha"
+                                placeholder=""
+                                value={values.senha}
+                                onChange={atualizar}
+                                erro={erros.senha}
+                                // msgErro={erros.senha.msg}
+                            />
+
+                            <Input
+                                type="password"
+                                className="mb-3"
+                                label="Confirme a sua senha"
+                                name="confSenha"
+                                placeholder=""
+                                value={values.confSenha}
+                                onChange={atualizar}
+                                erro={erros.confsenha}
+                                // msgErro={erros.senha.msg}
+                            />
                             <br />
                             <button className="btn btn-primary btn-lg btn-block" type="submit">
                                 Confirmar cadastro

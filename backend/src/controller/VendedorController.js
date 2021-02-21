@@ -13,13 +13,13 @@ class VendedorController {
     cadastrarVendedorAction(req,res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json(errors.array());
         }
         
         const {nome,negocio,endereco,cpf,email,telefone,senha,confSenha} = req.body;
 
         if (senha != confSenha) {
-            return res.status(400).json("As senhas devem ser iguais");
+            return res.status(400).json([{param: "confSenha", msg: "As senhas devem ser iguais"}]);
         }
         
         vendedor.nome = nome;

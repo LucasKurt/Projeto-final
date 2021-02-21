@@ -34,9 +34,9 @@ class Vendedor {
             `INSERT INTO vendedor ( nome, negocio, endereco, cpf, email, telefone, senha ) values ('${this.nome}', '${this.negocio}', '${this.endereco}', '${this.cpf}', '${this.email}', '${this.telefone}', '${this.senha}' )`,
             (error, result) => { 
                 if (error) {
-                    res.status(400).json(error)
+                    res.status(400).json([{msg: error.sqlMessage}])
                 } else {
-                    res.status(201).json({tipo: "vendedor", msg: "Cadastro efetuado com sucesso"})
+                    res.status(201).json([{tipo: "vendedor", msg: "Cadastro efetuado com sucesso"}])
                 }
             }
         );

@@ -93,7 +93,7 @@ const PerfilVendedor = () => {
                       setSelectedFileUrl={setSelectedFileUrl}
                     />
                   );
-                }
+                } else return ''
               })}
           </div>
         </div>

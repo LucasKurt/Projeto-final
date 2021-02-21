@@ -15,7 +15,6 @@ import Vendedor from '../../Pages/Vendedor';
 import PrivateRoute from '../Private/PrivateRoute';
 
 const Routes = () => {
-    const auth = localStorage.getItem('auth');
     return(
         <Switch>
             <Route exact path='/' component={Home}/>

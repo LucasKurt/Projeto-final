@@ -25,6 +25,11 @@ routes.post(
     AnunciosController.postarAnuncioAction
 );
 
+routes.get(
+    "/cliente/:id",
+    clienteController.getOneAction
+)
+
 routes.post(
     "/cliente",
     body('nome').isLength({min:3}),
@@ -33,6 +38,11 @@ routes.post(
     clienteController.cadastrarClienteAction
 );
 
+routes.put(
+    "/cliente/:id",
+    clienteController.atualizarPerfilAction
+)
+
 routes.get(
     "/vendedor/:id",
     vendedorController.getOneAction
@@ -40,18 +50,18 @@ routes.get(
 
 routes.post(
     "/vendedor",
-    body('nome').isLength({min:3}),
+    body('nome').isLength({min:3}).withMessage("* campo obrigatório!"),
     body('negocio'),
-    body('endereco'),    
+    body('endereco').notEmpty().withMessage("* campo obrigatório!"),    
     body('cpf').custom(value => {
         if(!cpf.isValid(cpf.strip(value))) {
             return Promise.reject("CPF invalido!");
         }
         return true;
     }),
-    body('email').isEmail(),
-    body('telefone'),
-    body('senha').isLength({min:6}),
+    body('email').isEmail().withMessage("* campo obrigatório!"),
+    body('telefone').notEmpty().withMessage("* campo obrigatório!"),
+    body('senha').isLength({min:6}).withMessage("* campo obrigatório!"),
     vendedorController.cadastrarVendedorAction
 );
 
