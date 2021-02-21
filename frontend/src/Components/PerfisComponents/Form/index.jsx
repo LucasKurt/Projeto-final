@@ -25,7 +25,7 @@ const Form = ({ id_vendedor, values, setValues, img, setImg }) => {
         data.append('img',img.img);
 
         if(values.put){
-            api.post(`/anuncios/${values.id_anuncio}`,data)
+            api.put(`/anuncios/${values.id_anuncio}`,data)
             .then(response => setValues({...values,anuncioPublicado: response.data}))
             .catch(error => setValues({...values,anuncioPublicado: error.response.data.errors}));
         } else{
@@ -35,7 +35,7 @@ const Form = ({ id_vendedor, values, setValues, img, setImg }) => {
         }
     }
 
-    console.log(values.anuncioPublicado);
+    console.log(values);
 
     return (
         <form className="needs-validation" onSubmit={enviarDados} noValidate>

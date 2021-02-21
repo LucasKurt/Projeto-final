@@ -42,7 +42,8 @@ const PerfilVendedor = () => {
 
   let anuncios = [...dados]
 
-  console.log(img)
+  console.log(img);
+  console.log(values);
 
   return (
     <main role="main">
@@ -94,8 +95,10 @@ const PerfilVendedor = () => {
                       values={values}
                       key={anuncio.id}
                       id_anuncio={anuncio.id}
-                      img={anuncio.img}
+                      imgAnuncio={anuncio.img}
                       setValues={setValues}
+                      img={img}
+                      setImg={setImg}
                       valor={anuncio.valor}
                       doacao={!!anuncio.doacao}
                       descricao={anuncio.descricao}

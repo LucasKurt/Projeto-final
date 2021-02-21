@@ -1,16 +1,19 @@
 import React from 'react'
 //import { Link } from "react-router-dom";
 
-const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud , values, setValues, id_anuncio }) => {
+const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio }) => {
     const editar =() => {
         setValues({
-            ...values,
-            linkArquivo: `http://localhost:3333/uploads/${img}`,
+            ...values,            
             descricao,
             valor,
             toggle: doacao,
             put: true,
             id_anuncio 
+        })
+        setImg({
+            ...img,
+            imgUrl: `http://localhost:3333/uploads/${imgAnuncio}`
         })
     }
     return (
@@ -18,7 +21,7 @@ const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud , values, setValu
             <div className="row mb-2">
                 <div className="col-md-3">
 
-                    <img className="img-fluid" src={`http://localhost:3333/uploads/${img}`} alt="imagem do anuncio" id="editarImg" />
+                    <img className="img-fluid" src={`http://localhost:3333/uploads/${imgAnuncio}`} alt="imagem do anuncio" id="editarImg" />
                 </div>
                 <div className="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
                     <p>{descricao}</p>
