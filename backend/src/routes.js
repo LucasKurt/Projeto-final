@@ -33,6 +33,11 @@ routes.put(
     AnunciosController.editarAnuncioAction,
 );
 
+routes.delete(
+    "/anuncios/:id",
+    AnunciosController.deletarAnuncioAction,
+);
+
 routes.get(
     "/cliente/:id",
     clienteController.getOneAction

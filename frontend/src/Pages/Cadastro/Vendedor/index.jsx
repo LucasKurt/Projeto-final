@@ -103,8 +103,8 @@ const CadastroVendedor = () => {
                                 <Input
                                     type="text"
                                     className="col-md-4 mb-3"
-                                    label="Cpf"
-                                    span="(asdhflkja)"
+                                    label="CPF"
+                                    span=""
                                     name="cpf"
                                     placeholder="000.000.000.00"
                                     value={values.cpf}

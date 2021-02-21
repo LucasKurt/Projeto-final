@@ -48,6 +48,19 @@ class Anuncio {
             }
         )
     }
+
+    deletarAnuncio(req,res) {
+        connection.query(            
+            `DELETE FROM anuncios WHERE id = '${this.id}'`,
+            (error,result) => {
+                if (error) {
+                    res.status(400).json({errors: error});
+                } else {
+                    res.status(201).json(result);
+                }
+            }
+        )
+    }
 }
 
 module.exports = new Anuncio

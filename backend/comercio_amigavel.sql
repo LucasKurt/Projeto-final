@@ -60,4 +60,4 @@ ALTER TABLE `vendedor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `anuncios`
-  ADD CONSTRAINT `fk_anuncios` FOREIGN KEY (`id_vendedor`) REFERENCES `anuncios` (`id`);
+  ADD CONSTRAINT `fk_anuncios` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedor` (`id`);

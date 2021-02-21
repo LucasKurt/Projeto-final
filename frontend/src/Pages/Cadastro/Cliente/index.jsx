@@ -3,7 +3,7 @@ import React from "react";
 import Input from "../../../Components/Input";
 import { enviarDados } from "../../../functions/database";
 
-const CadastroVendedor = () => {
+const CadastroCliente = () => {
 
     const initialState = () => {
         return(
@@ -34,11 +34,11 @@ const CadastroVendedor = () => {
         })
     } 
 
-    if(dados) {
-        for (const dado of dados) {
-            erros[dado.param] = true
-        }
-    }
+    // if(dados) {
+    //     for (const dado of dados) {
+    //         erros[dado.param] = true
+    //     }
+    // }
 
     console.log(dados)
 
@@ -52,7 +52,7 @@ const CadastroVendedor = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <h4 className="mb-3">Dados Pessoais</h4>
-                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/vendedor', values, setDados)} noValidate>
+                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/cliente', values, setDados)} noValidate>
                             <div className="row">
                                 <Input
                                     type="text"
@@ -119,4 +119,4 @@ const CadastroVendedor = () => {
     );
 }
 
-export default CadastroVendedor;
+export default CadastroCliente;

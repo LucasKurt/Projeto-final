@@ -1,7 +1,9 @@
 import React from 'react'
-//import { Link } from "react-router-dom";
+
+import api from '../../../functions/services'
 
 const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio }) => {
+    const [del,setDel] = React.useState('');
     const editar =() => {
         setValues({
             ...values,            
@@ -16,6 +18,13 @@ const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, 
             imgUrl: `http://localhost:3333/uploads/${imgAnuncio}`
         })
     }
+    const deletar = (event) => {
+        event.preventDefault();
+        api.delete(`http://localhost:3333/anuncios/${id_anuncio}`)
+        .then(response => setDel(response.data))
+        .catch(error => setDel(error.response.data.errors));
+    }
+    console.log(del)
     return (
         <>
             <div className="row mb-2">
@@ -29,7 +38,7 @@ const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, 
                     <p>{doacao && 'Aceito receber doação'}</p>
                     {crud && <div className="btn-group">
                         <a href={"#foto"} className="btn btn-secondary rounded" onClick={editar}>Editar</a>
-                        <button className="btn btn-danger rounded ml-2" data-toggle="modal" data-target="#modalDeletar">Deletar</button>
+                        <form onSubmit={deletar} ><button className="btn btn-danger rounded ml-2" type='submit' >Deletar</button></form>
                     </div>}
                 </div>
             </div>

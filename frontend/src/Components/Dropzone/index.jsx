@@ -7,8 +7,8 @@ const Dropzone = ({ img, setImg }) => {
         const fileUrl = URL.createObjectURL(file);
         setImg({
             ...img,
-            imgUrl: fileUrl,
             img: file,
+            imgUrl: fileUrl,
         });
        /*eslint-disable-next-line react-hooks/exhaustive-deps*/
     }, [])

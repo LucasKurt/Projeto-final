@@ -50,6 +50,12 @@ class AnunciosController {
         anuncio.doacao = doacao;
         anuncio.editarAnuncio(req,res)
     }
+
+    deletarAnuncioAction(req,res){
+        const { id } = req.params;
+        anuncio.id = id;
+        anuncio.deletarAnuncio(req,res);
+    }
 }
 
 module.exports = new AnunciosController

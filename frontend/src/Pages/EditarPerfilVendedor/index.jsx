@@ -15,16 +15,22 @@ const EditarPerfilVendedor = () => {
                 endereco: '',
                 email: '',
                 telefone: '',
-                arquivo: '',
-                linkArquivo: '',
             }
         );
     }
 
+    const initialImg = () => {
+        return {
+          img: '',
+          imgUrl: '',
+        }
+    }
+
     const id = localStorage.getItem('id');
-    const [data,setData] = React.useState(initialState);
-    const [dados,setDados] = React.useState(initialState);
+    const [data,setData] = React.useState('');
+    const [dados,setDados] = React.useState('');
     const [values,setValues] = React.useState(initialState);
+    const [img,setImg] = React.useState(initialImg);
 
     const atualizar = (event) => {
         const {name,value} = event.target;
@@ -48,7 +54,7 @@ const EditarPerfilVendedor = () => {
         data.append('endereco',values.endereco);
         data.append('email',values.email);
         data.append('telefone',values.telefone);
-        data.append('img',values.arquivo);
+        data.append('img',img.img);
         
         api.put(`/vendedor/${id}`,data)
         .then(response => setDados(response.data))
@@ -62,7 +68,7 @@ const EditarPerfilVendedor = () => {
         <>
             <div className="container mt-5">
                 <div className="py-5 text-center">
-                    <img className="d-block mx-auto mb-2" src={values.linkArquivo ? values.linkArquivo : `http://localhost:3333/uploads/${data.img_perfil}`} id="imgPlaceholder" alt="Imagem de Perfil" width={200} height={200} />
+                    <img className="d-block mx-auto mb-2" src={img.imgUrl ? img.imgUrl : `http://localhost:3333/uploads/${data.img_perfil}`} id="imgPlaceholder" alt="Imagem de Perfil" width={200} height={200} />
                     <br />
                     <h2>Editar perfil</h2>
                 </div>
@@ -75,8 +81,8 @@ const EditarPerfilVendedor = () => {
                             
                             <div className="custom-file mb-3">
                             <Dropzone
-                                values={values}
-                                setValues={setValues}
+                                img={img}
+                                setImg={setImg}
                             />
                             </div>
                             

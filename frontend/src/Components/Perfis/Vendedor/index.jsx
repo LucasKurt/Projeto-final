@@ -12,7 +12,6 @@ const PerfilVendedor = () => {
       valor: '',
       descricao: '',
       id_anuncio: '',
-      anuncioPublicado: '',
       toggle: false,
       put: false,
     }
@@ -27,31 +26,30 @@ const PerfilVendedor = () => {
 
   const [values,setValues] = React.useState(initialState);
   const [img,setImg] = React.useState(initialImg);
-  const [data,setData] = React.useState('')
-  const [dados,setDados] = React.useState('')
+  const [dadosVendedor,setDadosVendedor] = React.useState(initialState)
+  const [dadosAnuncios,setDadosAnuncios] = React.useState(initialState)
   const id_vendedor = localStorage.getItem('id');
 
   React.useEffect(() => {
-    pegarDados(`http://localhost:3333/vendedor/${id_vendedor}`,setData)
+    pegarDados(`http://localhost:3333/vendedor/${id_vendedor}`,setDadosVendedor)
   }, [id_vendedor])
 
   React.useEffect(() => {
-    pegarDados(`http://localhost:3333/anuncios`,setDados)
+    pegarDados(`http://localhost:3333/anuncios`,setDadosAnuncios)
     
-  }, [values.anuncioPublicado]) 
+  }, []) 
 
-  let anuncios = [...dados]
+  //let anuncios = [...dados]
 
-  console.log(img);
-  console.log(values);
+  console.log(dadosAnuncios);
 
   return (
     <main role="main">
       <Header
-        img={data.img_perfil}
+        img={dadosVendedor.img_perfil}
         editar={true}
-        negocio={data.negocio === '' ? data.nome : data.negocio}
-        telefone={data.telefone}
+        negocio={dadosVendedor.negocio === '' ? dadosVendedor.nome : dadosVendedor.negocio}
+        telefone={dadosVendedor.telefone}
         nota={4.8}
         ratingStar={false}
         classe={''}
@@ -61,8 +59,8 @@ const PerfilVendedor = () => {
           <div className="col-md-4 d-flex justify-content-center align-items-center">
             <Card
               img={img.imgUrl}
-              imgPerfil={data.img_perfil}
-              negocio={data.negocio ? data.negocio: data.nome}
+              imgPerfil={dadosVendedor.img_perfil}
+              negocio={dadosVendedor.negocio ? dadosVendedor.negocio: dadosVendedor.nome}
               descricao={values.descricao}
               valor={values.valor}
               doacao={values.toggle}
@@ -87,7 +85,7 @@ const PerfilVendedor = () => {
         <div className="row">
           <div className="col-md-12">
             <h2>Anúncios publicados</h2>
-              {anuncios.map((anuncio) => {
+              {/* {anuncios.map((anuncio) => {
                 if(id_vendedor === anuncio.id_vendedor.toString()){
                   return(
                     <ListaDeAnuncios
@@ -105,7 +103,7 @@ const PerfilVendedor = () => {
                     />
                   );
                 } else return ''
-              })}
+              })} */}
           </div>
         </div>
       </div>
