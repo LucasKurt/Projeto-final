@@ -22,7 +22,7 @@ routes.post(
     multer(multerConfig).single('img'),
     body('descricao').notEmpty().withMessage("* campo obrigatório!"),
     body('valor').notEmpty().withMessage("* campo obrigatório!"),
-    AnunciosController.postarAnuncioAction
+    AnunciosController.postarAnuncioAction,
 );
 
 routes.get(
@@ -63,6 +63,12 @@ routes.post(
     body('telefone').notEmpty().withMessage("* campo obrigatório!"),
     body('senha').isLength({min:6}).withMessage("* campo obrigatório!"),
     vendedorController.cadastrarVendedorAction
+);
+
+routes.put(
+    "/vendedor/:id",    
+    multer(multerConfig).single('img'),
+    vendedorController.atualizarPerfilAction
 );
 
 routes.post(

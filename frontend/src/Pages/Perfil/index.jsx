@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom';
 
 import PerfilVendedor from "../../Components/Perfis/Vendedor";
 import PerfilCliente from "../../Components/Perfis/Cliente";
@@ -15,7 +16,7 @@ const Perfil = () => {
         }
     } else {
         return (
-            <p> <br/> <center>Deslogado</center> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> </p>
+            <Redirect to='/' />
         );
     }
 }

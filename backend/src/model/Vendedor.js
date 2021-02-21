@@ -13,7 +13,7 @@ class Vendedor {
         this.email;
         this.telefone;
         this.senha;
-        this.img;
+        this.img_perfil;
     }
     
     getOne(req, res) {
@@ -40,6 +40,68 @@ class Vendedor {
                 }
             }
         );
+    }
+
+    atualizarPerfil(req,res) {
+
+        let nome = this.nome;
+        let negocio = this.negocio;
+        let endereco = this.endereco;
+        let email = this.email;
+        let telefone = this.telefone;
+        let img = this.img_perfil;
+        let set = ''
+        if(nome) {
+            set = `nome = '${nome}'`;
+        }
+        if(negocio) {
+            if (set) {
+                set += `, negocio = '${negocio}'`;
+            } else {
+                set = `negocio = '${negocio}'`;
+            }
+        }
+        if(endereco) {
+            if (set) {
+                set += `, endereco = '${endereco}'`;
+            } else {
+                set = `endereco = '${endereco}'`;
+            }
+        }
+        if(email) {
+            if (set) {
+                set += `, email = '${email}'`;
+            } else {
+                set = `email = '${email}'`;
+            }
+        }
+        if(telefone) {
+            if (set) {
+                set += `, telefone = '${telefone}'`
+            } else {
+                set = `telefone = '${telefone}'`
+            }
+        }
+
+        if(img) {
+            if (set) {
+                set += `, img_perfil = '${img}'`
+            } else {
+                set = `img_perfil = '${img}'`
+            }
+        }
+
+        connection.query(
+            `UPDATE  vendedor SET ${set} WHERE id = '${this.id}'`,
+            (error,result) => {
+                if (error) {
+                    res.status(400).json(error);
+                } else {
+                    res.status(201).json({tipo: "vendedor", msg: "Perfil atualizado com sucesso"});
+                }
+            }
+        );
+
     }
 
     login(req, res) {

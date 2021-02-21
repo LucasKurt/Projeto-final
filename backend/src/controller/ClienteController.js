@@ -29,12 +29,7 @@ class ClienteController {
         cliente.cadastrar(req, res);
     }
     
-    atualizarPerfilAction(req,res) {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
-        
+    atualizarPerfilAction(req,res) {        
         const {id} = req.params
         const {nome,email,senha,confSenha} = req.body;
 
@@ -45,7 +40,7 @@ class ClienteController {
         cliente.id = id;
         cliente.nome = nome;
         cliente.email = email;
-        cliente.senha = senha
+        cliente.senha = senha;
         cliente.atualizarPerfil(req, res);
     }
 }

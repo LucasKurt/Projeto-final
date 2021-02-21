@@ -30,7 +30,7 @@ class Anuncio {
                 if (error) {
                     res.status(400).json({errors: error});
                 } else {
-                    res.status(201).json(this.img);
+                    res.status(201).json(result);
                 }
             }
         )

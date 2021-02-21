@@ -9,7 +9,7 @@ const Input = ({className,label,span,name,type,value,onChange,placeholder,erro,m
 
     return (
         <div className={className}>
-            <label htmlFor={name}>{label}<span className="text-light">{span}</span></label>
+            <label htmlFor={name}>{label}<span className="text-muted">{span}</span></label>
             <input 
                 className={`form-control ${border}`} 
                 type={type} 

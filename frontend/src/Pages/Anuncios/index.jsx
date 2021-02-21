@@ -27,8 +27,9 @@ function Anuncios() {
                 return  (
                 <div className="col-md-4">
                   <Card
-                    img={`http://localhost:3333/uploads/anuncio/${anuncio.img}`}
+                    img={`http://localhost:3333/uploads/${anuncio.img}`}
                     imgPerfil={`perfil-sem-foto.jpg`}
+                    negocio={'negocio'}
                     descricao={anuncio.descricao}
                     valor={anuncio.valor}
                     opc={<br/>}

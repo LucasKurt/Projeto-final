@@ -8,9 +8,13 @@ import Card from "../../Card";
 
 const PerfilVendedor = () => {
   const initialState = () => {
-    return {descricao: '',valor: ''}
+    return {
+      descricao: '',
+      valor: '',
+      arquivo: '',
+      linkArquivo: ''
+    }
   }
-  const [selectedFileUrl, setSelectedFileUrl] = React.useState('');
   const [values,setValues] = React.useState(initialState);
   const [toggle,setToggle] = React.useState(false);
   const [data,setData] = React.useState('')
@@ -29,6 +33,7 @@ const PerfilVendedor = () => {
   }, [id_vendedor]) 
 
   let anuncios = [...dados]
+
   return (
     <main role="main">
       <Header
@@ -45,8 +50,9 @@ const PerfilVendedor = () => {
           <div className="col-md-4 d-flex justify-content-center align-items-center">
             <Card
               put={put}
-              img={selectedFileUrl}
+              img={values.linkArquivo}
               imgPerfil={data.img_perfil}
+              negocio={data.negocio ? data.negocio: data.nome}
               descricao={values.descricao}
               valor={values.valor}
               doacao={toggle}
@@ -64,8 +70,6 @@ const PerfilVendedor = () => {
               setValues={setValues}
               setToggle={setToggle}
               id_vendedor={id_vendedor}
-              selectedFileUrl={selectedFileUrl}
-              setSelectedFileUrl={setSelectedFileUrl}
             />
           </div>
         </div>
@@ -74,8 +78,8 @@ const PerfilVendedor = () => {
         <div className="row">
           <div className="col-md-12">
             <h2>Anúncios publicados</h2>
-              {anuncios.map((anuncio,index) => {
-                if(id_vendedor === index){
+              {anuncios.map((anuncio) => {
+                if(id_vendedor === anuncio.id_vendedor.toString()){
                   return(
                     <ListaDeAnuncios
                       put={put}
@@ -90,7 +94,7 @@ const PerfilVendedor = () => {
                       setToggle={setToggle}
                       doacao={!!anuncio.doacao}
                       descricao={anuncio.descricao}
-                      setSelectedFileUrl={setSelectedFileUrl}
+                      //setSelectedFileUrl={setSelectedFileUrl}
                     />
                   );
                 } else return ''

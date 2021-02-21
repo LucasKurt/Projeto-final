@@ -17,7 +17,7 @@ class AnunciosController {
         if(!img) {
             return res.status(400).json({errors: [{msg: "* campo obrigatório!",param: "img"}]})
         }
-
+        res.json(img)
         anuncio.id_vendedor = id;
         anuncio.img = img.filename;
         anuncio.descricao = descricao;

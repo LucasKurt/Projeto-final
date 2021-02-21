@@ -30,7 +30,22 @@ class VendedorController {
         vendedor.telefone = telefone;
         vendedor.senha = crypto.createHash("sha256").update(senha).digest("hex");
         vendedor.cadastrar(req, res);
-    }             
+    }
+    
+    atualizarPerfilAction(req,res) {
+        const { id } = req.params
+        const { nome, negocio, endereco, email, telefone } = req.body;
+        const img = req.file.filename;
+
+        vendedor.id = id;
+        vendedor.nome = nome;
+        vendedor.negocio = negocio;
+        vendedor.endereco = endereco;
+        vendedor.email = email;
+        vendedor.telefone = telefone;
+        vendedor.img_perfil = img;
+        vendedor.atualizarPerfil(req, res);
+    }    
 }
 
 module.exports = new VendedorController
