@@ -1,17 +1,17 @@
 import React, {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
 
-const Dropzone = ({ values, setValues }) => {
+const Dropzone = ({ img, setImg }) => {
     const onDrop = useCallback(acceptedFiles => {
         const file = acceptedFiles[0];
-        const fileUrl = URL.createObjectURL(file);        
-        setValues({
-            ...values,
-            linkArquivo: fileUrl,
-            arquivo: file,
+        const fileUrl = URL.createObjectURL(file);
+        setImg({
+            ...img,
+            imgUrl: fileUrl,
+            img: file,
         });
        /*eslint-disable-next-line react-hooks/exhaustive-deps*/
-    }, [values.arquivo])
+    }, [])
     const {getRootProps, getInputProps} = useDropzone({onDrop, accept: 'image/*'});
 
     return (

@@ -12,18 +12,43 @@ class AnunciosController {
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const { id, descricao, valor, doacao } = req.body
+
+        const { id_vendedor, descricao, valor, doacao } = req.body
         const img = req.file
+
         if(!img) {
             return res.status(400).json({errors: [{msg: "* campo obrigatório!",param: "img"}]})
         }
-        res.json(img)
-        anuncio.id_vendedor = id;
+        
+        anuncio.id_vendedor = id_vendedor;
         anuncio.img = img.filename;
         anuncio.descricao = descricao;
         anuncio.valor = valor;
         anuncio.doacao = doacao;
         anuncio.postarAnuncio(req,res)
+    }
+
+    editarAnuncioAction(req,res) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const { id_vendedor, descricao, valor, doacao } = req.body
+        const img = req.file
+        const { id } = req.params
+
+        if(!img) {
+            return res.status(400).json({errors: [{msg: "* campo obrigatório!",param: "img"}]})
+        }
+
+        anuncio.id = id;
+        anuncio.id_vendedor = id_vendedor;
+        anuncio.img = img.filename;
+        anuncio.descricao = descricao;
+        anuncio.valor = valor;
+        anuncio.doacao = doacao;
+        anuncio.editarAnuncio(req,res)
     }
 }
 

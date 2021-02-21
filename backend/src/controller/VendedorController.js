@@ -35,7 +35,7 @@ class VendedorController {
     atualizarPerfilAction(req,res) {
         const { id } = req.params
         const { nome, negocio, endereco, email, telefone } = req.body;
-        const img = req.file.filename;
+        const img = req.file;
 
         vendedor.id = id;
         vendedor.nome = nome;
@@ -43,7 +43,7 @@ class VendedorController {
         vendedor.endereco = endereco;
         vendedor.email = email;
         vendedor.telefone = telefone;
-        vendedor.img_perfil = img;
+        vendedor.img_perfil = img.filename;
         vendedor.atualizarPerfil(req, res);
     }    
 }

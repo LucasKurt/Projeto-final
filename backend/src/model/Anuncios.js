@@ -35,6 +35,19 @@ class Anuncio {
             }
         )
     }
+
+    editarAnuncio(req,res) {
+        connection.query(            
+            `UPDATE anuncios SET id_vendedor = '${this.id_vendedor}', img = '${this.img}', descricao = '${this.descricao}', valor = '${this.valor}', doacao = '${this.doacao}' WHERE id = '${this.id}'`,
+            (error,result) => {
+                if (error) {
+                    res.status(400).json({errors: error});
+                } else {
+                    res.status(201).json(result);
+                }
+            }
+        )
+    }
 }
 
 module.exports = new Anuncio

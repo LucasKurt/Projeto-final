@@ -25,6 +25,14 @@ routes.post(
     AnunciosController.postarAnuncioAction,
 );
 
+routes.put(
+    "/anuncios/:id",
+    multer(multerConfig).single('img'),
+    body('descricao').notEmpty().withMessage("* campo obrigatório!"),
+    body('valor').notEmpty().withMessage("* campo obrigatório!"),
+    AnunciosController.editarAnuncioAction,
+);
+
 routes.get(
     "/cliente/:id",
     clienteController.getOneAction

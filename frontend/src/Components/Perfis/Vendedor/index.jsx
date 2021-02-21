@@ -9,18 +9,26 @@ import Card from "../../Card";
 const PerfilVendedor = () => {
   const initialState = () => {
     return {
-      descricao: '',
       valor: '',
-      arquivo: '',
-      linkArquivo: ''
+      descricao: '',
+      id_anuncio: '',
+      anuncioPublicado: '',
+      toggle: false,
+      put: false,
     }
   }
+
+  const initialImg = () => {
+    return {
+      img: '',
+      imgUrl: '',
+    }
+  }
+
   const [values,setValues] = React.useState(initialState);
-  const [toggle,setToggle] = React.useState(false);
+  const [img,setImg] = React.useState(initialImg);
   const [data,setData] = React.useState('')
   const [dados,setDados] = React.useState('')
-  const [put,setPut] = React.useState(false)
-  const [id,setId] = React.useState('')
   const id_vendedor = localStorage.getItem('id');
 
   React.useEffect(() => {
@@ -30,9 +38,11 @@ const PerfilVendedor = () => {
   React.useEffect(() => {
     pegarDados(`http://localhost:3333/anuncios`,setDados)
     
-  }, [id_vendedor]) 
+  }, [values.anuncioPublicado]) 
 
   let anuncios = [...dados]
+
+  console.log(img)
 
   return (
     <main role="main">
@@ -49,13 +59,12 @@ const PerfilVendedor = () => {
         <div className="row">
           <div className="col-md-4 d-flex justify-content-center align-items-center">
             <Card
-              put={put}
-              img={values.linkArquivo}
+              img={img.imgUrl}
               imgPerfil={data.img_perfil}
               negocio={data.negocio ? data.negocio: data.nome}
               descricao={values.descricao}
               valor={values.valor}
-              doacao={toggle}
+              doacao={values.toggle}
               opc={'Aceita doação? (Marque a opção)'}
               redirecionar={false}
             />
@@ -63,13 +72,12 @@ const PerfilVendedor = () => {
           <div className="col-md-8">
             <h3 className="text-center" id="titulo">Crie seu anúncio</h3>
             <Form
-              id={id}
-              put={put}
               values={values}
-              toggle={toggle}
               setValues={setValues}
-              setToggle={setToggle}
+              img={img}
+              setImg={setImg}
               id_vendedor={id_vendedor}
+              //id_anuncio={anuncio.id}
             />
           </div>
         </div>
@@ -82,19 +90,15 @@ const PerfilVendedor = () => {
                 if(id_vendedor === anuncio.id_vendedor.toString()){
                   return(
                     <ListaDeAnuncios
-                      put={put}
                       crud={true}
-                      setId={setId}
-                      setPut={setPut}
-                      id={anuncio.id}
+                      values={values}
                       key={anuncio.id}
+                      id_anuncio={anuncio.id}
                       img={anuncio.img}
-                      valor={anuncio.valor}
                       setValues={setValues}
-                      setToggle={setToggle}
+                      valor={anuncio.valor}
                       doacao={!!anuncio.doacao}
                       descricao={anuncio.descricao}
-                      //setSelectedFileUrl={setSelectedFileUrl}
                     />
                   );
                 } else return ''

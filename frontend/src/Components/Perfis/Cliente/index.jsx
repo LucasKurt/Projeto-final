@@ -34,9 +34,6 @@ const PerfilCliente = () => {
     });
   }
 
-  console.log({cliente: values})
-  console.log({servidor: dados})
-
   return (
     <main id="topo" role="main">
       <div className="jumbotron">
@@ -106,14 +103,7 @@ const PerfilCliente = () => {
                 <div className="invalid-feedback">Digite nova senha</div>
               </div>              
               <br />
-              <a href={"#topo"}>
-                <button
-                  className="btn btn-primary btn-lg btn-block mb-5"
-                  type="submit"
-                >
-                  Salvar
-                </button>
-              </a>
+                <button className="btn btn-primary btn-lg btn-block mb-5" type="submit" > Salvar  </button>
             </form>
           </div>
         </div>

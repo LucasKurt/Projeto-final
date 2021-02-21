@@ -1,13 +1,17 @@
 import React from 'react'
 //import { Link } from "react-router-dom";
 
-const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud, put, id, setId, setPut, setValues, setToggle, setSelectedFileUrl }) => {
+const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud , values, setValues, id_anuncio }) => {
     const editar =() => {
-        setId(id)
-        setPut(!put)
-        setToggle(doacao)
-        setSelectedFileUrl(img)
-        setValues({descricao,valor})
+        setValues({
+            ...values,
+            linkArquivo: `http://localhost:3333/uploads/${img}`,
+            descricao,
+            valor,
+            toggle: doacao,
+            put: true,
+            id_anuncio 
+        })
     }
     return (
         <>

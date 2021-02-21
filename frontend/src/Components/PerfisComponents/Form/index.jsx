@@ -4,9 +4,8 @@ import api from '../../../functions/services'
 import Dropzone from '../../Dropzone';
 import ToggleSwitch from "../../ToggleSwitch";
 
-const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setToggle }) => {
+const Form = ({ id_vendedor, values, setValues, img, setImg }) => {
     // eslint-disable-next-line
-    const [dados,setDados] = React.useState();
     const atualizar = (event) => {
         const {name,value} = event.target
 
@@ -15,24 +14,28 @@ const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setTogg
             [name]: value
         });
     }
-
     const enviarDados = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
         const data = new FormData();
-        data.append('destino','anuncios');
-        data.append('id',id_vendedor);
+        data.append('id_vendedor',id_vendedor);
         data.append('descricao',values.descricao);
         data.append('valor',values.valor);
-        data.append('doacao',toggle);
-        data.append('img',values.arquivo);
-        
-        api.post('/anuncios',data)
-        .then(response => setDados(response.data))
-        .catch(error => setDados(error.response.data.errors));
+        data.append('doacao',values.toggle);
+        data.append('img',img.img);
+
+        if(values.put){
+            api.post(`/anuncios/${values.id_anuncio}`,data)
+            .then(response => setValues({...values,anuncioPublicado: response.data}))
+            .catch(error => setValues({...values,anuncioPublicado: error.response.data.errors}));
+        } else{
+            api.post('/anuncios',data)
+            .then(response => setValues({...values,anuncioPublicado: response.data}))
+            .catch(error => setValues({...values,anuncioPublicado: error.response.data.errors}));
+        }
     }
 
-    console.log(dados);
+    console.log(values.anuncioPublicado);
 
     return (
         <form className="needs-validation" onSubmit={enviarDados} noValidate>
@@ -40,8 +43,8 @@ const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setTogg
                 <div className="col-md mb-3">
                     <div className="custom-file mt-3">
                         <Dropzone
-                            values={values}
-                            setValues={setValues}
+                            img={img}
+                            setImg={setImg}
                         />
                     </div>
                     <div className="invalid-feedback">Coloque a imagem do anúncio</div>
@@ -80,8 +83,8 @@ const Form = ({ put, setPut, id, id_vendedor, values, setValues, toggle, setTogg
 
                             <label>Aceita receber doação?</label>
                             <ToggleSwitch
-                                toggle={toggle}
-                                setToggle={setToggle}
+                                values={values}
+                                setValues={setValues}
                             />
                         </div>
                     </div>
