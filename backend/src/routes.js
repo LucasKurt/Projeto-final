@@ -17,6 +17,11 @@ routes.get(
     AnunciosController.getAllAction
 )
 
+routes.get(
+    "/anuncios/:id",
+    AnunciosController.getAllOfOneVendedorAction
+)
+
 routes.post(
     "/anuncios",
     multer(multerConfig).single('img'),

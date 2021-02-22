@@ -16,7 +16,7 @@ class Vendedor {
         this.img_perfil;
     }
     
-    getOne(req, res) {
+    getOneVendedor(req, res) {
         connection.query(
             `SELECT * FROM vendedor WHERE id = '${this.id}'`,
             (error, result) => { 

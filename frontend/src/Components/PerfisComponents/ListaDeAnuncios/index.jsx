@@ -2,8 +2,7 @@ import React from 'react'
 
 import api from '../../../functions/services'
 
-const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio }) => {
-    const [del,setDel] = React.useState('');
+const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio, setDataForm }) => {
     const editar =() => {
         setValues({
             ...values,            
@@ -21,10 +20,10 @@ const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, 
     const deletar = (event) => {
         event.preventDefault();
         api.delete(`http://localhost:3333/anuncios/${id_anuncio}`)
-        .then(response => setDel(response.data))
-        .catch(error => setDel(error.response.data.errors));
+        .then(response => setDataForm(response.data))
+        .catch(error => setDataForm(error.response.data.errors));
     }
-    console.log(del)
+    //console.log(del)
     return (
         <>
             <div className="row mb-2">

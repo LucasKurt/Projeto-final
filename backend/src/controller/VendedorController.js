@@ -7,7 +7,7 @@ class VendedorController {
     getOneAction(req,res){
         const {id} = req.params;
         vendedor.id = id;
-        vendedor.getOne(req,res);
+        vendedor.getOneVendedor(req,res);
     }
 
     cadastrarVendedorAction(req,res) {

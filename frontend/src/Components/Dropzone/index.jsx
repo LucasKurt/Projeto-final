@@ -17,7 +17,7 @@ const Dropzone = ({ img, setImg }) => {
     return (
         <div className="form-control" {...getRootProps()}>
             <input {...getInputProps()} accept="image/*" />
-            <p>CLique para adicionar uma imagem</p>
+            <p>Clique para adicionar uma imagem</p>
         </div>
     )
 }

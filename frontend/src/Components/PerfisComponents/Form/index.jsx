@@ -4,7 +4,7 @@ import api from '../../../functions/services'
 import Dropzone from '../../Dropzone';
 import ToggleSwitch from "../../ToggleSwitch";
 
-const Form = ({ id_vendedor, values, setValues, img, setImg }) => {
+const Form = ({ id_vendedor, values, setValues, img, setImg, setDataForm }) => {
     // eslint-disable-next-line
     const atualizar = (event) => {
         const {name,value} = event.target
@@ -26,16 +26,20 @@ const Form = ({ id_vendedor, values, setValues, img, setImg }) => {
 
         if(values.put){
             api.put(`/anuncios/${values.id_anuncio}`,data)
-            .then(response => setValues({...values,anuncioPublicado: response.data}))
-            .catch(error => setValues({...values,anuncioPublicado: error.response.data.errors}));
+            .then(response => setDataForm(response.data))
+            .catch(error => setDataForm(error.response.data.errors));
+            setValues({
+                ...values,
+                put: false
+            });
         } else{
             api.post('/anuncios',data)
-            .then(response => setValues({...values,anuncioPublicado: response.data}))
-            .catch(error => setValues({...values,anuncioPublicado: error.response.data.errors}));
+            .then(response => setDataForm(response.data))
+            .catch(error => setDataForm(error.response.data.errors));
         }
     }
 
-    console.log(values);
+    //console.log(values);
 
     return (
         <form className="needs-validation" onSubmit={enviarDados} noValidate>

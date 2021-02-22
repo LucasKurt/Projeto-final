@@ -10,6 +10,8 @@ class Anuncio {
         this.doacao
     }
 
+    /*  `SELECT * FROM vendedor JOIN  anuncios ON vendedor.id = anuncios.id_vendedor WHERE vendedor.id = 1 `, */
+
     getAll(req,res) {
         connection.query(
             `SELECT * FROM anuncios`,
@@ -21,6 +23,19 @@ class Anuncio {
                 }
             }
         )
+    }
+
+    getAllOfOneVendedorAction(req,res) { 
+        connection.query(
+            `SELECT * FROM anuncios  WHERE id_vendedor = ${this.id_vendedor} ORDER BY id DESC`,
+            (error,result) => {
+                if (error) {
+                    res.status(400).json({errors: error});
+                } else {
+                    res.status(201).json(result);
+                }
+            }
+        ) 
     }
 
     postarAnuncio(req,res) {

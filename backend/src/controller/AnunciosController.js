@@ -7,6 +7,12 @@ class AnunciosController {
         anuncio.getAll(req,res)
     }
 
+    getAllOfOneVendedorAction(req,res) {
+        const { id } = req.params;
+        anuncio.id_vendedor = id;
+        anuncio.getAllOfOneVendedorAction(req,res);
+    }
+
     postarAnuncioAction(req,res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
