@@ -35,7 +35,7 @@ class Cliente {
             `INSERT INTO cliente ( nome, email, senha ) values ('${this.nome}', '${this.email}', '${this.senha}' )`,
             (error, result) => { 
                 if (error) {
-                    res.status(400).json(error);
+                    res.status(400).json([error]);
                 } else {
                     res.status(201).json([{tipo: "cliente", msg: "Cadastro efetuado com sucesso"}]);
                 }
@@ -94,19 +94,6 @@ class Cliente {
                         res.status(404).json("login ou senha invalidos");
                     }
                 } 
-            }
-        );
-    }
-
-    cadastrar(req, res) {
-        connection.query(
-            `INSERT INTO cliente ( nome, email, senha ) values ('${this.nome}', '${this.email}', '${this.senha}' )`,
-            (error, result) => { 
-                if (error) {
-                    res.status(400).json(error)
-                } else {
-                    res.status(201).json({tipo: "vendedor", id: result[0].id})
-                }
             }
         );
     }

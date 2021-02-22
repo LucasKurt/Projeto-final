@@ -33,7 +33,7 @@ const PerfilCliente = () => {
       [name]: value
     });
   }
-
+  console.log(dados)
   return (
     <main id="topo" role="main">
       <div className="jumbotron">

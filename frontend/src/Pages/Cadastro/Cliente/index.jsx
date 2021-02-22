@@ -34,11 +34,11 @@ const CadastroCliente = () => {
         })
     } 
 
-    // if(dados) {
-    //     for (const dado of dados) {
-    //         erros[dado.param] = true
-    //     }
-    // }
+    if(dados) {
+        for (const dado of dados) {
+            erros[dado.param] = true
+        }
+    }
 
     console.log(dados)
 

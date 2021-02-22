@@ -20,7 +20,7 @@ class ClienteController {
         const {nome,email,senha,confSenha} = req.body;
 
         if (senha != confSenha) {
-            return res.status(400).json("As senhas devem ser iguais");
+            return res.status(400).json([{param: "confSenha", msg: "As senhas devem ser iguais"}]);
         }
         
         cliente.nome = nome;

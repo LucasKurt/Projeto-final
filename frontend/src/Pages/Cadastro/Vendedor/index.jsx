@@ -97,7 +97,7 @@ const CadastroVendedor = () => {
                                     value={values.endereco}
                                     onChange={atualizar}
                                     erro={erros.endereco}
-                                    //msgErro={erros.endereco.msg}
+                                    msgErro={'* Campo obrigatório'}
                                 />
                                 
                                 <Input
@@ -110,7 +110,7 @@ const CadastroVendedor = () => {
                                     value={values.cpf}
                                     onChange={atualizar}
                                     erro={erros.cpf}
-                                    // msgErro={erros.cpf.msg}
+                                    msgErro={'* Campo obrigatório'}
                                 />
                             </div>
                             <Input
@@ -122,7 +122,7 @@ const CadastroVendedor = () => {
                                 value={values.email}
                                 onChange={atualizar}
                                 erro={erros.email}
-                                // msgErro={erros.email.msg}
+                                msgErro={'* Campo obrigatório'}
                             />
 
                             <Input
@@ -134,7 +134,7 @@ const CadastroVendedor = () => {
                                 value={values.telefone}
                                 onChange={atualizar}
                                 erro={erros.telefone}
-                                // msgErro={erros.telefone.msg}
+                                msgErro={'* Campo obrigatório'}
                             />
 
                             <Input
@@ -146,7 +146,7 @@ const CadastroVendedor = () => {
                                 value={values.senha}
                                 onChange={atualizar}
                                 erro={erros.senha}
-                                // msgErro={erros.senha.msg}
+                                msgErro={'* Campo obrigatório'}
                             />
 
                             <Input
@@ -158,7 +158,7 @@ const CadastroVendedor = () => {
                                 value={values.confSenha}
                                 onChange={atualizar}
                                 erro={erros.confsenha}
-                                // msgErro={erros.senha.msg}
+                                msgErro={'* Campo obrigatório'}
                             />
                             <br />
                             <button className="btn btn-primary btn-lg btn-block" type="submit">
