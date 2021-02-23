@@ -30,8 +30,12 @@ class Vendedor {
     }
 
     cadastrar(req, res) {
+        let sql = ''
+        this.negocio ?
+        sql= `INSERT INTO vendedor ( nome, negocio, endereco, cpf, email, telefone, senha ) values ('${this.nome}', '${this.negocio}', '${this.endereco}', '${this.cpf}', '${this.email}', '${this.telefone}', '${this.senha}' )` :
+        sql= `INSERT INTO vendedor ( nome, endereco, cpf, email, telefone, senha ) values ('${this.nome}', '${this.endereco}', '${this.cpf}', '${this.email}', '${this.telefone}', '${this.senha}' )` 
         connection.query(
-            `INSERT INTO vendedor ( nome, negocio, endereco, cpf, email, telefone, senha ) values ('${this.nome}', '${this.negocio}', '${this.endereco}', '${this.cpf}', '${this.email}', '${this.telefone}', '${this.senha}' )`,
+            sql,
             (error, result) => { 
                 if (error) {
                     res.status(400).json([error.sqlMessage])

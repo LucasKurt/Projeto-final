@@ -62,7 +62,8 @@ const EditarPerfilVendedor = () => {
 
     }
 
-    console.log(dados)
+    //console.log(dados);
+    console.log(initialState());
 
     return (
         <>

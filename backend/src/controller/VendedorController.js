@@ -43,7 +43,9 @@ class VendedorController {
         vendedor.endereco = endereco;
         vendedor.email = email;
         vendedor.telefone = telefone;
-        vendedor.img_perfil = img.filename;
+        if(img) {
+            vendedor.img_perfil = img.filename;
+        }        
         vendedor.atualizarPerfil(req, res);
     }    
 }
