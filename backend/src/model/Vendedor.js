@@ -18,7 +18,7 @@ class Vendedor {
     
     getOneVendedor(req, res) {
         connection.query(
-            `SELECT * FROM vendedor WHERE id = '${this.id}'`,
+            `SELECT id, img_perfil, nome, negocio, telefone FROM vendedor WHERE id = '${this.id}'`,
             (error, result) => { 
                 if (error) {
                     res.status(400).json(error)

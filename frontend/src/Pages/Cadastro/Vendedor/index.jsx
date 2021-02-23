@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Input from "../../../Components/Input";
 import { enviarDados } from "../../../functions/database";
@@ -40,15 +41,27 @@ const CadastroVendedor = () => {
             ...values,
             [name]: value
         })
-    } 
+    }
+    
+    const showAlert = () => {
+        const alert = document.getElementById('alert');
+        alert.classList.toggle('d-none',false);
+    }
+
+    const closeAlert = () => {
+        const alert = document.getElementById('alert');
+        alert.classList.toggle('d-none',true);
+    }
 
     if(dados) {
+        console.log(dados)
         for (const dado of dados) {
             erros[dado.param] = true
         }
+        if(dados[0].tipo) {
+            showAlert()
+        }
     }
-
-    console.log(dados)
 
     return (
         <>
@@ -110,7 +123,7 @@ const CadastroVendedor = () => {
                                     value={values.cpf}
                                     onChange={atualizar}
                                     erro={erros.cpf}
-                                    msgErro={'* Campo obrigatório'}
+                                    msgErro={'Digite um cpf válido'}
                                 />
                             </div>
                             <Input
@@ -161,6 +174,12 @@ const CadastroVendedor = () => {
                                 msgErro={'* Campo obrigatório'}
                             />
                             <br />
+                            <div id="alert" className="alert alert-success alert-dismissible fade show text-center d-none" role="alert">
+                                Cadastro efetuado com sucesso <Link to="/login/vendedor">Ir para login</Link> 
+                                <button type="button" onClick={ closeAlert } className="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
                             <button className="btn btn-primary btn-lg btn-block" type="submit">
                                 Confirmar cadastro
                             </button>

@@ -16,7 +16,7 @@ const ToggleSwitch = ({ values, setValues }) => {
             />
             <span className="slider round" />
         </label>
-    )
+    )    
 }
 
 export default ToggleSwitch

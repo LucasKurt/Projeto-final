@@ -10,11 +10,11 @@ class Anuncio {
         this.doacao
     }
 
-    /*  `SELECT * FROM vendedor JOIN  anuncios ON vendedor.id = anuncios.id_vendedor WHERE vendedor.id = 1 `, */
+    /*  `SELECT * FROM anuncios JOIN  vendedor ON anuncios.id_vendedor = vendedor.id ORDER BY anuncios.id DESC`, */
 
     getAll(req,res) {
         connection.query(
-            `SELECT * FROM anuncios`,
+            `SELECT anuncios.id, img, descricao, valor, doacao, id_vendedor, img_perfil, nome, negocio, telefone FROM anuncios JOIN  vendedor ON anuncios.id_vendedor = vendedor.id ORDER BY anuncios.id DESC`,
             (error,result) => {
                 if (error) {
                     res.status(400).json({errors: error});
@@ -40,7 +40,7 @@ class Anuncio {
 
     postarAnuncio(req,res) {
         connection.query(
-            `INSERT INTO anuncios ( id_vendedor, img, descricao, valor, doacao ) values ('${this.id_vendedor}', '${this.img}', '${this.descricao}', '${this.valor}', '${this.doacao}' )`,
+            `INSERT INTO anuncios ( id_vendedor, img, descricao, valor, doacao ) values ('${this.id_vendedor}', '${this.img}', '${this.descricao}', '${this.valor}', ${this.doacao})`,
             (error,result) => {
                 if (error) {
                     res.status(400).json({errors: error});
@@ -52,8 +52,13 @@ class Anuncio {
     }
 
     editarAnuncio(req,res) {
+        let sql = ''
+        this.img ?
+        sql = `UPDATE anuncios SET img = '${this.img}', descricao = '${this.descricao}', valor = '${this.valor}', doacao = ${this.doacao} WHERE id = '${this.id}'` :
+        sql = `UPDATE anuncios SET descricao = '${this.descricao}', valor = '${this.valor}', doacao = ${this.doacao} WHERE id = '${this.id}'` 
+
         connection.query(            
-            `UPDATE anuncios SET id_vendedor = '${this.id_vendedor}', img = '${this.img}', descricao = '${this.descricao}', valor = '${this.valor}', doacao = '${this.doacao}' WHERE id = '${this.id}'`,
+            sql,
             (error,result) => {
                 if (error) {
                     res.status(400).json({errors: error});

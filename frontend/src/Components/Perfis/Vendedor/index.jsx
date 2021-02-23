@@ -39,7 +39,7 @@ const PerfilVendedor = () => {
     pegarDados(`http://localhost:3333/anuncios/${id_vendedor}`,setAnuncios)
   }, [id_vendedor,dataForm])
 
-  console.log(anuncios);
+  console.log(dataForm);
 
   return (
     <main role="main">
@@ -88,17 +88,17 @@ const PerfilVendedor = () => {
                 if(id_vendedor === anuncio.id_vendedor.toString()){
                   return(
                     <ListaDeAnuncios
+                      key={anuncio.id}
+                      imgAnuncio={anuncio.img}
+                      descricao={anuncio.descricao}
+                      valor={anuncio.valor}
+                      doacao={!!anuncio.doacao}
                       crud={true}
                       values={values}
-                      key={anuncio.id}
-                      id_anuncio={anuncio.id}
-                      imgAnuncio={anuncio.img}
                       setValues={setValues}
                       img={img}
                       setImg={setImg}
-                      valor={anuncio.valor}
-                      doacao={!!anuncio.doacao}
-                      descricao={anuncio.descricao}
+                      id_anuncio={anuncio.id}
                       setDataForm={setDataForm}
                     />
                   );

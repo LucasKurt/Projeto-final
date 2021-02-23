@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import Input from "../../../Components/Input";
 import { enviarDados } from "../../../functions/database";
@@ -23,8 +24,18 @@ const CadastroCliente = () => {
         confsenha: false,
     }
 
-    const [values,setValues] = React.useState(initialState)
-    const [dados,setDados] = React.useState('')
+    const [values,setValues] = React.useState(initialState);
+    const [dados,setDados] = React.useState('');
+
+    const showAlert = () => {
+        const alert = document.getElementById('alert');
+        alert.classList.toggle('d-none',false);
+    }
+
+    const closeAlert = () => {
+        const alert = document.getElementById('alert');
+        alert.classList.toggle('d-none',true);
+    }
 
     const atualizar = (event) => {
         const {name,value} = event.target
@@ -38,9 +49,11 @@ const CadastroCliente = () => {
         for (const dado of dados) {
             erros[dado.param] = true
         }
+        if(dados[0].tipo) {
+            showAlert()
+        } 
     }
 
-    console.log(dados)
 
     return (
         <>
@@ -77,10 +90,10 @@ const CadastroCliente = () => {
                                     erro={erros.email}
                                     msgErro={'* Campo obrigatório'}
                                 />
-                                </div>
+                            </div>
 
 
-                              <Input
+                            <Input
                                 type="password"
                                 className="mb-3"
                                 label="Senha"
@@ -89,9 +102,8 @@ const CadastroCliente = () => {
                                 value={values.senha}
                                 onChange={atualizar}
                                 erro={erros.senha}
-                                // msgErro={erros.senha.msg}
                                 msgErro={'* Campo obrigatório'}
-                            />
+                            />                                                                                                                                                      
 
                             <Input
                                 type="password"
@@ -102,11 +114,18 @@ const CadastroCliente = () => {
                                 value={values.confSenha}
                                 onChange={atualizar}
                                 erro={erros.confsenha}
-                                // msgErro={erros.senha.msg}
-                                msgErro={'* Campo obrigatório'}
+                                msgErro={'As senhas devem ser iguais'}
                             />
                             
                             <br />
+                            
+                            <div id="alert" className="alert alert-success alert-dismissible fade show text-center d-none" role="alert">
+                                Cadastro efetuado com sucesso <Link to="/login/cliente">Ir para login</Link> 
+                                <button type="button" onClick={ closeAlert } className="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
                             <button className="btn btn-primary btn-lg btn-block" type="submit">
                                 Confirmar cadastro
                             </button>
