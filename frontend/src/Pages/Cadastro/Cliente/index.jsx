@@ -30,13 +30,11 @@ const CadastroCliente = () => {
     const showAlert = () => {
         const alert = document.getElementById('alert');
         alert.classList.toggle('d-none',false);
-        console.log(alert.classList)
     }
 
     const closeAlert = () => {
         const alert = document.getElementById('alert');
         alert.classList.toggle('d-none',true);
-        console.log(alert.classList)
     }
 
     const atualizar = (event) => {
@@ -121,7 +119,7 @@ const CadastroCliente = () => {
                             
                             <br />
                             
-                            <div id="alert" className="alert alert-success alert-dismissible fade show text-center " role="alert">
+                            <div id="alert" className="alert alert-success alert-dismissible fade show text-center d-none" role="alert">
                                 Cadastro efetuado com sucesso <Link to="/login/cliente">Ir para login</Link> 
                                 <button type="button" onClick={ closeAlert } className="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">×</span>
