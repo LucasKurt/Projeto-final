@@ -5,7 +5,9 @@ const multerAnunciosConfig =  {
     dest: 'uploads/',
     storage: multer.diskStorage({
         destination: (req,file,cb) => {
+
             cb(null,'uploads/');
+
         },
         filename: (req,file,cb) => {
             crypto.randomBytes(16, (err, hash) => {

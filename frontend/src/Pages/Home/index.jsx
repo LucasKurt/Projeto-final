@@ -46,7 +46,9 @@ const Home = () => {
                         <p className="lead">Foi através da plataforma Comércio Amigável que Ana se destacou no ramo do artesanato.</p>
                     </div>
                     <div className="col-md-5">
+
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="./images/comercio-amigavel-depo1.jpeg" alt="depoimento da Ana" />
+
                     </div>
                 </div>
                 <hr className="featurette-divider" />
@@ -58,7 +60,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div className="col-md-5 order-md-1">
+
                         <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="./images/comercio-amigavel-depo2.jpg" alt="historia do projeto" />
+
                     </div>
                 </div>
                 <hr className="featurette-divider" />

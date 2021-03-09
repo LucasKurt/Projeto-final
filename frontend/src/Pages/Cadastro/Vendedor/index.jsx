@@ -73,7 +73,9 @@ const CadastroVendedor = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <h4 className="mb-3">Dados Pessoais</h4>
+
                         <form className="needs-validation" onSubmit={enviarDados(`${process.env.REACT_APP_API_URL}/vendedor`, values, setDados)} noValidate>
+
                             <div className="row">
                                 <Input
                                     type="text"
