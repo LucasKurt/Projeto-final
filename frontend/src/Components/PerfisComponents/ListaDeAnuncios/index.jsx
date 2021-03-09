@@ -5,7 +5,9 @@ import api from '../../../functions/services'
 const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio, setDataForm }) => {
     const editar =() => {
         setValues({
+
             ...values,
+
             descricao,
             valor,
             toggle: doacao,
@@ -14,12 +16,16 @@ const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, 
         })
         setImg({
             ...img,
+
             imgUrl: `${process.env.REACT_APP_API_URL}/uploads/${imgAnuncio}`
+
         })
     }
     const deletar = (event) => {
         event.preventDefault();
+
         api.delete(`${process.env.REACT_APP_API_URL}/anuncios/${id_anuncio}`)
+
         .then(response => setDataForm(response.data))
         .catch(error => setDataForm(error.response.data.errors));
     }
@@ -27,7 +33,9 @@ const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, 
         <>
             <div className="row mb-2">
                 <div className="col-md-3">
+
                     <img className="img-fluid" style={{height: 150}} src={`${process.env.REACT_APP_API_URL}/uploads/${imgAnuncio}`} alt="imagem do anuncio"/>
+
                 </div>
                 <div className="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
                     <p>{descricao}</p>

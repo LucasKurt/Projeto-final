@@ -14,7 +14,9 @@ const Input = ({className,label,span,name,type,value,onChange,placeholder,erro,m
                 className={`form-control ${border}`} 
                 type={type} 
                 id={name}
+
                 name={name}
+
                 value={value}
                 onChange={onChange}
                 placeholder={placeholder} 

@@ -6,7 +6,9 @@ import {pegarDados} from '../../functions/database'
 function Anuncios() {
   const [dados,setDados] = React.useState([])
   React.useEffect(() => {
+
     pegarDados(`${process.env.REACT_APP_API_URL}/anuncios`,setDados)    
+
   }, [])
 
 
@@ -28,7 +30,9 @@ function Anuncios() {
                 return  (
                 <div className="col-md-4">
                   <Card
+
                     img={`${process.env.REACT_APP_API_URL}/uploads/${anuncio.img}`}
+
                     imgPerfil={anuncio.img_perfil}
                     negocio={anuncio.negocio ? anuncio.negocio : anuncio.nome}
                     descricao={anuncio.descricao}
