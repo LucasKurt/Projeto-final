@@ -7,19 +7,19 @@ class VendedorController {
     getOneAction(req,res){
         const {id} = req.params;
         vendedor.id = id;
-        vendedor.getOne(req,res);
+        vendedor.getOneVendedor(req,res);
     }
 
     cadastrarVendedorAction(req,res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json(errors.array());
         }
         
         const {nome,negocio,endereco,cpf,email,telefone,senha,confSenha} = req.body;
 
         if (senha != confSenha) {
-            return res.status(400).json("As senhas devem ser iguais");
+            return res.status(400).json([{param: "confSenha", msg: "As senhas devem ser iguais"}]);
         }
         
         vendedor.nome = nome;
@@ -30,7 +30,24 @@ class VendedorController {
         vendedor.telefone = telefone;
         vendedor.senha = crypto.createHash("sha256").update(senha).digest("hex");
         vendedor.cadastrar(req, res);
-    }             
+    }
+    
+    atualizarPerfilAction(req,res) {
+        const { id } = req.params
+        const { nome, negocio, endereco, email, telefone } = req.body;
+        const img = req.file;
+
+        vendedor.id = id;
+        vendedor.nome = nome;
+        vendedor.negocio = negocio;
+        vendedor.endereco = endereco;
+        vendedor.email = email;
+        vendedor.telefone = telefone;
+        if(img) {
+            vendedor.img_perfil = img.filename;
+        }        
+        vendedor.atualizarPerfil(req, res);
+    }    
 }
 
 module.exports = new VendedorController

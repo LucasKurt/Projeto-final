@@ -2,7 +2,7 @@ import React from "react";
 
 import Login from "../../../Components/Login";
 
-const LoginVendedor = () => {
+const LoginCliente = () => {
     return(
         <Login
             tipo="cliente"
@@ -12,4 +12,4 @@ const LoginVendedor = () => {
     );
 }
 
-export default LoginVendedor;
+export default LoginCliente;

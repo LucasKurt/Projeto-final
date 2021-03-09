@@ -13,8 +13,20 @@ const LoginController = require('./controller/LoginController');
 const routes = new Router;
 
 routes.get(
+    "/",
+    (req,res) => {
+        res.send('Comércio Amigável')
+    }
+)
+
+routes.get(
     "/anuncios",
     AnunciosController.getAllAction
+)
+
+routes.get(
+    "/anuncios/:id",
+    AnunciosController.getAllOfOneVendedorAction
 )
 
 routes.post(
@@ -22,8 +34,26 @@ routes.post(
     multer(multerConfig).single('img'),
     body('descricao').notEmpty().withMessage("* campo obrigatório!"),
     body('valor').notEmpty().withMessage("* campo obrigatório!"),
-    AnunciosController.postarAnuncioAction
+    AnunciosController.postarAnuncioAction,
 );
+
+routes.put(
+    "/anuncios/:id",
+    multer(multerConfig).single('img'),
+    body('descricao').notEmpty().withMessage("* campo obrigatório!"),
+    body('valor').notEmpty().withMessage("* campo obrigatório!"),
+    AnunciosController.editarAnuncioAction,
+);
+
+routes.delete(
+    "/anuncios/:id",
+    AnunciosController.deletarAnuncioAction,
+);
+
+routes.get(
+    "/cliente/:id",
+    clienteController.getOneAction
+)
 
 routes.post(
     "/cliente",
@@ -33,6 +63,11 @@ routes.post(
     clienteController.cadastrarClienteAction
 );
 
+routes.put(
+    "/cliente/:id",
+    clienteController.atualizarPerfilAction
+)
+
 routes.get(
     "/vendedor/:id",
     vendedorController.getOneAction
@@ -40,19 +75,25 @@ routes.get(
 
 routes.post(
     "/vendedor",
-    body('nome').isLength({min:3}),
+    body('nome').isLength({min:3}).withMessage("* campo obrigatório!"),
     body('negocio'),
-    body('endereco'),    
+    body('endereco').notEmpty().withMessage("* campo obrigatório!"),
     body('cpf').custom(value => {
         if(!cpf.isValid(cpf.strip(value))) {
             return Promise.reject("CPF invalido!");
         }
         return true;
     }),
-    body('email').isEmail(),
-    body('telefone'),
-    body('senha').isLength({min:6}),
+    body('email').isEmail().withMessage("* campo obrigatório!"),
+    body('telefone').notEmpty().withMessage("* campo obrigatório!"),
+    body('senha').isLength({min:6}).withMessage("* campo obrigatório!"),
     vendedorController.cadastrarVendedorAction
+);
+
+routes.put(
+    "/vendedor/:id",    
+    multer(multerConfig).single('img'),
+    vendedorController.atualizarPerfilAction
 );
 
 routes.post(

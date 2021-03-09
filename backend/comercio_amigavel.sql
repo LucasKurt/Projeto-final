@@ -24,13 +24,13 @@ TRUNCATE TABLE `cliente`;
 CREATE TABLE `vendedor` (
   `id` int(11) NOT NULL,
   `nome` varchar(120) NOT NULL,
-  `negocio` varchar(200) DEFAULT NULL,
+  `negocio` varchar(150) DEFAULT NULL,
   `endereco` varchar(500) NOT NULL,
   `cpf` char(14) NOT NULL,
   `telefone` varchar(15) NOT NULL,
   `email` varchar(150) NOT NULL,
   `senha` char(64) NOT NULL,
-  `img_perfil` varchar(500) NOT NULL DEFAULT './images/perfil-sem-foto.jpg'
+  `img_perfil` varchar(500) NOT NULL DEFAULT 'perfil-sem-foto.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 TRUNCATE TABLE `vendedor`;
@@ -60,4 +60,4 @@ ALTER TABLE `vendedor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `anuncios`
-  ADD CONSTRAINT `fk_anuncios` FOREIGN KEY (`id_vendedor`) REFERENCES `anuncios` (`id`);
+  ADD CONSTRAINT `fk_anuncios` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedor` (`id`);

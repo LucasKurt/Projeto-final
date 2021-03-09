@@ -3,103 +3,73 @@ import { Redirect, useParams } from 'react-router-dom'
 
 import Header from '../../Components/PerfisComponents/Header'
 import { pegarDados } from "../../functions/database";
-import ListaDeAnuncios from '../../Components/PerfisComponents/ListaDeAnuncios'
+import TabelaDeAnuncios from '../../Components/PerfisComponents/TabelaDeAnuncios'
 
 const Vendedor = () => {
-    const [data,setData] = React.useState('');
-    const [dados,setDados] = React.useState('');
+    const [vendedor,setVendedor] = React.useState({});
+    const [anuncios,setAnuncios] = React.useState([]);
     const auth = localStorage.getItem('auth');
     const id = localStorage.getItem('id');
     const id_vendedor = useParams().id;
     
     
     React.useEffect(() => {
-        pegarDados(`http://localhost:3333/vendedor/${id_vendedor}`,setData)
+        pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id_vendedor}`,setVendedor)
     }, [id_vendedor])
     
     React.useEffect(() => {
-        pegarDados(`http://localhost:3333/anuncios`,setDados)    
-    }, [])
+        pegarDados(`${process.env.REACT_APP_API_URL}/anuncios/${id_vendedor}`,setAnuncios)
+    }, [id_vendedor])
+
     
-    let anuncios = [...dados];
 
     if(auth) {
         if(auth === 'vendedor') {
-            console.log(id === id_vendedor)
             if (id === id_vendedor) {
                 return <Redirect to='/perfil'/>
             }
             return(
                 <>
                     <Header
-                        img={data.img_perfil}
-                        editar={false}
-                        negocio={data.negocio === '' ? data.nome : data.negocio}
-                        telefone={data.telefone}
-                        ativa={false}
-                        classe={""}
+                        img={vendedor.img_perfil}
+                        negocio={vendedor.negocio === '' ? vendedor.nome : vendedor.negocio}
+                        telefone={vendedor.telefone}
+                        nota={4.8}
                     />
-                    <h2>Anúncios publicados</h2><hr/>
-                    {anuncios.map((anuncio) => {
-                        return(
-                            <ListaDeAnuncios
-                                img={anuncio.img}
-                                descricao={anuncio.descricao}
-                                valor={anuncio.valor}
-                                doacao={!!anuncio.doacao}
-                            />
-                        );
-                    })}
+                    <TabelaDeAnuncios
+                        anuncios={anuncios}
+                    />  
                 </>
             );
         } else {
             return(
                 <>
                     <Header
-                        img={data.img_perfil}
-                        editar={false}
-                        negocio={data.negocio === '' ? data.nome : data.negocio}
-                        telefone={data.telefone}
+                        img={vendedor.img_perfil}
+                        negocio={vendedor.negocio === '' ? vendedor.nome : vendedor.negocio}
+                        telefone={vendedor.telefone}
                         ativa={true}
                         classe={"star"}
                     />
-                    <h2>Anúncios publicados</h2><hr/>
-                    {anuncios.map((anuncio) => {
-                        return(
-                            <ListaDeAnuncios
-                                img={anuncio.img}
-                                descricao={anuncio.descricao}
-                                valor={anuncio.valor}
-                                doacao={!!anuncio.doacao}
-                            />
-                        );
-                    })}
+                    <TabelaDeAnuncios
+                        anuncios={anuncios}
+                    />
                 </>
             );
         }
     } else {
         return(
             <>
-                    <Header
-                        img={data.img_perfil}
-                        editar={false}
-                        negocio={data.negocio === '' ? data.nome : data.negocio}
-                        telefone={'(11) 9 ...'}
-                        ativa={false}
-                        classe={""}
-                    />
-                    <h2>Anúncios publicados</h2><hr/>
-                    {anuncios.map((anuncio) => {
-                        return(
-                            <ListaDeAnuncios
-                                img={anuncio.img}
-                                descricao={anuncio.descricao}
-                                valor={anuncio.valor}
-                                doacao={!!anuncio.doacao}
-                            />
-                        );
-                    })}
-                </>
+                <Header
+                    img={vendedor.img_perfil}
+                    negocio={vendedor.negocio === '' ? vendedor.nome : vendedor.negocio}
+                    telefone={'(11) 9 ...'}
+                    nota={4.8}
+                />
+                <TabelaDeAnuncios
+                    anuncios={anuncios}
+                />
+            </>
         );
     }
 }

@@ -12,10 +12,10 @@ import Dicas from '../../Pages/Dicas';
 import Perfil from "../../Pages/Perfil";
 import Anuncios from "../../Pages/Anuncios";
 import Vendedor from '../../Pages/Vendedor';
+import EditarPerfilVendedor from "../../Pages/EditarPerfilVendedor";
 import PrivateRoute from '../Private/PrivateRoute';
 
 const Routes = () => {
-    const auth = localStorage.getItem('auth');
     return(
         <Switch>
             <Route exact path='/' component={Home}/>
@@ -35,6 +35,7 @@ const Routes = () => {
             <Route path="/anuncios" component={Anuncios}/>
             <Route path="/sair" component={Sair}/>
             <Route path='/vendedor/:id' component={Vendedor}/>
+            <PrivateRoute path="/editar/perfil/vendedor" component={EditarPerfilVendedor}/>
         </Switch>
     );
 }

@@ -34,6 +34,28 @@
   letter-spacing: -.05rem;
 }
 
+.margin-top {
+  margin-top: -0.5rem !important;
+}
+
+.border-me {
+  border: 6px double #F69220 !important;
+}
+
+.border-me2 {
+  border: 6px double #EC1E79 !important;
+}
+
+.border-me:hover {
+  border: 6px double #EC1E79 !important;
+  box-shadow: 0px 0px 30px #2787C8;
+}
+
+.border-me2:hover {
+  border: 6px double #F69220 !important;
+  box-shadow: 0px 0px 30px #2787C8;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

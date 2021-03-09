@@ -9,7 +9,7 @@ const PerfilHeader = ({ img, editar, negocio, telefone, nota, ativa, classe }) =
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-3 d-flex flex-column justify-content-between align-items-center">
-                        <img width={250} height={250} className="rounded-circle" src={`http://localhost:3333/uploads/perfil/${img}`} alt="Foto de perfil" />
+                        <img width={250} height={250} className="rounded-circle" src={`${process.env.REACT_APP_API_URL}/uploads/${img}`} alt="Foto de perfil" />
                         {editar && <Link className="btn-lg btn-primary mt-3" id="foto" to="/editar/perfil/vendedor" role="buttom">Editar perfil</Link>}
                     </div>
                     <div className="col-md-9 d-flex flex-column justify-content-start align-items-start">

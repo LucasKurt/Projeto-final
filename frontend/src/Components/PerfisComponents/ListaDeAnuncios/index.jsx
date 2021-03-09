@@ -1,20 +1,33 @@
 import React from 'react'
-//import { Link } from "react-router-dom";
 
-const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud, put, id, setId, setPut, setValues, setToggle, setSelectedFileUrl }) => {
+import api from '../../../functions/services'
+
+const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio, setDataForm }) => {
     const editar =() => {
-        setId(id)
-        setPut(!put)
-        setToggle(doacao)
-        setSelectedFileUrl(img)
-        setValues({descricao,valor})
+        setValues({
+            ...values,
+            descricao,
+            valor,
+            toggle: doacao,
+            put: true,
+            id_anuncio 
+        })
+        setImg({
+            ...img,
+            imgUrl: `${process.env.REACT_APP_API_URL}/uploads/${imgAnuncio}`
+        })
+    }
+    const deletar = (event) => {
+        event.preventDefault();
+        api.delete(`${process.env.REACT_APP_API_URL}/anuncios/${id_anuncio}`)
+        .then(response => setDataForm(response.data))
+        .catch(error => setDataForm(error.response.data.errors));
     }
     return (
         <>
             <div className="row mb-2">
                 <div className="col-md-3">
-
-                    <img className="img-fluid" src={`http://localhost:3333/uploads/anuncio/${img}`} alt="imagem do anuncio" id="editarImg" />
+                    <img className="img-fluid" style={{height: 150}} src={`${process.env.REACT_APP_API_URL}/uploads/${imgAnuncio}`} alt="imagem do anuncio"/>
                 </div>
                 <div className="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
                     <p>{descricao}</p>
@@ -22,7 +35,7 @@ const ListaDeAnuncios = ({ img, descricao, valor, doacao, crud, put, id, setId, 
                     <p>{doacao && 'Aceito receber doação'}</p>
                     {crud && <div className="btn-group">
                         <a href={"#foto"} className="btn btn-secondary rounded" onClick={editar}>Editar</a>
-                        <button className="btn btn-danger rounded ml-2" data-toggle="modal" data-target="#modalDeletar">Deletar</button>
+                        <form onSubmit={deletar} > <button className="btn btn-danger rounded ml-2" type='submit' >Deletar</button> </form>
                     </div>}
                 </div>
             </div>
