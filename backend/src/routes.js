@@ -77,7 +77,9 @@ routes.post(
     "/vendedor",
     body('nome').isLength({min:3}).withMessage("* campo obrigatório!"),
     body('negocio'),
-    body('endereco').notEmpty().withMessage("* campo obrigatório!"),    
+
+    body('endereco').notEmpty().withMessage("* campo obrigatório!"),
+
     body('cpf').custom(value => {
         if(!cpf.isValid(cpf.strip(value))) {
             return Promise.reject("CPF invalido!");

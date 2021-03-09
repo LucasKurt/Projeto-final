@@ -8,7 +8,7 @@ export const enviarDados = (url,form,setDados,method = 'POST') => event => {
     }).then(response => response.json()).then(dados =>setDados(dados))
 }
 
-export const pegarDados = (url,setData) => {    
+export const pegarDados = (url,setData) => {
     async function fetchData() {
         const response = await fetch(url);
         setData(await response.json());

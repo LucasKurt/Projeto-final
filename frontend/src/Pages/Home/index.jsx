@@ -46,7 +46,9 @@ const Home = () => {
                         <p className="lead">Foi através da plataforma Comércio Amigável que Ana se destacou no ramo do artesanato.</p>
                     </div>
                     <div className="col-md-5">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="https://www.sps.ce.gov.br/wp-content/uploads/sites/16/2020/03/190906_CENTRO-RENDEIRAS-PRAINHA1637.jpeg" alt="depoimento da Ana" />
+
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="./images/comercio-amigavel-depo1.jpeg" alt="depoimento da Ana" />
+
                     </div>
                 </div>
                 <hr className="featurette-divider" />
@@ -58,7 +60,9 @@ const Home = () => {
                         </p>
                     </div>
                     <div className="col-md-5 order-md-1">
-                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="http://retratosbrasileiros.com/wp-content/uploads/2016/02/Juazeiro-13.jpg" alt="historia do projeto" />
+
+                        <img className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width={500} height={500} src="./images/comercio-amigavel-depo2.jpg" alt="historia do projeto" />
+
                     </div>
                 </div>
                 <hr className="featurette-divider" />

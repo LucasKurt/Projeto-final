@@ -32,11 +32,13 @@ const PerfilVendedor = () => {
   const id_vendedor = localStorage.getItem('id');
 
   React.useEffect(() => {
-    pegarDados(`http://localhost:3333/vendedor/${id_vendedor}`,setVendedor)
+
+    pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id_vendedor}`,setVendedor)
   }, [id_vendedor])
 
   React.useEffect(() => {
-    pegarDados(`http://localhost:3333/anuncios/${id_vendedor}`,setAnuncios)
+    pegarDados(`${process.env.REACT_APP_API_URL}/anuncios/${id_vendedor}`,setAnuncios)
+
   }, [id_vendedor,dataForm])
 
   console.log(dataForm);

@@ -41,7 +41,9 @@ const EditarPerfilVendedor = () => {
     } 
     
     React.useEffect(() => {
-        pegarDados(`http://localhost:3333/vendedor/${id}`,setData);
+
+        pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id}`,setData);
+
         /* eslint-disable-next-line */
     },[dados])
 
@@ -69,7 +71,9 @@ const EditarPerfilVendedor = () => {
         <>
             <div className="container mt-5">
                 <div className="py-5 text-center">
-                    <img className="d-block mx-auto mb-2" src={img.imgUrl ? img.imgUrl : `http://localhost:3333/uploads/${data.img_perfil}`} id="imgPlaceholder" alt="Imagem de Perfil" width={200} height={200} />
+
+                    <img className="d-block mx-auto mb-2" src={img.imgUrl ? img.imgUrl : `${process.env.REACT_APP_API_URL}/uploads/${data.img_perfil}`} id="imgPlaceholder" alt="Imagem de Perfil" width={200} height={200} />
+
                     <br />
                     <h2>Editar perfil</h2>
                 </div>
@@ -123,7 +127,9 @@ const EditarPerfilVendedor = () => {
                                     name="endereco"
                                     placeholder=""
                                     value={values.endereco}
-                                    onChange={atualizar}                                    
+
+                                    onChange={atualizar}
+
                                 />
 
                                 <Input

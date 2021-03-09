@@ -35,6 +35,7 @@ const CadastroCliente = () => {
     const closeAlert = () => {
         const alert = document.getElementById('alert');
         alert.classList.toggle('d-none',true);
+
     }
 
     const atualizar = (event) => {
@@ -65,7 +66,9 @@ const CadastroCliente = () => {
                 <div className="row">
                     <div className="col-md-12">
                         <h4 className="mb-3">Dados Pessoais</h4>
-                        <form className="needs-validation" onSubmit={enviarDados('http://localhost:3333/cliente', values, setDados)} noValidate>
+
+                        <form className="needs-validation" onSubmit={enviarDados(`${process.env.REACT_APP_API_URL}/cliente`, values, setDados)} noValidate>
+
                             <div className="row">
                                 <Input
                                     type="text"
@@ -103,8 +106,9 @@ const CadastroCliente = () => {
                                 onChange={atualizar}
                                 erro={erros.senha}
                                 msgErro={'* Campo obrigatório'}
-                            />                                                                                                                                                      
 
+                            />
+                            
                             <Input
                                 type="password"
                                 className="mb-3"
