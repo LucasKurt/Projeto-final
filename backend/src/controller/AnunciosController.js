@@ -27,7 +27,7 @@ class AnunciosController {
         }
         
         anuncio.id_vendedor = id_vendedor;
-        anuncio.img = img.filename;
+        img.location ? anuncio.img = img.location : anuncio.img = `${process.env.APP_URL}/uploads/${img.filename}`
         anuncio.descricao = descricao;
         anuncio.valor = valor;
         anuncio.doacao = doacao;
@@ -57,7 +57,9 @@ class AnunciosController {
 
     deletarAnuncioAction(req,res){
         const { id } = req.params;
+        const { key } = req.body;
         anuncio.id = id;
+        anuncio.key = key;
         anuncio.deletarAnuncio(req,res);
     }
 }
