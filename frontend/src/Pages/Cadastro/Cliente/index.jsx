@@ -46,6 +46,8 @@ const CadastroCliente = () => {
         })
     } 
 
+    console.log(dados)
+
     if(dados) {
         for (const dado of dados) {
             erros[dado.param] = true

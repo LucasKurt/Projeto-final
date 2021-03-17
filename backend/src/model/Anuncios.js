@@ -1,4 +1,11 @@
+const aws = require('aws-sdk');
+const fs = require('fs')
+const { promisify } = require('util')
+const path = require('path')
+
 const connection = require('../config/connection');
+
+const s3 = new aws.S3();
 
 class Anuncio {
     constructor() {
@@ -7,7 +14,8 @@ class Anuncio {
         this.img;
         this.descricao;
         this.valor;
-        this.doacao
+        this.doacao;
+        this.key;
     }
 
     /*  `SELECT * FROM anuncios JOIN  vendedor ON anuncios.id_vendedor = vendedor.id ORDER BY anuncios.id DESC`, */
@@ -70,6 +78,15 @@ class Anuncio {
     }
 
     deletarAnuncio(req,res) {
+        //res.status(201).json(this.key);
+        if (process.env.STORAGE_TYPE === 's3') {
+            s3.deleteObject({
+                Bucket: 'comercioamigavel',
+                Key: this.key,
+            }).promise()
+        } else {
+            promisify(fs.unlink)(path.resolve(__dirname,'..','..','uploads',this.key.replace('http://localhost:3333/uploads/','')))
+        }
         connection.query(            
             `DELETE FROM anuncios WHERE id = '${this.id}'`,
             (error,result) => {
