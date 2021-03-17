@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import Input from "../../../Components/Input";
 import { enviarDados } from "../../../functions/database";
+
+import ShowAlert from '../../../Components/Alerts/Vendedor';
 
 const CadastroVendedor = () => {
 
@@ -46,11 +47,6 @@ const CadastroVendedor = () => {
     const showAlert = () => {
         const alert = document.getElementById('alert');
         alert.classList.toggle('d-none',false);
-    }
-
-    const closeAlert = () => {
-        const alert = document.getElementById('alert');
-        alert.classList.toggle('d-none',true);
     }
 
     if(dados) {
@@ -176,11 +172,8 @@ const CadastroVendedor = () => {
                                 msgErro={'* Campo obrigatório'}
                             />
                             <br />
-                            <div id="alert" className="alert alert-success alert-dismissible fade show text-center d-none" role="alert">
-                                Cadastro efetuado com sucesso <Link to="/login/vendedor">Ir para login</Link> 
-                                <button type="button" onClick={ closeAlert } className="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                            <div id="alert" className="alert d-none" role="alert">
+                                <ShowAlert/>
                             </div>
                             <button className="btn btn-primary btn-lg btn-block" type="submit">
                                 Confirmar cadastro

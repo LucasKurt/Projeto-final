@@ -30,7 +30,8 @@ function Anuncios() {
                 return  (
                 <div className="col-md-4">
                   <Card
-                    img={anuncio.img}
+
+                    img={`${process.env.REACT_APP_API_URL}/uploads/${anuncio.img}`}
 
                     imgPerfil={anuncio.img_perfil}
                     negocio={anuncio.negocio ? anuncio.negocio : anuncio.nome}
