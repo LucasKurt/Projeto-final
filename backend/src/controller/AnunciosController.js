@@ -31,6 +31,7 @@ class AnunciosController {
         anuncio.descricao = descricao;
         anuncio.valor = valor;
         anuncio.doacao = doacao;
+        anuncio.img_key = img.key;
         anuncio.postarAnuncio(req,res)
     }
 
@@ -40,12 +41,15 @@ class AnunciosController {
             return res.status(400).json({ errors: errors.array() });
         }
 
-        const { id_vendedor, descricao, valor, doacao } = req.body
+        const { descricao, valor, doacao, key } = req.body
         const img = req.file
         const { id } = req.params
 
         if(img) {
-            anuncio.img = img.filename;
+            anuncio.key = key;
+            anuncio.deletarImagem(req,res);
+            img.location ? anuncio.img = img.location : anuncio.img = `${process.env.APP_URL}/uploads/${img.filename}`
+            anuncio.key = img.key;
         }
 
         anuncio.id = id;       
@@ -60,6 +64,7 @@ class AnunciosController {
         const { key } = req.body;
         anuncio.id = id;
         anuncio.key = key;
+        anuncio.deletarImagem(req,res);
         anuncio.deletarAnuncio(req,res);
     }
 }

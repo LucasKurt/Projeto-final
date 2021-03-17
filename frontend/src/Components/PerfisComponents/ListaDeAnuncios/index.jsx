@@ -1,10 +1,15 @@
 import React from 'react'
 
-// import api from '../../../functions/services'
 import { enviarDados } from "../../../functions/database";
 
-const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio, setDataForm }) => {
+const ListaDeAnuncios = ({ imgAnuncio, imgAnuncioKey, descricao, valor, doacao, crud , values, setValues, img, setImg, id_anuncio, setDataForm }) => {
     const editar =() => {
+        setImg({
+            ...img,
+            imgUrl: imgAnuncio,
+            key: imgAnuncioKey
+
+        })
         setValues({
 
             ...values,
@@ -15,27 +20,9 @@ const ListaDeAnuncios = ({ imgAnuncio, descricao, valor, doacao, crud , values, 
             put: true,
             id_anuncio 
         })
-        setImg({
-            ...img,
-
-            imgUrl: imgAnuncio
-
-        })
     }
-    // const deletar = (event) => {
-    //     event.preventDefault();
-
-    //     const data = new FormData();
-    //     data.append('key',imgAnuncio);
-
-
-    //     api.delete(`${process.env.REACT_APP_API_URL}/anuncios/${id_anuncio}`,data)
-
-    //     .then(response => setDataForm(response.data))
-    //     .catch(error => setDataForm(error.response.data.errors));
-    // }
     const obj = {
-        key: imgAnuncio.replace('https://comercioamigavel.s3.sa-east-1.amazonaws.com/',''),
+        key: imgAnuncioKey,
     }
     return (
         <>

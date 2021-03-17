@@ -10,8 +10,8 @@ const Dropzone = ({ img, setImg }) => {
             img: file,
             imgUrl: fileUrl,
         });
-       /*eslint-disable-next-line react-hooks/exhaustive-deps*/
-    }, [])
+       
+    }, [img,setImg])
     const {getRootProps, getInputProps} = useDropzone({onDrop, accept: 'image/*'});
 
     return (

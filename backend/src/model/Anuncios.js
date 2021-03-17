@@ -15,7 +15,7 @@ class Anuncio {
         this.descricao;
         this.valor;
         this.doacao;
-        this.key;
+        this.img_key;
     }
 
     /*  `SELECT * FROM anuncios JOIN  vendedor ON anuncios.id_vendedor = vendedor.id ORDER BY anuncios.id DESC`, */
@@ -48,7 +48,7 @@ class Anuncio {
 
     postarAnuncio(req,res) {
         connection.query(
-            `INSERT INTO anuncios ( id_vendedor, img, descricao, valor, doacao ) values ('${this.id_vendedor}', '${this.img}', '${this.descricao}', '${this.valor}', ${this.doacao})`,
+            `INSERT INTO anuncios ( id_vendedor, img, img_key, descricao, valor, doacao ) values ('${this.id_vendedor}', '${this.img}', '${this.img_key}', '${this.descricao}', '${this.valor}', ${this.doacao})`,
             (error,result) => {
                 if (error) {
                     res.status(400).json({errors: error});
@@ -62,7 +62,7 @@ class Anuncio {
     editarAnuncio(req,res) {
         let sql = ''
         this.img ?
-        sql = `UPDATE anuncios SET img = '${this.img}', descricao = '${this.descricao}', valor = '${this.valor}', doacao = ${this.doacao} WHERE id = '${this.id}'` :
+        sql = `UPDATE anuncios SET img = '${this.img}', img_key = '${this.key}', descricao = '${this.descricao}', valor = '${this.valor}', doacao = ${this.doacao} WHERE id = '${this.id}'` :
         sql = `UPDATE anuncios SET descricao = '${this.descricao}', valor = '${this.valor}', doacao = ${this.doacao} WHERE id = '${this.id}'` 
 
         connection.query(            
@@ -78,15 +78,6 @@ class Anuncio {
     }
 
     deletarAnuncio(req,res) {
-        //res.status(201).json(this.key);
-        if (process.env.STORAGE_TYPE === 's3') {
-            s3.deleteObject({
-                Bucket: 'comercioamigavel',
-                Key: this.key,
-            }).promise()
-        } else {
-            promisify(fs.unlink)(path.resolve(__dirname,'..','..','uploads',this.key.replace('http://localhost:3333/uploads/','')))
-        }
         connection.query(            
             `DELETE FROM anuncios WHERE id = '${this.id}'`,
             (error,result) => {
@@ -97,6 +88,17 @@ class Anuncio {
                 }
             }
         )
+    }
+
+    deletarImagem() {
+        if (process.env.STORAGE_TYPE === 's3') {
+            s3.deleteObject({
+                Bucket: 'comercioamigavel',
+                Key: this.key,
+            }).promise()
+        } else {
+            promisify(fs.unlink)(path.resolve(__dirname,'..','..','uploads',this.key))
+        }
     }
 }
 

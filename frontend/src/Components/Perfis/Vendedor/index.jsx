@@ -21,6 +21,7 @@ const PerfilVendedor = () => {
     return {
       img: '',
       imgUrl: '',
+      key: '',
     }
   }
 
@@ -41,7 +42,7 @@ const PerfilVendedor = () => {
 
   }, [id_vendedor,dataForm])
 
-  console.log(dataForm);
+  //console.log(dataForm)
 
   return (
     <main role="main">
@@ -77,7 +78,6 @@ const PerfilVendedor = () => {
               setImg={setImg}
               id_vendedor={id_vendedor}
               setDataForm={setDataForm}
-              //id_anuncio={anuncio.id}
             />
           </div>
         </div>
@@ -92,6 +92,7 @@ const PerfilVendedor = () => {
                     <ListaDeAnuncios
                       key={anuncio.id}
                       imgAnuncio={anuncio.img}
+                      imgAnuncioKey={anuncio.img_key}
                       descricao={anuncio.descricao}
                       valor={anuncio.valor}
                       doacao={!!anuncio.doacao}
