@@ -3,6 +3,9 @@ import React from 'react'
 import ListaDeAnuncios from '../ListaDeAnuncios'
 
 const TabelaDeAnuncios = ({ anuncios }) => {
+    // anuncios.map((anuncio) => {
+    //     console.log(anuncio.img)
+    // })
     return (
         <div className="container">
             <div className="row">

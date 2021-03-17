@@ -13,7 +13,7 @@ const Footer = () => {
     return (
       <footer className="container">
         <p className="text-center">
-          © 2020 Todos os direitos reservados ao Squad 8 &amp; Recode ·
+          © 2021 Todos os direitos reservados ao Squad 8 &amp; Recode ·
         </p>
       </footer>
     );
