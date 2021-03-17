@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import Input from "../../../Components/Input";
 import { enviarDados } from "../../../functions/database";
+
+import ShowAlert from '../../../Components/Alerts/Cliente';
 
 const CadastroCliente = () => {
 
@@ -32,12 +33,6 @@ const CadastroCliente = () => {
         alert.classList.toggle('d-none',false);
     }
 
-    const closeAlert = () => {
-        const alert = document.getElementById('alert');
-        alert.classList.toggle('d-none',true);
-
-    }
-
     const atualizar = (event) => {
         const {name,value} = event.target
         setValues({
@@ -45,8 +40,6 @@ const CadastroCliente = () => {
             [name]: value
         })
     } 
-
-    console.log(dados)
 
     if(dados) {
         for (const dado of dados) {
@@ -125,11 +118,8 @@ const CadastroCliente = () => {
                             
                             <br />
                             
-                            <div id="alert" className="alert alert-success alert-dismissible fade show text-center d-none" role="alert">
-                                Cadastro efetuado com sucesso <Link to="/login/cliente">Ir para login</Link> 
-                                <button type="button" onClick={ closeAlert } className="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
+                            <div id="alert" className="alert d-none" role="alert">
+                                <ShowAlert/>
                             </div>
 
                             <button className="btn btn-primary btn-lg btn-block" type="submit">
