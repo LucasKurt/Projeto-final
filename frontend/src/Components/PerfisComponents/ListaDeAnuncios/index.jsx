@@ -24,12 +24,13 @@ const ListaDeAnuncios = ({ imgAnuncio, imgAnuncioKey, descricao, valor, doacao, 
     const obj = {
         key: imgAnuncioKey,
     }
+
     return (
         <>
             <div className="row mb-2">
                 <div className="col-md-3">
 
-                    <img className="img-fluid" style={{height: 150}} src={`${process.env.REACT_APP_API_URL}/uploads/${imgAnuncio}`} alt="imagem do anuncio"/>
+                    <img className="img-fluid" style={{height: 150}} src={imgAnuncio} alt="imagem do anuncio"/>
 
                 </div>
                 <div className="col-md-9 d-flex flex-column vertical-align-center justify-content-center">
@@ -38,7 +39,7 @@ const ListaDeAnuncios = ({ imgAnuncio, imgAnuncioKey, descricao, valor, doacao, 
                     <p>{doacao && 'Aceito receber doação'}</p>
                     {crud && <div className="btn-group">
                         <a href={"#foto"} className="btn btn-secondary rounded" onClick={editar}>Editar</a>
-                        <form onSubmit={deletar} > <button className="btn btn-danger rounded ml-2" type='submit' >Deletar</button> </form>
+                        <form onSubmit={enviarDados(`${process.env.REACT_APP_API_URL}/anuncios/${id_anuncio}`,obj,setDataForm,'DELETE')} > <button className="btn btn-danger rounded ml-2" type='submit' >Deletar</button> </form>
                     </div>}
                 </div>
             </div>
