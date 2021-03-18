@@ -1,4 +1,8 @@
 // const jwt = require('jsonwebtoken');
+const aws = require('aws-sdk');
+const fs = require('fs')
+const { promisify } = require('util')
+const path = require('path')
 
 // const auth = require('../config/auth.json');
 const connection = require('../config/connection');
@@ -14,11 +18,12 @@ class Vendedor {
         this.telefone;
         this.senha;
         this.img_perfil;
+        this.key;
     }
     
     getOneVendedor(req, res) {
         connection.query(
-            `SELECT id, img_perfil, nome, negocio, telefone FROM vendedor WHERE id = '${this.id}'`,
+            `SELECT id, img_perfil, img_key , nome, negocio, telefone FROM vendedor WHERE id = '${this.id}'`,
             (error, result) => { 
                 if (error) {
                     res.status(400).json(error)
@@ -54,6 +59,7 @@ class Vendedor {
         let email = this.email;
         let telefone = this.telefone;
         let img = this.img_perfil;
+        let key = this.key;
         let set = ''
         if(nome) {
             set = `nome = '${nome}'`;
@@ -89,9 +95,9 @@ class Vendedor {
 
         if(img) {
             if (set) {
-                set += `, img_perfil = '${img}'`
+                set += `, img_perfil = '${img}', img_key = '${key}'`
             } else {
-                set = `img_perfil = '${img}'`
+                set = `img_perfil = '${img}', img_key = '${key}'`
             }
         }
 
@@ -124,6 +130,17 @@ class Vendedor {
                 } 
             }
         );
+    }
+
+    deletarImagem() {
+        if (process.env.STORAGE_TYPE === 's3') {
+            s3.deleteObject({
+                Bucket: 'comercioamigavel',
+                Key: this.key,
+            }).promise()
+        } else {
+            promisify(fs.unlink)(path.resolve(__dirname,'..','..','uploads',this.key))
+        }
     }
 }
 

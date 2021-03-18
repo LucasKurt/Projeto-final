@@ -63,8 +63,8 @@ const Form = ({ id_vendedor, values, setValues, img, setImg, setDataForm }) => {
                         value={values.descricao}
                         onChange={atualizar} 
                         required 
-                        cols={30} 
-                        rows={4} 
+                        cols={30}
+                        rows={4}
                     />
                     <div className="invalid-feedback">Escreva a descrição</div>
                 </div>

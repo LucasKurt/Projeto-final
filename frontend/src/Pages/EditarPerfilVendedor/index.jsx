@@ -27,7 +27,7 @@ const EditarPerfilVendedor = () => {
     }
 
     const id = localStorage.getItem('id');
-    const [data,setData] = React.useState('');
+    const [vendedor,setVendedor] = React.useState('');
     const [dados,setDados] = React.useState('');
     const [values,setValues] = React.useState(initialState);
     const [img,setImg] = React.useState(initialImg);
@@ -41,11 +41,8 @@ const EditarPerfilVendedor = () => {
     } 
     
     React.useEffect(() => {
-
-        pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id}`,setData);
-
-        /* eslint-disable-next-line */
-    },[dados])
+        pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id}`,setVendedor);
+    },[dados,id])
 
     const enviarDados = (e) => {
         e.preventDefault(); 
@@ -57,22 +54,21 @@ const EditarPerfilVendedor = () => {
         data.append('email',values.email);
         data.append('telefone',values.telefone);
         data.append('img',img.img);
+        data.append('key',vendedor.img_key);
         
         api.put(`/vendedor/${id}`,data)
         .then(response => setDados(response.data))
         .catch(error => setDados(error.response.data.errors));
-
     }
 
-    //console.log(dados);
-    console.log(initialState());
+    console.log(dados)
 
     return (
         <>
             <div className="container mt-5">
                 <div className="py-5 text-center">
 
-                    <img className="d-block mx-auto mb-2" src={img.imgUrl ? img.imgUrl : `${process.env.REACT_APP_API_URL}/uploads/${data.img_perfil}`} id="imgPlaceholder" alt="Imagem de Perfil" width={200} height={200} />
+                    <img className="d-block mx-auto mb-2" src={img.imgUrl ? img.imgUrl : vendedor.img_perfil} id="imgPlaceholder" alt="Imagem de Perfil" width={200} height={200} />
 
                     <br />
                     <h2>Editar perfil</h2>
@@ -127,9 +123,7 @@ const EditarPerfilVendedor = () => {
                                     name="endereco"
                                     placeholder=""
                                     value={values.endereco}
-
                                     onChange={atualizar}
-
                                 />
 
                                 <Input

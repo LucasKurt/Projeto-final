@@ -12,7 +12,7 @@ function Anuncios() {
   }, [])
 
   return (
-    <main role="main">
+    <main role="main">      
       <section className="jumbotron text-center">
         <div className="container mt-5">
           <p className="display-4">Veja todos os produtos cadastrados</p>
@@ -25,9 +25,7 @@ function Anuncios() {
                 return  (
                 <div className="col-md-4">
                   <Card
-
-                    img={`${process.env.REACT_APP_API_URL}/uploads/${anuncio.img}`}
-
+                    img={anuncio.img}
                     imgPerfil={anuncio.img_perfil}
                     negocio={anuncio.negocio ? anuncio.negocio : anuncio.nome}
                     descricao={anuncio.descricao}
