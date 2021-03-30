@@ -53,7 +53,7 @@ class Anuncio {
                 if (error) {
                     res.status(400).json({errors: error});
                 } else {
-                    res.status(201).json(result);
+                    res.status(201).json('Anúncio postado com sucesso !');
                 }
             }
         )
@@ -71,7 +71,7 @@ class Anuncio {
                 if (error) {
                     res.status(400).json({errors: error});
                 } else {
-                    res.status(201).json(result);
+                    res.status(201).json('Anúncio editado com sucesso !');
                 }
             }
         )

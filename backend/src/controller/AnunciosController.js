@@ -21,10 +21,6 @@ class AnunciosController {
 
         const { id_vendedor, descricao, valor, doacao } = req.body
         const img = req.file
-
-        if(!img) {
-            return res.status(400).json({errors: [{msg: "* campo obrigatório!",param: "img"}]})
-        }
         
         anuncio.id_vendedor = id_vendedor;
         img.location ? anuncio.img = img.location : anuncio.img = `${process.env.APP_URL}/uploads/${img.filename}`

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Input = ({ className, label, span, name, type, value, onChange, placeholder, erro, msgErro }) => {
+const Textarea = ({ className, label, span, name, value, onChange, placeholder, cols, rows, erro, msgErro }) => {
     if(erro){
-       var border = "border-danger"
+       var border = "border border-danger"
     } else {
         border = ''
     }
@@ -10,18 +10,19 @@ const Input = ({ className, label, span, name, type, value, onChange, placeholde
     return (
         <div className={className}>
             <label htmlFor={name}>{label}<span className="text-muted">{span}</span></label>
-            <input 
+            <textarea 
                 className={`form-control ${border}`} 
-                type={type} 
                 id={name}
                 name={name}
                 value={value}
                 onChange={onChange}
-                placeholder={placeholder} 
+                placeholder={placeholder}
+                cols={cols}
+                rows={rows} 
             />
             {erro && <div className='text-danger'>{msgErro === '' ? msgErro : '* Campo obrigatório'}</div>}
         </div>
     )
 }
 
-export default Input
+export default Textarea

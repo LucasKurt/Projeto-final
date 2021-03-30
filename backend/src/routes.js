@@ -32,6 +32,26 @@ routes.get(
 routes.post(
     "/anuncios",
     multer(multerConfig).single('img'),
+    body('img').custom((value,{req}) => {
+        if (!req.file) {
+            return Promise.reject("* campo obrigatório!");
+        }
+        const alowedMimes = [
+            'image/gif',
+            'image/ico',
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+            'image/svg',
+            'image/webp',
+        ];
+        for (const mime of alowedMimes) {
+            if (req.file.mimetype === mime) {
+                return true;
+            }
+        }
+        return Promise.reject("* campo obrigatório!");
+    }),
     body('descricao').notEmpty().withMessage("* campo obrigatório!"),
     body('valor').notEmpty().withMessage("* campo obrigatório!"),
     AnunciosController.postarAnuncioAction,

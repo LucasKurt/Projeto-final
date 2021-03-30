@@ -42,8 +42,6 @@ const PerfilVendedor = () => {
 
   }, [id_vendedor,dataForm])
 
-  //console.log(dataForm)
-
   return (
     <main role="main">
       <Header
@@ -77,7 +75,9 @@ const PerfilVendedor = () => {
               img={img}
               setImg={setImg}
               id_vendedor={id_vendedor}
+              dataForm={dataForm}
               setDataForm={setDataForm}
+              initialState={initialState}
             />
           </div>
         </div>

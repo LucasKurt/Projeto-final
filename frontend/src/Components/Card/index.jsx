@@ -10,7 +10,7 @@ const Card = ({ img, imgPerfil, negocio, descricao, valor, opc, doacao, id_vende
         <div className="col" onClick={() => redirecionar && history.push(`/vendedor/${id_vendedor}`)}>
             <div className="card mb-4 shadow-sm">
 
-                <img className="img-fluid" style={{height:225}} id="imgPlaceholder" src={img === '' ? `${process.env.REACT_APP_API_URL}/uploads/ponto-de-interrogação.jpeg` : img} alt="Imagem do anuncio" />
+                <img className="img-fluid" style={{height:225}} id="imgPlaceholder" src={img === '' ? `/images/ponto-de-interrogação.jpeg` : img} alt="Imagem do anuncio" />
                 <div className="d-flex justify-content-center mt-3"><img style={{ boxShadow: '0px 0px 8px #000000' }} className="rounded-circle" width={50} height={50} src={imgPerfil} alt="Perfil vendedor" /></div>
 
                 <div className="card-body">

@@ -50,7 +50,6 @@ const CadastroVendedor = () => {
     }
 
     if(dados) {
-        console.log(dados)
         for (const dado of dados) {
             erros[dado.param] = true
         }

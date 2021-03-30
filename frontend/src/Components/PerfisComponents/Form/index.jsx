@@ -2,9 +2,11 @@ import React from 'react'
 
 import api from '../../../functions/services'
 import Dropzone from '../../Dropzone';
+import Input from '../../Input';
+import Textarea from '../../Textarea';
 import ToggleSwitch from "../../ToggleSwitch";
 
-const Form = ({ id_vendedor, values, setValues, img, setImg, setDataForm }) => {    
+const Form = ({ id_vendedor, values, setValues, img, setImg, dataForm, setDataForm, initialState }) => {
     const atualizar = (event) => {
         const {name,value} = event.target
         setValues({
@@ -12,9 +14,7 @@ const Form = ({ id_vendedor, values, setValues, img, setImg, setDataForm }) => {
             [name]: value
         });
     }
-
-    //npmconsole.log(img);
-
+    
     const enviarDados = (e) => {
         e.preventDefault();
 
@@ -30,60 +30,67 @@ const Form = ({ id_vendedor, values, setValues, img, setImg, setDataForm }) => {
             api.put(`/anuncios/${values.id_anuncio}`,data)
             .then(response => setDataForm(response.data))
             .catch(error => setDataForm(error.response.data.errors));
-            setValues({
-                ...values,
-                put: false
-            });
         } else{
             api.post('/anuncios',data)
             .then(response => setDataForm(response.data))
             .catch(error => setDataForm(error.response.data.errors));
         }
     }
+
+    const erros = {
+        img: false,
+        descricao: false,
+        valor: false,
+    }
+
+    if(dataForm) {
+        if (Array.isArray(dataForm)) {
+            for (const data of dataForm) {
+                erros[data.param] = true
+            } 
+        } else {
+            setValues({
+                ...values,
+                put: false
+            });
+        }
+    }
+
     return (
         <form className="needs-validation" onSubmit={enviarDados} noValidate>
             <div className="row">
-                <div className="col-md mb-3">
-                    <div className="custom-file mt-3">
-                        <Dropzone
-                            img={img}
-                            setImg={setImg}
-                        />
-                    </div>
-                    <div className="invalid-feedback">Coloque a imagem do anúncio</div>
-                </div>
+                <Dropzone
+                    className="col-md my-3"
+                    img={img}
+                    setImg={setImg}
+                    erro={erros.img}
+                />
             </div>
             <div className="row">
-                <div className="col-md-6 mb-3">
-                    <label htmlFor="descricao">Descrição</label>
-                    <textarea 
-                        className="form-control" 
-                        name="descricao" 
-                        id="descricao"
-                        value={values.descricao}
-                        onChange={atualizar} 
-                        required 
-                        cols={30}
-                        rows={4}
-                    />
-                    <div className="invalid-feedback">Escreva a descrição</div>
-                </div>
+                <Textarea
+                    className="col-md-6 mb-3"
+                    label="Descrição"
+                    name="descricao"
+                    placeholder=""
+                    value={values.descricao}
+                    onChange={atualizar}                     
+                    cols={30}
+                    rows={4}
+                    erro={erros.descricao}
+                />
                 <div className="col-md-6 mb-3 d-flex flex-column">
-                    <label htmlFor="valor">Valor</label>
-                    <input
-                        type="text" 
-                        className="form-control" 
-                        id="valor" 
+                    <Input 
+                        type="text"
+                        className=""
+                        label="Valor"
                         name="valor"
+                        placeholder="R$"
                         value={values.valor}
-                        onChange={atualizar} 
-                        placeholder="R$" 
-                        required 
-                    />
-                    <div className="invalid-feedback">Informe o Valor</div>
+                        onChange={atualizar}
+                        erro={erros.valor}
+                    />                    
                     <div className="row">
-                        <div className="col mt-5 d-flex align-items-baseline justify-content-end">                            
-
+                        <div className="col mt-5 d-flex align-items-baseline justify-content-end">
                             <label>Aceita receber doação?</label>
                             <ToggleSwitch
                                 values={values}
