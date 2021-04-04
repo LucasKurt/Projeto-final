@@ -6,7 +6,7 @@ import Input from '../../Input';
 import Textarea from '../../Textarea';
 import ToggleSwitch from "../../ToggleSwitch";
 
-const Form = ({ id_vendedor, values, setValues, img, setImg, dataForm, setDataForm, initialState }) => {
+const Form = ({ id_vendedor, values, setValues, img, setImg, dataForm, setDataForm, initialState, initialImg }) => {
     const atualizar = (event) => {
         const {name,value} = event.target
         setValues({
@@ -28,12 +28,20 @@ const Form = ({ id_vendedor, values, setValues, img, setImg, dataForm, setDataFo
         if(values.put){  
             data.append('key',img.key);        
             api.put(`/anuncios/${values.id_anuncio}`,data)
-            .then(response => setDataForm(response.data))
+            .then(response => {
+                setDataForm(response.data);
+                setValues(initialState());
+                setImg(initialImg());
+            })
             .catch(error => setDataForm(error.response.data.errors));
         } else{
             api.post('/anuncios',data)
-            .then(response => setDataForm(response.data))
-            .catch(error => setDataForm(error.response.data.errors));
+            .then(response => {
+                setDataForm(response.data);
+                setValues(initialState());
+                setImg(initialImg());
+            })
+            .catch(error => setDataForm(error.response.data.errors));   
         }
     }
 
@@ -48,11 +56,6 @@ const Form = ({ id_vendedor, values, setValues, img, setImg, dataForm, setDataFo
             for (const data of dataForm) {
                 erros[data.param] = true
             } 
-        } else {
-            setValues({
-                ...values,
-                put: false
-            });
         }
     }
 

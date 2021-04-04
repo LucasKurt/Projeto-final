@@ -33,13 +33,11 @@ const PerfilVendedor = () => {
   const id_vendedor = localStorage.getItem('id');
 
   React.useEffect(() => {
-
-    pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id_vendedor}`,setVendedor)
+    pegarDados(`${process.env.REACT_APP_API_URL}/vendedor/${id_vendedor}`,setVendedor);
   }, [id_vendedor])
 
   React.useEffect(() => {
-    pegarDados(`${process.env.REACT_APP_API_URL}/anuncios/${id_vendedor}`,setAnuncios)
-
+    pegarDados(`${process.env.REACT_APP_API_URL}/anuncios/${id_vendedor}`,setAnuncios);
   }, [id_vendedor,dataForm])
 
   return (
@@ -78,6 +76,7 @@ const PerfilVendedor = () => {
               dataForm={dataForm}
               setDataForm={setDataForm}
               initialState={initialState}
+              initialImg={initialImg}
             />
           </div>
         </div>

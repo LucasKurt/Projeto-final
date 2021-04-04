@@ -23,7 +23,7 @@ function Anuncios() {
           <div className="row">
               {anuncios.map((anuncio) => {
                 return  (
-                <div className="col-md-4">
+                <div className="col-md-4" key={anuncio.id}>
                   <Card
                     img={anuncio.img}
                     imgPerfil={anuncio.img_perfil}
