@@ -61,9 +61,9 @@ const Login = (props) => {
             />
             { alert && <div className="alert alert-danger alert-dismissible fade show" role="alert">
                 Login ou senha invalidos 
-                <button type="button" onClick={() => alert = false } className="close" data-dismiss="alert" aria-label="Close">
-                    {/* <span aria-hidden="true">×</span> */}
-                </button>
+                {/* <button type="button" onClick={() => alert = false } className="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> */}
             </div> }
             <button className="btn btn-lg btn-primary btn-block" type="submit">Entre</button>
             <br />
