@@ -7,6 +7,8 @@ const path = require('path')
 // const auth = require('../config/auth.json');
 const connection = require('../config/connection');
 
+const s3 = new aws.S3();
+
 class Vendedor {
     constructor() {
         this.id;

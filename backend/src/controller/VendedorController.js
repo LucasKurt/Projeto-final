@@ -33,9 +33,9 @@ class VendedorController {
     }
     
     atualizarPerfilAction(req,res) {
-        const { id } = req.params
         const { nome, negocio, endereco, email, telefone, key } = req.body;
         const img = req.file;
+        const { id } = req.params
 
         vendedor.id = id;
         vendedor.nome = nome;
@@ -45,11 +45,11 @@ class VendedorController {
         vendedor.telefone = telefone;
 
         if(img) {
-            img.location ?  vendedor.img_perfil = img.location :  vendedor.img_perfil = `${process.env.APP_URL}/uploads/${img.filename}`
             if (key) {
                 vendedor.key = key;
                 vendedor.deletarImagem()
             }
+            img.location ?  vendedor.img_perfil = img.location :  vendedor.img_perfil = `${process.env.APP_URL}/uploads/${img.filename}`
             vendedor.key = img.key;
         }
         vendedor.atualizarPerfil(req, res);

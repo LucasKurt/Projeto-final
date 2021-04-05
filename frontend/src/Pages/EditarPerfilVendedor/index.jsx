@@ -1,4 +1,5 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 
 import Dropzone from "../../Components/Dropzone";
 import Input from "../../Components/Input";
@@ -6,6 +7,8 @@ import { pegarDados } from "../../functions/database";
 import api from "../../functions/services"
 
 const EditarPerfilVendedor = () => {
+
+    const history = useHistory();
 
     const initialState = () => {
         return(
@@ -57,9 +60,14 @@ const EditarPerfilVendedor = () => {
         data.append('key',vendedor.img_key);
         
         api.put(`/vendedor/${id}`,data)
-        .then(response => setDados(response.data))
+        .then(response => {
+            setDados(response.data)
+            history.push('/perfil')
+        })
         .catch(error => setDados(error.response.data.errors));
     }
+
+    console.log(dados)
 
     return (
         <>
